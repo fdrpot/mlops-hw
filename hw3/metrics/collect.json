@@ -1,0 +1,48 @@
+{
+  "version": "v1",
+  "dataset": {
+    "name": "carosh/cli-1m",
+    "revision": "ec725c1269166e7f8ce8a20df1787ceecd1e421a",
+    "url": "https://huggingface.co/datasets/carosh/cli-1m"
+  },
+  "rows_scanned": 975594,
+  "rows_eligible": 30800,
+  "rows_written": 2347,
+  "topics": 272,
+  "system_prompt_variants": 5,
+  "buckets": {
+    "cloud": 321,
+    "data_ml": 213,
+    "database": 443,
+    "devops": 432,
+    "systems": 938
+  },
+  "licenses": {
+    "Apache-2.0": 366,
+    "CC-BY-4.0": 336,
+    "MIT": 1629,
+    "MPL-2.0": 16
+  },
+  "quality_tiers": {
+    "imported": 423,
+    "synthesized": 1924
+  },
+  "source_kinds": {
+    "llm-synthesis Claude Sonnet 4.6": 1574,
+    "llm-paraphrase-template-v1": 350,
+    "tldr-pages CC-BY 4.0": 336,
+    "cheat/cheatsheets MIT": 39,
+    "caro-eval-curated MIT": 16,
+    "caro-eval-curated / HashiCorp MPL-2.0": 16,
+    "caro-eval-curated Apache-2.0/MIT": 12,
+    "caro-eval-curated / GoogleCloudPlatform Apache-2.0": 2,
+    "caro-eval-curated / aws Apache-2.0": 1,
+    "caro-eval-curated / kubernetes.io Apache-2.0": 1
+  },
+  "rejected": {
+    "bucket": 146598,
+    "content": 6,
+    "language": 324440,
+    "shell": 473750
+  }
+}

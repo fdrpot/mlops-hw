@@ -1,136 +1,144 @@
-"""Стадия collect: источник → data/raw.jsonl.
-
-ЗДЕСЬ студент подменяет сбор на свой. Ниже — чтение parquet курсового датасета
-НМО; у вас на этом месте будет парсер сайта, выгрузка из БД, экспорт из Notion.
-Контракт стадии, а не её внутренности, держит остальной пайплайн:
-на выходе JSONL со строками {"id", "topic", "messages": [system, user, assistant]}.
-
-Скачанный чужой набор сам по себе сдачей не является (README, «Готовый датасет
-как источник»). Поэтому стадия не перекладывает parquet в JSONL один в один,
-а делает три вещи, и каждая видна числом в metrics/collect.json:
-
-  1. сужает набор до перечисленных тем (collect.topics), если это нужно задаче;
-  2. сверяет ответ с разметкой источника (collect.verify_answer_index) —
-     расхождение выбрасывается, а не переносится в обучение;
-  3. разводит единственную инструкцию источника на варианты
-     (collect.system_prompts), чтобы модель не заучила её формулировку.
-"""
+"""Стадия collect: CLI-1M Parquet → нормализованный chat JSONL."""
 
 import hashlib
 import json
+import shlex
 import time
+from collections import Counter, defaultdict
 from pathlib import Path
 
 import pyarrow.parquet as pq
 
 from src.config import load_params, source_files
 
-COLUMNS = ["id", "topic", "correct_choice_indices", "messages"]
-BATCH = 2000
+COLUMNS = ["messages", "id", "shell", "language", "bucket", "quality_tier", "source", "license_spdx", "quality_flags"]
 
 
-def pick_prompt(example_id: str, variants: list[str]) -> str:
-    """Детерминированно выбрать вариант инструкции по id примера.
-
-    Именно sha1, а не встроенный hash(): тот солится на каждый запуск процесса,
-    и raw.jsonl переставал бы быть воспроизводимым.
-    """
-    digest = hashlib.sha1(example_id.encode("utf-8")).hexdigest()
-    return variants[int(digest, 16) % len(variants)]
+def stable_number(value: str) -> int:
+    return int(hashlib.sha256(value.encode("utf-8")).hexdigest(), 16)
 
 
-def answer_matches_source(row: dict) -> bool:
-    """Совпадает ли ответ ассистента с correct_choice_indices источника.
+def command_tool(command: str) -> str | None:
+    """Извлечь исполняемую утилиту из команды без запуска команды."""
+    try:
+        tokens = shlex.split(command, posix=True)
+    except ValueError:
+        return None
+    while tokens and "=" in tokens[0] and not tokens[0].startswith("-"):
+        tokens.pop(0)
+    while tokens and tokens[0] in {"sudo", "env", "command", "nohup"}:
+        tokens.pop(0)
+    if not tokens or tokens[0] in {"|", "&&", ";"}:
+        return None
+    return Path(tokens[0]).name.lower()
 
-    В sft_single правильный вариант ровно один, а ответ начинается с его
-    номера. Всё, что не так, — либо другой тип задачи, либо битая разметка.
-    """
-    indices = list(row["correct_choice_indices"] or [])
-    if len(indices) != 1:
-        return False
-    return row["messages"][2]["content"].startswith(f"Ответ: {indices[0]}")
+
+def choose_prompt(example_id: str, variants: list[str]) -> str:
+    return variants[stable_number(example_id) % len(variants)]
+
+
+def iter_source_rows(paths: list[Path]):
+    for source in paths:
+        files = sorted(source.glob("*.parquet")) if source.is_dir() else [source]
+        if not files:
+            raise SystemExit(f"в источнике нет parquet-файлов: {source}")
+        for file in files:
+            parquet = pq.ParquetFile(file)
+            for batch in parquet.iter_batches(batch_size=5000, columns=COLUMNS):
+                yield from batch.to_pylist()
 
 
 def main() -> None:
     params = load_params()
     cfg = params["collect"]
     paths = params["paths"]
-    n_rows = cfg["n_rows"]
-    variants = cfg["system_prompts"]
-    if not variants:
-        raise SystemExit("collect.system_prompts пуст: инструкцию брать неоткуда")
-    topics = cfg["topics"]
-    wanted = set(topics) if topics else None
+    version = cfg["version"]
+    allowed_buckets = list(cfg["versions"][version]["buckets"])
+    allowed_licenses = set(cfg["licenses"])
+    prompts = cfg["system_prompts"]
+    if len(prompts) < 3:
+        raise SystemExit("collect.system_prompts должен содержать минимум три варианта")
+
+    started = time.perf_counter()
+    scanned = 0
+    rejected = Counter()
+    candidates: dict[str, list[dict]] = defaultdict(list)
+
+    for row in iter_source_rows(source_files(params)):
+        scanned += 1
+        if row["language"] != cfg["language"]:
+            rejected["language"] += 1
+            continue
+        if row["shell"] != cfg["shell"]:
+            rejected["shell"] += 1
+            continue
+        if row["license_spdx"] not in allowed_licenses:
+            rejected["license"] += 1
+            continue
+        if row.get("quality_flags"):
+            rejected["quality_flags"] += 1
+            continue
+        bucket = next((name for name in allowed_buckets if name in (row["bucket"] or [])), None)
+        if bucket is None:
+            rejected["bucket"] += 1
+            continue
+        messages = row.get("messages") or []
+        if len(messages) != 3 or [m.get("role") for m in messages] != ["system", "user", "assistant"]:
+            rejected["messages"] += 1
+            continue
+        user = str(messages[1].get("content") or "").strip()
+        assistant = str(messages[2].get("content") or "").strip()
+        tool = command_tool(assistant)
+        if not user or not assistant or tool is None:
+            rejected["content"] += 1
+            continue
+        topic = f"{bucket}/{tool}"
+        candidates[topic].append({
+            "id": f"cli1m-{row['id']}",
+            "topic": topic,
+            "messages": [
+                {"role": "system", "content": choose_prompt(str(row["id"]), prompts)},
+                {"role": "user", "content": user},
+                {"role": "assistant", "content": assistant},
+            ],
+            "_license": row["license_spdx"],
+            "_quality": row["quality_tier"],
+            "_source": row["source"],
+        })
+
+    selected: list[dict] = []
+    cap = int(cfg["max_per_topic"])
+    for topic in sorted(candidates):
+        ranked = sorted(candidates[topic], key=lambda row: stable_number(row["id"]))
+        selected.extend(ranked[:cap])
+    selected.sort(key=lambda row: row["id"])
 
     out = Path(paths["raw"])
     out.parent.mkdir(parents=True, exist_ok=True)
-
-    started = time.perf_counter()
-    scanned = written = dropped_topic = dropped_answer = 0
-    prompts_used: set[str] = set()
-
     with out.open("w", encoding="utf-8") as fh:
-        for src in source_files(params):
-            if not src.exists():
-                raise SystemExit(f"нет файла-источника: {src}")
-            taken = 0
-            # Фильтры применяются ДО отсечки n_rows: иначе «первые 3000 строк»
-            # и «3000 строк по теме» — разные вещи, и сужение набора давало бы
-            # случайный огрызок вместо заказанного объёма.
-            for batch in pq.ParquetFile(src).iter_batches(batch_size=BATCH, columns=COLUMNS):
-                for row in batch.to_pylist():
-                    if taken >= n_rows:
-                        break
-                    scanned += 1
-                    if wanted is not None and row["topic"] not in wanted:
-                        dropped_topic += 1
-                        continue
-                    if cfg["verify_answer_index"] and not answer_matches_source(row):
-                        dropped_answer += 1
-                        continue
-                    prompt = pick_prompt(row["id"], variants)
-                    prompts_used.add(prompt)
-                    record = {
-                        "id": row["id"],
-                        "topic": row["topic"],
-                        # messages из parquet уже в формате чата; меняется только
-                        # системная реплика — на выбранный вариант инструкции.
-                        "messages": [
-                            {"role": "system", "content": prompt},
-                            *(
-                                {"role": m["role"], "content": m["content"]}
-                                for m in row["messages"][1:]
-                            ),
-                        ],
-                    }
-                    fh.write(json.dumps(record, ensure_ascii=False) + "\n")
-                    taken += 1
-                    written += 1
-                if taken >= n_rows:
-                    break
+        for row in selected:
+            public = {key: row[key] for key in ("id", "topic", "messages")}
+            fh.write(json.dumps(public, ensure_ascii=False) + "\n")
 
+    elapsed = round(time.perf_counter() - started, 2)
     metrics = {
-        "version": cfg["version"],
-        "files": len(source_files(params)),
+        "version": version,
+        "dataset": cfg["dataset"],
         "rows_scanned": scanned,
-        "rows_written": written,
-        "dropped_topic_filter": dropped_topic,
-        "dropped_answer_mismatch": dropped_answer,
-        "topics_filter": len(wanted) if wanted else 0,
-        "system_prompt_variants": len(prompts_used),
-        "seconds": round(time.perf_counter() - started, 2),
+        "rows_eligible": sum(len(rows) for rows in candidates.values()),
+        "rows_written": len(selected),
+        "topics": len({row["topic"] for row in selected}),
+        "system_prompt_variants": len({row["messages"][0]["content"] for row in selected}),
+        "buckets": dict(sorted(Counter(row["topic"].split("/", 1)[0] for row in selected).items())),
+        "licenses": dict(sorted(Counter(row["_license"] for row in selected).items())),
+        "quality_tiers": dict(sorted(Counter(row["_quality"] for row in selected).items())),
+        "source_kinds": dict(Counter(row["_source"] for row in selected).most_common()),
+        "rejected": dict(sorted(rejected.items())),
     }
-    mpath = Path(paths["metrics_collect"])
-    mpath.parent.mkdir(parents=True, exist_ok=True)
-    mpath.write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
-
-    print(
-        f"collect: версия {cfg['version']}, файлов {metrics['files']}, "
-        f"просмотрено {scanned}, записано {written} "
-        f"(фильтр тем -{dropped_topic}, расхождение с разметкой -{dropped_answer}), "
-        f"вариантов инструкции {len(prompts_used)}, "
-        f"{metrics['seconds']} с → {out}"
-    )
+    metrics_path = Path(paths["metrics_collect"])
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    metrics_path.write_text(json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    print(f"collect: {version}, просмотрено {scanned}, пригодно {metrics['rows_eligible']}, записано {len(selected)} строк в {metrics['topics']} темах, {elapsed} с")
 
 
 if __name__ == "__main__":

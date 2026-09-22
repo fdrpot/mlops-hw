@@ -5,7 +5,7 @@ import time
 from pathlib import Path
 
 from src.config import load_params
-from src.dedup import exact_duplicates
+from src.dedup import exact_duplicates, near_duplicates
 from src.pii import scrub
 from src.schema import Example, dump, iter_examples
 from src.stats import percentile
@@ -66,8 +66,19 @@ def main() -> None:
     exact = set(exact_duplicates(keys))
     kept = [ex for i, ex in enumerate(kept) if i not in exact]
 
-    # 5. TODO: сюда просится ещё один шаг дедупликации.
+    # 5. Near-dup по нормализованной формулировке задачи.
     near: set[int] = set()
+    near_cfg = cfg["near_dup"]
+    if near_cfg["enabled"]:
+        near = set(
+            near_duplicates(
+                [normalize_text(ex.user) for ex in kept],
+                shingle_words=near_cfg["shingle_words"],
+                num_perm=near_cfg["num_perm"],
+                threshold=near_cfg["threshold"],
+            )
+        )
+        kept = [ex for i, ex in enumerate(kept) if i not in near]
 
     out = Path(paths["clean"])
     out.parent.mkdir(parents=True, exist_ok=True)
@@ -75,6 +86,7 @@ def main() -> None:
         for ex in kept:
             fh.write(dump(ex) + "\n")
 
+    elapsed = round(time.perf_counter() - started, 2)
     metrics = {
         "version": params["collect"]["version"],
         "rows_in": rows_in,
@@ -87,7 +99,6 @@ def main() -> None:
         "groups": len({normalize_group(ex.topic) for ex in kept}),
         "user_chars": percentiles([len(ex.user) for ex in kept]),
         "assistant_chars": percentiles([len(ex.assistant) for ex in kept]),
-        "seconds": round(time.perf_counter() - started, 2),
     }
     mpath = Path(paths["metrics_clean"])
     mpath.parent.mkdir(parents=True, exist_ok=True)
@@ -96,7 +107,7 @@ def main() -> None:
     print(
         f"clean: {rows_in} → {len(kept)} строк "
         f"(длина -{dropped_length}, точные -{len(exact)}, near-dup -{len(near)}), "
-        f"ПДн замаскировано в {pii_rows} строках, {metrics['seconds']} с"
+        f"ПДн замаскировано в {pii_rows} строках, {elapsed} с"
     )
 
 

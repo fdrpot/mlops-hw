@@ -11,19 +11,25 @@ from src.schema import Example, dump, iter_examples
 from src.textnorm import normalize_group
 
 
-def row_split(count: int, ratios: dict[str, float], seed: int) -> list[str]:
-    """Раздать строкам метки сплита в заданных долях."""
-    order = list(range(count))
-    random.Random(seed).shuffle(order)
-    labels = [""] * count
-    start = 0
-    names = list(ratios)
-    for i, name in enumerate(names):
-        stop = count if i == len(names) - 1 else start + round(count * ratios[name])
-        for pos in order[start:stop]:
-            labels[pos] = name
-        start = stop
-    return labels
+def group_split(sizes: dict[str, int], ratios: dict[str, float], seed: int) -> dict[str, str]:
+    """Целиком раздать группы по сплитам, приблизив заданные доли строк."""
+    if not sizes:
+        return {}
+    if abs(sum(ratios.values()) - 1.0) > 1e-9:
+        raise ValueError("split.ratios должны суммироваться в 1")
+    rng = random.Random(seed)
+    groups = list(sizes)
+    rng.shuffle(groups)
+    groups.sort(key=lambda key: sizes[key], reverse=True)
+    total = sum(sizes.values())
+    targets = {name: total * ratio for name, ratio in ratios.items()}
+    assigned = {name: 0 for name in ratios}
+    result: dict[str, str] = {}
+    for key in groups:
+        label = min(ratios, key=lambda name: assigned[name] / max(targets[name], 1))
+        result[key] = label
+        assigned[label] += sizes[key]
+    return result
 
 
 def main() -> None:
@@ -41,10 +47,10 @@ def main() -> None:
         key = normalize_group(ex.topic)
         sizes[key] = sizes.get(key, 0) + 1
 
-    labels = row_split(len(examples), cfg["ratios"], cfg["seed"])
+    group_labels = group_split(sizes, cfg["ratios"], cfg["seed"])
     buckets: dict[str, list[Example]] = {name: [] for name in cfg["ratios"]}
-    for label, ex in zip(labels, examples):
-        buckets[label].append(ex)
+    for ex in examples:
+        buckets[group_labels[normalize_group(ex.topic)]].append(ex)
 
     for name, rows in buckets.items():
         out = Path(paths[name])
@@ -62,6 +68,7 @@ def main() -> None:
         threshold=params["contamination"]["threshold"],
     )
 
+    elapsed = round(time.perf_counter() - started, 2)
     metrics = {
         "version": params["collect"]["version"],
         "seed": cfg["seed"],
@@ -75,7 +82,6 @@ def main() -> None:
             name: round(len(rows) / len(examples), 4) for name, rows in buckets.items()
         },
         "contamination": rep,
-        "seconds": round(time.perf_counter() - started, 2),
     }
     mpath = Path(paths["metrics_split"])
     mpath.parent.mkdir(parents=True, exist_ok=True)
@@ -84,7 +90,7 @@ def main() -> None:
     print(
         "split: "
         + ", ".join(f"{name} {len(rows)}" for name, rows in buckets.items())
-        + f" (групп {len(sizes)}, {metrics['seconds']} с)"
+        + f" (групп {len(sizes)}, {elapsed} с)"
     )
 
 

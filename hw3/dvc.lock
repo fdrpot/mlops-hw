@@ -1,0 +1,307 @@
+schema: '2.0'
+stages:
+  collect:
+    cmd: python -m src.collect
+    deps:
+    - path: sources/cli1m
+      hash: md5
+      md5: 8b0657eb973825e058ea58db67f94c05.dir
+      size: 37957300
+      nfiles: 10
+    - path: src/collect.py
+      hash: md5
+      md5: bd8f018d7df144689370eec85bc3882b
+      size: 5811
+    - path: src/config.py
+      hash: md5
+      md5: 9e487ae55cd79a8a7582f0dfec84f671
+      size: 2094
+    params:
+      params.yaml:
+        collect:
+          version: v1
+          dataset:
+            name: carosh/cli-1m
+            revision: ec725c1269166e7f8ce8a20df1787ceecd1e421a
+            url: https://huggingface.co/datasets/carosh/cli-1m
+          sources:
+            v1:
+            - sources/cli1m
+            v2:
+            - sources/cli1m
+          language: en
+          shell: bash
+          licenses:
+          - Apache-2.0
+          - MIT
+          - CC-BY-4.0
+          - MPL-2.0
+          max_per_topic: 20
+          versions:
+            v1:
+              buckets:
+              - data_ml
+              - cloud
+              - devops
+              - database
+              - systems
+            v2:
+              buckets:
+              - data_ml
+              - cloud
+              - devops
+              - database
+              - systems
+              - network
+              - security
+              - web_api
+              - modern_unix
+              - lang_tool
+          system_prompts:
+          - Return one Bash command for the infrastructure task.
+          - Act as a DevOps CLI assistant; output only the command.
+          - Translate this operational request into one Bash command.
+          - Provide the requested shell command without explanation.
+          - Answer the MLOps task with only a Bash command.
+        paths.metrics_collect: metrics/collect.json
+        paths.raw: data/raw.jsonl
+    outs:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: 28c83b392c96dcbee2bfb760473d6923
+      size: 788710
+    - path: metrics/collect.json
+      hash: md5
+      md5: 26fc47ca4b8ceafe6255e7b9181e23e6
+      size: 1169
+  clean:
+    cmd: python -m src.clean
+    deps:
+    - path: data/raw.jsonl
+      hash: md5
+      md5: 28c83b392c96dcbee2bfb760473d6923
+      size: 788710
+    - path: src/clean.py
+      hash: md5
+      md5: f6ee7bfeeca0cc7ce4788ce302195480
+      size: 4432
+    - path: src/config.py
+      hash: md5
+      md5: 9e487ae55cd79a8a7582f0dfec84f671
+      size: 2094
+    - path: src/dedup.py
+      hash: md5
+      md5: fde80d28430f1612c4cbb7f0fdcc1f4d
+      size: 2757
+    - path: src/pii.py
+      hash: md5
+      md5: 54de6f3690578d83cfc17094d2d2aa7a
+      size: 2397
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/stats.py
+      hash: md5
+      md5: a54925032eff4769647b5775d72dd423
+      size: 2222
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean:
+          min_user_chars: 10
+          max_user_chars: 1000
+          min_assistant_chars: 2
+          near_dup:
+            enabled: true
+            shingle_words: 4
+            num_perm: 64
+            threshold: 0.85
+          pii:
+            enabled: true
+        paths.clean: data/clean.jsonl
+        paths.metrics_clean: metrics/clean.json
+        paths.raw: data/raw.jsonl
+    outs:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: a5797b3c6835f00bcc1ddf7abf3da2c9
+      size: 749153
+    - path: metrics/clean.json
+      hash: md5
+      md5: 55023078ee7a04432ce382221dcc59d3
+      size: 428
+  diversity:
+    cmd: python -m src.diversity
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: a5797b3c6835f00bcc1ddf7abf3da2c9
+      size: 749153
+    - path: src/config.py
+      hash: md5
+      md5: 9e487ae55cd79a8a7582f0dfec84f671
+      size: 2094
+    - path: src/diversity.py
+      hash: md5
+      md5: aed232849083df5aa52c780d6c069348
+      size: 6537
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/stats.py
+      hash: md5
+      md5: a54925032eff4769647b5775d72dd423
+      size: 2222
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        diversity:
+          min_examples: 1000
+          min_system_prompts: 3
+          min_groups: 50
+          max_group_share: 0.1
+          min_answer_len_ratio: 1.6
+          max_same_length_share: 0.25
+          max_duplicate_answer_share: 0.3
+        paths.clean: data/clean.jsonl
+        paths.metrics_diversity: metrics/diversity.json
+        split.group_key: topic
+    outs:
+    - path: metrics/diversity.json
+      hash: md5
+      md5: 55566b39aef7abe29254f06f0a750596
+      size: 625
+  split:
+    cmd: python -m src.split
+    deps:
+    - path: data/clean.jsonl
+      hash: md5
+      md5: a5797b3c6835f00bcc1ddf7abf3da2c9
+      size: 749153
+    - path: metrics/diversity.json
+      hash: md5
+      md5: 55566b39aef7abe29254f06f0a750596
+      size: 625
+    - path: src/config.py
+      hash: md5
+      md5: 9e487ae55cd79a8a7582f0dfec84f671
+      size: 2094
+    - path: src/contamination.py
+      hash: md5
+      md5: 9293919fc5964067833313514c6f9f2b
+      size: 2249
+    - path: src/dedup.py
+      hash: md5
+      md5: fde80d28430f1612c4cbb7f0fdcc1f4d
+      size: 2757
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/split.py
+      hash: md5
+      md5: eec0e6848dede39b2be70990b9bde66d
+      size: 3382
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean.near_dup:
+          enabled: true
+          shingle_words: 4
+          num_perm: 64
+          threshold: 0.85
+        contamination:
+          threshold: 0.85
+        paths.clean: data/clean.jsonl
+        paths.metrics_split: metrics/split.json
+        paths.test: data/test.jsonl
+        paths.train: data/train.jsonl
+        paths.val: data/val.jsonl
+        split:
+          group_key: topic
+          ratios:
+            train: 0.8
+            val: 0.1
+            test: 0.1
+          seed: 42
+    outs:
+    - path: data/test.jsonl
+      hash: md5
+      md5: 75f3eab419861e7edf6a0607ac2b8478
+      size: 77520
+    - path: data/train.jsonl
+      hash: md5
+      md5: d9c27c7b561da851615b092908ebcd10
+      size: 590503
+    - path: data/val.jsonl
+      hash: md5
+      md5: d5291955e4e5a8594e7f73ef32572f7e
+      size: 81130
+    - path: metrics/split.json
+      hash: md5
+      md5: 1dd60159e4d6372a06db21bb4f1de276
+      size: 497
+  contamination:
+    cmd: python scripts/check_contamination.py
+    deps:
+    - path: data/test.jsonl
+      hash: md5
+      md5: 75f3eab419861e7edf6a0607ac2b8478
+      size: 77520
+    - path: data/train.jsonl
+      hash: md5
+      md5: d9c27c7b561da851615b092908ebcd10
+      size: 590503
+    - path: scripts/check_contamination.py
+      hash: md5
+      md5: e64048abb250580557b9537f06f0d27c
+      size: 2386
+      isexec: true
+    - path: src/config.py
+      hash: md5
+      md5: 9e487ae55cd79a8a7582f0dfec84f671
+      size: 2094
+    - path: src/contamination.py
+      hash: md5
+      md5: 9293919fc5964067833313514c6f9f2b
+      size: 2249
+    - path: src/dedup.py
+      hash: md5
+      md5: fde80d28430f1612c4cbb7f0fdcc1f4d
+      size: 2757
+    - path: src/schema.py
+      hash: md5
+      md5: ad834fcb5caa483d3d5d5bfabb433cc0
+      size: 3054
+    - path: src/textnorm.py
+      hash: md5
+      md5: c7e2f072fe9cc4d2b5af76f5c360c6c0
+      size: 1844
+    params:
+      params.yaml:
+        clean.near_dup:
+          enabled: true
+          shingle_words: 4
+          num_perm: 64
+          threshold: 0.85
+        contamination:
+          threshold: 0.85
+        paths.metrics_contamination: metrics/contamination.json
+        paths.test: data/test.jsonl
+        paths.train: data/train.jsonl
+    outs:
+    - path: metrics/contamination.json
+      hash: md5
+      md5: be25334e9eb66ec7cc5756d3fb5a7d6c
+      size: 238

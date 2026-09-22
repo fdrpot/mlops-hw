@@ -1,0 +1,6 @@
+outs:
+- md5: b647a4f61b18c390ce3b9358a535022c.dir
+  size: 37957300
+  nfiles: 10
+  hash: md5
+  path: sources

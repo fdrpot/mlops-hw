@@ -6,6 +6,7 @@
 Возвращает 1 при любом пересечении — годится для CI.
 """
 
+import json
 import sys
 from pathlib import Path
 
@@ -29,6 +30,18 @@ def main() -> int:
         shingle_words=nd["shingle_words"],
         num_perm=nd["num_perm"],
         threshold=params["contamination"]["threshold"],
+    )
+    metrics = {
+        "version": params["collect"]["version"],
+        "train_rows": len(train),
+        "test_rows": len(test),
+        **rep,
+        "passed": is_clean(rep),
+    }
+    metrics_path = Path(paths["metrics_contamination"])
+    metrics_path.parent.mkdir(parents=True, exist_ok=True)
+    metrics_path.write_text(
+        json.dumps(metrics, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
 
     print(f"train: {len(train)} строк, test: {len(test)} строк")
