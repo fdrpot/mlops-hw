@@ -1,20 +1,20 @@
 {
-  "version": "v1",
+  "version": "v2",
   "seed": 42,
   "group_key": "topic",
-  "groups_total": 269,
+  "groups_total": 461,
   "sizes": {
-    "train": 1777,
-    "val": 222,
-    "test": 222
+    "train": 3497,
+    "val": 437,
+    "test": 437
   },
   "groups": {
-    "train": 217,
-    "val": 26,
-    "test": 26
+    "train": 371,
+    "val": 45,
+    "test": 45
   },
   "ratios_actual": {
-    "train": 0.8001,
+    "train": 0.8,
     "val": 0.1,
     "test": 0.1
   },

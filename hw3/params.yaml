@@ -1,7 +1,7 @@
 # Единственная точка конфигурации ДЗ 3.
 
 collect:
-  version: "v1"
+  version: "v2"
   dataset:
     name: "carosh/cli-1m"
     revision: "ec725c1269166e7f8ce8a20df1787ceecd1e421a"
