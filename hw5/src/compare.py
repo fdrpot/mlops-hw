@@ -18,7 +18,7 @@ from src.runtime import resolve_device, resolve_dtype
 
 
 def load_adapter_tokenizer(adapter_dir: Path):
-    return AutoTokenizer.from_pretrained(load_params()["model"]["name"])
+    return AutoTokenizer.from_pretrained(adapter_dir, local_files_only=True)
 
 
 @torch.no_grad()

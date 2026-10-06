@@ -31,7 +31,7 @@ from transformers import AutoModelForCausalLM, AutoTokenizer, get_cosine_schedul
 
 from src.config import load_params
 from src.data import LABEL_PAD_ID, batches, load_split
-from src.runtime import allocated_bytes, memory_metric, resolve_device, resolve_dtype
+from src.runtime import allocated_bytes, memory_metric, resolve_device, resolve_dtype, set_seed
 
 
 TRAIN_CODE = ("src/train.py", "src/data.py", "src/runtime.py", "src/config.py")
@@ -60,6 +60,7 @@ def lora_config(params: dict, n_layers: int, freeze_first: int) -> LoraConfig:
         lora_dropout=cfg["dropout"],
         target_modules=cfg["target_modules"],
         modules_to_save=cfg.get("modules_to_save"),
+        layers_to_transform=list(range(freeze_first, n_layers)),
         task_type="CAUSAL_LM",
     )
 
@@ -105,6 +106,7 @@ def main() -> None:
         raise SystemExit(f"нет варианта {args.variant!r}, есть: {sorted(variants)}")
     variant = variants[args.variant]
     tcfg = params["train"]
+    set_seed(tcfg["seed"])
     max_steps = args.max_steps if args.max_steps is not None else tcfg.get("max_steps")
 
     device = resolve_device(params["model"]["device"])
@@ -146,16 +148,18 @@ def main() -> None:
     )
 
     eval_bs = tcfg.get("eval_batch_size", tcfg["batch_size"])
-    base_val = None   # TODO: с чем сравнивать дообученную модель?
+    eval_started = time.perf_counter()
+    base_val = evaluate(model, val_blob["examples"], pad_id, device, eval_bs)
+    eval_seconds = time.perf_counter() - eval_started
     curve_train: list[list[float]] = []
-    curve_val: list[list[float]] = []
+    curve_val: list[list[float]] = [[0, round(base_val, 4)]]
     print(f"[{args.variant}] устройство {device}, обучаемых {trainable:,} из {total:,} "
           f"({trainable / total:.3%}); шагов {total_steps}")
 
     peak = allocated_bytes(device)
     started = time.perf_counter()
     step, micro, accum_loss, diverged = 0, 0, 0.0, False
-    eval_seconds = 0.0
+    training_eval_seconds = 0.0
     for epoch in range(tcfg["epochs"]):
         for batch in batches(examples, tcfg["batch_size"], pad_id, shuffle=True, seed=tcfg["seed"] + epoch):
             batch = {k: v.to(device) for k, v in batch.items()}
@@ -178,16 +182,22 @@ def main() -> None:
                 break
             accum_loss = 0.0
             if step % tcfg["eval_every"] == 0 or step == total_steps:
-                print(f"  шаг {step}/{total_steps}: train {curve_train[-1][1]:.4f}")
+                eval_started = time.perf_counter()
+                val_loss = evaluate(model, val_blob["examples"], pad_id, device, eval_bs)
+                training_eval_seconds += time.perf_counter() - eval_started
+                curve_val.append([step, round(val_loss, 4)])
+                print(f"  шаг {step}/{total_steps}: train {curve_train[-1][1]:.4f}, val {val_loss:.4f}")
             if step >= total_steps:
                 break
         if diverged or step >= total_steps:
             break
-    seconds = time.perf_counter() - started - eval_seconds   # чистое обучение, без замеров val
+    seconds = time.perf_counter() - started - training_eval_seconds
+    eval_seconds += training_eval_seconds
 
     out_root = Path(args.out) if args.out else Path(params["paths"]["models"])
     adapter_dir = out_root / f"adapter_{args.variant}"
     model.save_pretrained(adapter_dir)
+    tokenizer.save_pretrained(adapter_dir)
 
     tokens = sum(len(e["input_ids"]) for e in examples) * tcfg["epochs"]
     metrics = {
