@@ -1,0 +1,5 @@
+outs:
+- md5: 49156b90e67232df265d02b47e1fbbd7
+  size: 1318
+  hash: md5
+  path: provenance.json
