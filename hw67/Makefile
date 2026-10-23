@@ -10,7 +10,7 @@ sweep:
 promote:
 	uv run python -m evaluation.cli promote
 predict:
-	uv run python -m src.predict --uri models:/my-qwen-adapter@champion --prompt "Какой показатель отражает запасы железа?"
+	uv run python -m src.predict --uri models:/my-qwen-adapter@champion --prompt "List all pods in the default namespace"
 check:
 	bash tests/check.sh
 check-storage:
