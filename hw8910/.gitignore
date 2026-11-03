@@ -1,4 +1,9 @@
 .venv/
+.venv-check/
+.prefect/
+.real*/
+.download/
+.submission/
 __pycache__/
 *.pyc
 .env
@@ -8,3 +13,5 @@ models/
 *.bin
 *.pt
 .lab*/
+evidence/process/workspaces/
+evidence/process-before/workspaces/

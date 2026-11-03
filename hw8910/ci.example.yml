@@ -1,16 +1,26 @@
-name: Fast release checks
-on: [push, pull_request, workflow_dispatch]
+# Optional GitHub Actions template, not evidence of an executed remote check.
+# Copy to .github/workflows/hw8910.yml to enable it for this repository.
+name: HW8910 lightweight release checks
+on:
+  push:
+    paths: ['hw8910/**', '.github/workflows/hw8910.yml']
+  pull_request:
+    paths: ['hw8910/**', '.github/workflows/hw8910.yml']
+  workflow_dispatch:
 permissions:
   contents: read
 jobs:
-  contracts:
+  contracts-and-integration:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: hw8910
     steps:
       - uses: actions/checkout@v6
       - uses: actions/setup-python@v5
         with:
           python-version: '3.12'
-      # Шаблон предполагает release.py и tests/ в корне репозитория.
-      # При вложенном проекте задайте working-directory для run.
-      - run: python -m compileall -q release.py tests
-      - run: python -m unittest discover -s tests -v
+      - run: python -m pip install uv==0.12.17
+      - run: make check-light
+      # No model extra, weights, MLflow or downloads of model artifacts.
+      # Branch protection must be configured separately if this is enabled.
