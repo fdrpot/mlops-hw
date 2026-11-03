@@ -10,4 +10,3 @@ mlartifacts/
 *.log
 .DS_Store
 dvc_remote/
-submission/

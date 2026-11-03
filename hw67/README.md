@@ -11,12 +11,11 @@
 данные ДЗ 4). Полный train-index включает 3497 вопросов; golden — 50,
 behavioral — 3. Версии закреплены в `data/*.dvc`.
 
-Комплект сдачи находится в `submission/hw67-submission.zip`: отчёты, ответы,
-видео и DVC remote для данных проверки, исходных JSONL и provenance.
-Распакуйте его в эту папку и выполните
+Отчёты и сырые ответы находятся в `metrics/`, данные проверки — в
+`data/eval/`, исходные JSONL — в `data/source/`. Локальный DVC remote
+`dvc_remote/` задан в `.dvc/config`. Восстановление:
 `dvc pull data/eval.dvc data/source.dvc data/provenance.json.dvc`.
-Локальный remote задан в `.dvc/config`; платный сервис не нужен.
-Тензоры не входят в комплект: скопируйте свои `train.pt` и `val.pt` из
+Тензоры для обучения: скопируйте свои `train.pt` и `val.pt` из
 `../hw4/data/tokenized/` в `data/tokenized/`. Их SHA256 зафиксированы в
 `data/provenance.json` и тегах MLflow. `dvc` можно запустить из окружения
 ДЗ 3 (`../hw3/.venv/bin/dvc`); он не входит в окружение обучения.
