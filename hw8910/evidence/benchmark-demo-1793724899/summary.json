@@ -1,0 +1,36 @@
+[
+  {
+    "concurrency": 1,
+    "n": 8,
+    "successes": 8,
+    "errors": 0,
+    "batch_seconds": 1.989165958002559,
+    "successful_requests_per_second": 4.021786099754734,
+    "mean_success_client_seconds": 0.24852705212470028,
+    "max_success_client_seconds": 0.287919750000583,
+    "mean_error_client_seconds": null,
+    "max_error_client_seconds": null,
+    "mean_generation_seconds": 0.2457191613757459,
+    "mean_queue_seconds": 0.0014709637471241876,
+    "total_output_tokens": 48,
+    "model_ids": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf"
+  },
+  {
+    "concurrency": 2,
+    "n": 8,
+    "successes": 8,
+    "errors": 0,
+    "batch_seconds": 1.8584060840075836,
+    "successful_requests_per_second": 4.304764211032014,
+    "mean_success_client_seconds": 0.43677225525425456,
+    "max_success_client_seconds": 0.49523125000996515,
+    "mean_error_client_seconds": null,
+    "max_error_client_seconds": null,
+    "mean_generation_seconds": 0.23191967712409678,
+    "mean_queue_seconds": 0.20297668725106632,
+    "total_output_tokens": 48,
+    "model_ids": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+    "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf"
+  }
+]

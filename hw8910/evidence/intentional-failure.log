@@ -1,4 +1,4 @@
-Compiled 13 project Python files.
+Compiled 19 project Python files.
 INTENTIONAL BUG: validate_release is bypassed in memory for this process.
 test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) ... 
   test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_id') ... FAIL
@@ -53,7 +53,7 @@ Traceback (most recent call last):
 AssertionError: ValueError not raised
 
 ----------------------------------------------------------------------
-Ran 1 test in 0.002s
+Ran 1 test in 0.001s
 
 FAILED (failures=5)
 EXIT_CODE=1

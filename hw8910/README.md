@@ -14,7 +14,6 @@ API — FastAPI. Исходник: `d6c70a7`, исправления: `270e274`;
 - [Реальные ответы baseline/candidate](evidence/real/source/)
 - [HTTP smoke и перезапуск](evidence/real-smoke.json)
 - [Запросы замера](evidence/benchmark/requests.jsonl), [таблица](evidence/benchmark/summary.csv)
-- [Видео, 6 минут](.submission/demo.mp4) — локальный файл, исключён из Git.
 
 ## Быстрые проверки без весов
 
@@ -35,10 +34,8 @@ make intentional-failure  # ожидаемый ненулевой exit; исхо
 Исходные восемь интеграционных регрессий можно повторить на старом коммите:
 
 ```bash
-mkdir -p /tmp/hw8910-original
-git archive d6c70a7 hw8910 | tar -x -C /tmp/hw8910-original
-HW8910_TARGET_ROOT=/tmp/hw8910-original/hw8910 \
-  .venv-check/bin/python -m unittest discover -s integration -p test_integration.py -v
+make check-original ORIGINAL_OUTPUT=/tmp/hw8910-original
+# ожидаются падения восьми регрессионных тестов на исходном прототипе
 ```
 
 Сохранённый исходный красный лог:
@@ -52,17 +49,25 @@ HW8910_TARGET_ROOT=/tmp/hw8910-original/hw8910 \
 
 ```bash
 make init WORKSPACE=.lab-demo
-.venv-check/bin/python flow.py --workspace .lab-demo --fail-after-prepare
-.venv-check/bin/python flow.py --workspace .lab-demo
-.venv-check/bin/python flow.py --workspace .lab-demo
+make flow-fail WORKSPACE=.lab-demo  # ожидаемый сбой после подготовки
+make flow WORKSPACE=.lab-demo       # подготовка из кеша
+make flow WORKSPACE=.lab-demo       # повтор без второго события выпуска
+make input-change WORKSPACE=.lab-demo
+make flow WORKSPACE=.lab-demo       # изменённый вход готовится заново
+make publications WORKSPACE=.lab-demo
+
+make init WORKSPACE=.lab-crash-demo
+make flow-crash WORKSPACE=.lab-crash-demo  # сбой между указателем и журналом
+make flow WORKSPACE=.lab-crash-demo
+make publications WORKSPACE=.lab-crash-demo  # одно событие после восстановления
 ```
 
 Полная автоматизация опытов с кодами выхода и SHA256:
 
 ```bash
-.venv-check/bin/python scripts/evidence.py --output evidence/process-new
-.venv-check/bin/python scripts/prefect_evidence.py \
-  --workspace .lab-prefect-new --output evidence/prefect-new
+make process-evidence PROCESS_OUTPUT=evidence/process-new
+make prefect-evidence WORKSPACE=.lab-prefect-new PROCESS_OUTPUT=evidence/prefect-new
+make check-rollback
 ```
 
 Сохранены [25/25 проверок процесса](evidence/process/evidence.json) и
@@ -79,62 +84,58 @@ make up
 cd ../hw8910
 make install-model
 make real-evaluate
-.venv/bin/python flow.py --workspace .real \
-  --manifest manifest-candidate.json --report release-report.json
+make accepted-hash REAL_WORKSPACE=.real
+make gate REAL_WORKSPACE=.real
 # ожидается отказ behavioral gate; accepted.json остаётся baseline
-make serve-real PORT=8091
+make accepted-hash REAL_WORKSPACE=.real
+make serve-real PORT=8093 WARMUP_SECONDS=20 DEBUG=1
 ```
 
 Генерация использует тот же `RealBackend`, что полная оценка. Настройки читаются
 из принятого manifest, а не из локального train config. На этой машине измерены
-MPS и bfloat16. Для CPU задайте `build_release.py --device cpu` и новый workspace:
-нужна новая оценка, править runtime/хеш в старом отчёте нельзя.
+MPS и bfloat16. Для CPU выполните
+`make real-evaluate DEVICE=cpu REAL_WORKSPACE=.real-cpu`: нужна новая оценка,
+править runtime/хеш в старом отчёте нельзя.
 
 Для преподавателя без Docker-volumes предусмотрен запуск сохранённой baseline:
 
 ```bash
 make install-model
-.venv/bin/python scripts/restore_baseline.py --workspace .real-review
+make restore-baseline REAL_WORKSPACE=.real-review
 # скачивает публичную точную revision; повторно сверяет каждый закреплённый файл
-.venv/bin/python service.py --workspace .real-review --backend real \
-  --port 8091 --warmup-seconds 0
+make serve-real REAL_WORKSPACE=.real-review PORT=8093 WARMUP_SECONDS=20 DEBUG=1
 ```
 
 Требуется Apple MPS для сохранённого runtime; CPU требует новой оценки. Вариант
-`--snapshot /path/to/pinned/snapshot` позволяет восстановить веса офлайн.
+`make restore-baseline REAL_WORKSPACE=.real-review SNAPSHOT=/path/to/pinned/snapshot`
+позволяет восстановить веса офлайн.
 Адаптер доступен в локальном MLflow: run `041aa4e127c04f228eb8dc15b6025ca0`,
 artifact `model/artifacts/adapter`, Registry `models:/my-qwen-adapter/1`.
 Он не включён в Git/сдачу; все исходные eval/ответы уже приложены без весов.
 Публичная baseline восстанавливается независимо от доступности этого сервера.
 
-Пример запроса (всегда ровно 32 новых токена как в eval):
+Проверки HTTP из другого терминала (запрос всегда с лимитом 32 как в eval):
 
 ```bash
-curl http://127.0.0.1:8091/ready
-curl -H 'Content-Type: application/json' http://127.0.0.1:8091/generate \
-  -d '{"prompt":"Choose the command listing files: A) ls B) rm","max_new_tokens":32}'
-make bench BENCH_OUTPUT=evidence/benchmark-new
+make health PORT=8093
+make ready PORT=8093  # 503 до конца прогрева; затем 200
+make debug PORT=8093
+make invalid-request PORT=8093  # 4xx без вызова генерации
+make generate PORT=8093         # после успешной ready
+make bench PORT=8093 BENCH_OUTPUT=evidence/benchmark-new
 ```
 
 Один вычисляющий backend, очередь до 60 секунд, максимум 8192 символа тела prompt
 и 2048 токенов с системной инструкцией; тело HTTP до 64 KiB. Реальный API допускает
 ровно оценённый лимит 32; STUB допускает 1–32. До прогрева `/ready` и генерация
-возвращают 503. `/debug` у реального сервиса включается только `--debug` для опытов.
+возвращают 503. `/debug` у реального сервиса включается только с `DEBUG=1`
+в `make serve-real` для опытов.
 
 Весь реальный опыт — отказ, прогрев, неверные запросы, 8+8 и повторная загрузка:
 
 ```bash
-.venv/bin/python scripts/real_evidence.py --workspace .real \
-  --benchmark-output evidence/benchmark-new
+make real-evidence REAL_WORKSPACE=.real BENCH_OUTPUT=evidence/real-experience-new
 ```
 
-Сборка шестиминутного обзора доказательств с синтетической озвучкой:
-
-```bash
-uv sync --frozen --extra model --extra video
-.venv/bin/python scripts/make_video.py --output .submission/demo.mp4
-```
-
-Видео — размеченный обзор настоящих сохранённых журналов, не живая запись
-терминала и не голос студента. Веса, кеши, окружения и Docker-volumes исключены
-из Git; небольшой архив сдачи можно собрать из `git archive` и добавить видео.
+Веса, кеши, окружения и Docker-volumes исключены из Git; небольшой архив сдачи
+можно собрать из отслеживаемых файлов.
