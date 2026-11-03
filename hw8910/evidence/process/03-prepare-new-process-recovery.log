@@ -1,0 +1,10 @@
+command: ["/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python", "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py", "--workspace", "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery", "run"]
+cwd: /Users/potapov-fd/Desktop/MLOps/hw/hw8910
+exit_code: 0
+accepted_before_sha256: d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52
+accepted_after_sha256: 127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0
+stdout:
+CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9
+PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda
+
+stderr:

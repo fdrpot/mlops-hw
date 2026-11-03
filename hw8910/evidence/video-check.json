@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "path": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.submission/demo.mp4",
+  "size_bytes": 6342540,
+  "sha256": "8f8bac972010b8eeabc587137ad6ae05d0662391c2fcd2786f587d059320cf37",
+  "metadata": {
+    "ffmpeg_version": "9.0 built with Apple clang version 13.1.6 (clang-1316.0.21.2.5)",
+    "codec": "h264",
+    "pix_fmt": "yuv420p(progressive)",
+    "audio_codec": "aac",
+    "fps": 12.0,
+    "source_size": [
+      1920,
+      1080
+    ],
+    "size": [
+      1920,
+      1080
+    ],
+    "rotate": 0,
+    "duration": 360.05
+  },
+  "audio_volume_db": {
+    "mean_volume": "-17.7",
+    "max_volume": "-2.4"
+  },
+  "source_hashes_checked": 10,
+  "all_sources_match": true,
+  "slides": 9
+}

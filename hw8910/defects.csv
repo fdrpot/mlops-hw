@@ -1,8 +1,8 @@
 id,symptom,reproduce,expected,observed,root_cause,fix_commit,regression_test,before_log,after_log
-1,,,,,,,,,
-2,,,,,,,,,
-3,,,,,,,,,
-4,,,,,,,,,
-5,,,,,,,,,
-6,,,,,,,,,
-7,,,,,,,,,
+1,Изменение данных или настроек возвращает старый кеш,lab.py run; изменить input.txt/config.json; lab.py run,Новая подготовка при каждом изменении байтов/настройки,CACHE_HIT при новых байтах и всех четырёх настройках,Ключ хешировал только pathname,270e274,test_process_recovery_and_changed_bytes; test_process_every_preparation_config_invalidates,evidence/integration-before.log,evidence/check-all.log
+2,Неполный и чужой eval допускаются к выпуску,lab.py run --report report-incomplete.json; lab.py run --report report-A.json,Отказ и побайтно прежний accepted.json,exit0 и PUBLISHED для неполного/чужого отчёта,Проверка truthiness passed вместо полного контракта и bindings,270e274,test_process_incomplete_foreign_and_rejected_reports_preserve_pointer; RealGateEvidenceTests,evidence/integration-before.log,evidence/check-all.log
+3,Ошибка замены не сохраняет прежний указатель,test_atomic_replace_failure_preserves_pointer: mock os.replace OSError,OSError; прежние байты; нет tmp,Нет OSError: прямой write_text перезаписал accepted.json,Запись непосредственно в target без tempfile/fsync/replace,270e274,test_atomic_replace_failure_preserves_pointer,evidence/integration-before.log,evidence/check-all.log
+4,Повтор успешного процесса размножает публикации,lab.py run; lab.py run в новом процессе,Один release event; отдельные attempts; восстановление после pointer/journal crash,Две одинаковые строки publications.jsonl,Безусловный append; нет durable release identity и согласования,270e274,test_process_repeat_publication_has_one_event; test_crash_between_pointer_and_journal_is_reconciled_once,evidence/integration-before.log,evidence/check-all.log
+5,Готовность и ранняя генерация зелёные до прогрева,service.py --warmup-seconds 10; GET /ready; POST /generate,health200; ready503; generate503; без вызова backend,ready200 и генерация во время warmup,ready=True установлен до завершения прогрева,270e274,test_http_readiness_blocks_generation_during_warmup,evidence/integration-before.log,evidence/check-all.log
+6,Ответ рекламирует новую версию при старой модели в памяти,старт A; другой процесс lab.py run для B; POST /generate,ID и ответ A до restart; затем B; rollback/restart A,Ответ STUB A с метаданными model_id B,Метаданные читались из свежего accepted.json вместо загруженного backend,270e274,test_http_loaded_version_changes_only_after_restart_and_rolls_back,evidence/integration-before.log,evidence/check-all.log
+7,Некорректный запрос запускает вычисление,POST /generate: пустой prompt; лимит 0/100000/string; сравнить debug.calls,4xx и неизменное calls,HTTP200 и рост calls на невалидных запросах,Отсутствие валидации перед backend.generate,270e274,test_http_invalid_requests_do_not_call_backend,evidence/integration-before.log,evidence/check-all.log

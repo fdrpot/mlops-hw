@@ -1,0 +1,214 @@
+{
+  "synthetic": false,
+  "rejection": {
+    "command": [
+      "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+      "flow.py",
+      "--workspace",
+      "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.real",
+      "--manifest",
+      "manifest-candidate.json",
+      "--report",
+      "release-report.json"
+    ],
+    "exit_code": 1,
+    "accepted_before_sha256": "130633642a1599d5b69f56cca9d1c5432462973dca991ea96f9a003ae0d88c4b",
+    "accepted_after_sha256": "130633642a1599d5b69f56cca9d1c5432462973dca991ea96f9a003ae0d88c4b"
+  },
+  "http": [
+    {
+      "path": "/health",
+      "status": 200,
+      "response": {
+        "alive": true,
+        "backend": "real"
+      }
+    },
+    {
+      "path": "/ready",
+      "phase": "loading",
+      "status": 503,
+      "response": {
+        "ready": false
+      }
+    },
+    {
+      "path": "/generate",
+      "phase": "loading",
+      "status": 503,
+      "response": {
+        "detail": "Model is loading or warming up"
+      }
+    },
+    {
+      "path": "/health",
+      "status": 200,
+      "response": {
+        "alive": true,
+        "backend": "real"
+      }
+    }
+  ],
+  "smoke": {
+    "status": 200,
+    "prompt": "In fd, include hidden entries but keep ignore rules. Which flag?\nA. --hidden\nB. --no-ignore\nC. --type directory",
+    "response": {
+      "answer": "{\"answer\":\"B\"}",
+      "output_tokens": 6,
+      "request_id": "064c3be3-431c-419b-8a92-93ab8aa8cce9",
+      "model_id": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf",
+      "queue_seconds": 0.005748791998485103,
+      "generation_seconds": 0.3194504999992205,
+      "total_seconds": 0.3251992919977056
+    }
+  },
+  "invalid_requests": [
+    {
+      "status": 422,
+      "error": {
+        "detail": [
+          {
+            "type": "string_too_short",
+            "loc": [
+              "body",
+              "prompt"
+            ],
+            "msg": "String should have at least 1 character",
+            "input": "",
+            "ctx": {
+              "min_length": 1
+            }
+          }
+        ]
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    },
+    {
+      "status": 422,
+      "error": {
+        "detail": [
+          {
+            "type": "greater_than_equal",
+            "loc": [
+              "body",
+              "max_new_tokens"
+            ],
+            "msg": "Input should be greater than or equal to 1",
+            "input": 0,
+            "ctx": {
+              "ge": 1
+            }
+          }
+        ]
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    },
+    {
+      "status": 422,
+      "error": {
+        "detail": [
+          {
+            "type": "less_than_equal",
+            "loc": [
+              "body",
+              "max_new_tokens"
+            ],
+            "msg": "Input should be less than or equal to 32",
+            "input": 100000,
+            "ctx": {
+              "le": 32
+            }
+          }
+        ]
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    },
+    {
+      "status": 422,
+      "error": {
+        "detail": [
+          {
+            "type": "int_type",
+            "loc": [
+              "body",
+              "max_new_tokens"
+            ],
+            "msg": "Input should be a valid integer",
+            "input": "32"
+          }
+        ]
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    },
+    {
+      "status": 422,
+      "error": {
+        "detail": "This release only admits the evaluated max_new_tokens"
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    },
+    {
+      "status": 422,
+      "error": {
+        "detail": "Prompt exceeds evaluated input token limit"
+      },
+      "calls_before": 2,
+      "calls_after": 2
+    }
+  ],
+  "benchmark": [
+    {
+      "concurrency": 1,
+      "n": 8,
+      "successes": 8,
+      "errors": 0,
+      "batch_seconds": 1.956743375005317,
+      "successful_requests_per_second": 4.0884257497375005,
+      "mean_success_client_seconds": 0.2444503957485722,
+      "max_success_client_seconds": 0.2633175829978427,
+      "mean_error_client_seconds": null,
+      "max_error_client_seconds": null,
+      "mean_generation_seconds": 0.24148102063008992,
+      "mean_queue_seconds": 0.0014421873711398803,
+      "total_output_tokens": 48,
+      "model_ids": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf"
+    },
+    {
+      "concurrency": 2,
+      "n": 8,
+      "successes": 8,
+      "errors": 0,
+      "batch_seconds": 2.780080291995546,
+      "successful_requests_per_second": 2.8776147304211808,
+      "mean_success_client_seconds": 0.6582198229989444,
+      "max_success_client_seconds": 0.7878062079980737,
+      "mean_error_client_seconds": null,
+      "max_error_client_seconds": null,
+      "mean_generation_seconds": 0.34647058837435907,
+      "mean_queue_seconds": 0.30752284374830197,
+      "total_output_tokens": 48,
+      "model_ids": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf"
+    }
+  ],
+  "restart_smoke": {
+    "status": 200,
+    "response": {
+      "answer": "{\"answer\":\"B\"}",
+      "output_tokens": 6,
+      "request_id": "ac31537c-0dc0-4c6a-8858-edc56a89ccf4",
+      "model_id": "baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "runtime_sha256": "f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf",
+      "queue_seconds": 0.003223291991162114,
+      "generation_seconds": 0.32422804200905375,
+      "total_seconds": 0.32745133400021587
+    }
+  }
+}

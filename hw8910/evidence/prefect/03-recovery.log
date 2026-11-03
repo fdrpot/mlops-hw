@@ -1,0 +1,11 @@
+18:08:23.709 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8275
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+18:08:26.828 | INFO    | Flow run 'refreshing-cobra' - Beginning flow run 'refreshing-cobra' for flow 'hw8910-release-existing-model'
+18:08:26.845 | INFO    | Task run 'prepare-and-validate-input-744' - Finished in state Cached(type=COMPLETED)
+18:08:26.848 | INFO    | Task run 'acquire-existing-training-artifact-786' - Reading existing artifact fixture-B; no new training
+18:08:26.850 | INFO    | Task run 'acquire-existing-training-artifact-786' - Finished in state Completed()
+18:08:26.853 | INFO    | Task run 'check-bound-full-gate-report-d14' - Finished in state Completed()
+18:08:26.861 | INFO    | Task run 'publish-once-and-reconcile-journal-dbe' - PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda
+18:08:26.865 | INFO    | Task run 'publish-once-and-reconcile-journal-dbe' - Finished in state Completed()
+18:08:27.846 | INFO    | Flow run 'refreshing-cobra' - Finished in state Completed()
+18:08:27.857 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8275

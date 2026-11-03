@@ -1,0 +1,28 @@
+{
+  "started_at": "2026-11-03T15:10:47.060114+00:00",
+  "base_url": "http://127.0.0.1:58663",
+  "requests_per_mode": 8,
+  "concurrency": [
+    1,
+    2
+  ],
+  "max_new_tokens": 32,
+  "timeout_seconds": 120,
+  "cpu_reduced_sample": false,
+  "allow_stub": false,
+  "prompts": [
+    "In fd, include hidden entries but keep ignore rules. Which flag?\nA. --hidden\nB. --no-ignore\nC. --type directory",
+    "In fd, disable ignore-file filtering without enabling hidden entries. Which flag?\nA. --follow\nB. --no-ignore\nC. --hidden",
+    "With fd, select only files with extension parquet. Which command?\nA. fd -t parquet\nB. fd --size parquet\nC. fd -e parquet",
+    "With fd, return only directories matching cache. Which command?\nA. fd -t d cache\nB. fd -t f cache\nC. fd -e cache",
+    "With fd, cap recursive traversal at depth two. Which flag?\nA. --threads 2\nB. --max-depth 2\nC. --size 2",
+    "In fd, treat the pattern as a shell glob. Which flag?\nA. --fixed-strings\nB. --full-path\nC. --glob",
+    "In fd, force case-sensitive pattern matching. Which flag?\nA. --case-sensitive\nB. --ignore-case\nC. --hidden",
+    "In fd, match the full path instead of only the filename. Which flag?\nA. --list-details\nB. --full-path\nC. --absolute-path"
+  ],
+  "measurement": "complete JSON response latency; TTFT/ITL/p95 not measured",
+  "readiness": {
+    "ready": true
+  },
+  "finished_at": "2026-11-03T15:10:51.799122+00:00"
+}

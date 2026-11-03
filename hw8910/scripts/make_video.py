@@ -88,7 +88,7 @@ def build_slides(args):
     before = find(evidence, ['integration-before.log', '**/integration-before.log'])
     after = find(evidence, ['integration-after.log', '**/integration-after.log', 'check-all.log', '*tests-green*.log'])
     process = find(evidence, ['process/evidence.json', '**/evidence.json'])
-    prefect = find(evidence, ['prefect-recovery.log', 'prefect-recover.log', 'prefect-success.log'])
+    prefect = find(evidence, ['prefect/03-recovery.log', 'prefect-recovery.log', 'prefect-recover.log', 'prefect-success.log'])
     manifest = args.manifest or find(evidence, ['real/accepted.json']) or find(project, ['.real/accepted.json', '.runtime/accepted.json', 'artifacts/accepted.json'])
     report = args.release_report or find(evidence, ['real/release-report.json']) or find(project, ['.real/release-report.json', 'artifacts/release-report.json'])
     smoke = args.smoke or find(evidence, ['real-api.json', 'real-smoke.json', '*smoke*.json', '**/*smoke*.json'])
@@ -98,7 +98,10 @@ def build_slides(args):
 
     def process_excerpt(path):
         if path.suffix != '.json':
-            return literal(path, ('Cached', 'Finished in state', 'Completed'), limit=4)
+            lines = read(path).splitlines()
+            cached = [line for line in lines if 'Cached(type=COMPLETED)' in line]
+            completed = [line for line in lines if 'Flow run' in line and 'Finished in state' in line]
+            return '\n'.join(cached[-1:] + completed[-1:])
         value = json.loads(read(path))
         commands = value.get('commands', [])
         selected = []
@@ -140,8 +143,17 @@ def build_slides(args):
             raise ValueError('The real-smoke source contains a STUB ONLY answer')
         fields = ('answer', 'request_id', 'model_id', 'runtime_sha256', 'output_tokens',
                   'generation_seconds', 'queue_seconds', 'total_seconds')
-        return json.dumps({key: answer[key] for key in fields if key in answer},
+        text = json.dumps({key: answer[key] for key in fields if key in answer},
                           ensure_ascii=False, indent=2)
+        if isinstance(value, dict):
+            http = value.get('http', [])
+            text += '\n\n' + '\n'.join(f"{item.get('path')} [{item.get('phase', 'live')}] HTTP {item.get('status')}"
+                                       for item in http[:3])
+            invalid = value.get('invalid_requests', [])
+            if invalid:
+                text += '\ninvalid HTTP statuses: ' + ', '.join(str(item.get('status')) for item in invalid)
+                text += '\nbackend calls unchanged: ' + str(all(item.get('calls_before') == item.get('calls_after') for item in invalid))
+        return text
 
     def benchmark_excerpt(path):
         if path.suffix != '.json':

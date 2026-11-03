@@ -1,0 +1,114 @@
+Downloading artifacts:   0%|          | 0/15 [00:00<?, ?it/s]Downloading artifacts:   7%|▋         | 1/15 [00:00<00:00, 7157.52it/s]Downloading artifacts:  13%|█▎        | 2/15 [00:00<00:00, 7817.90it/s]Downloading artifacts:  20%|██        | 3/15 [00:00<00:00, 251.90it/s] Downloading artifacts:  27%|██▋       | 4/15 [00:00<00:00, 292.14it/s]Downloading artifacts:  33%|███▎      | 5/15 [00:00<00:00, 339.42it/s]Downloading artifacts:  40%|████      | 6/15 [00:00<00:00, 383.94it/s]Downloading artifacts:  47%|████▋     | 7/15 [00:00<00:00, 405.71it/s]Downloading artifacts:  53%|█████▎    | 8/15 [00:00<00:00, 14.28it/s] Downloading artifacts:  53%|█████▎    | 8/15 [00:00<00:00, 14.28it/s]Downloading artifacts:  60%|██████    | 9/15 [00:00<00:00, 14.28it/s]Downloading artifacts:  67%|██████▋   | 10/15 [00:00<00:00, 14.28it/s]Downloading artifacts:  73%|███████▎  | 11/15 [00:00<00:00, 14.28it/s]Downloading artifacts:  80%|████████  | 12/15 [00:03<00:01,  2.62it/s]Downloading artifacts:  80%|████████  | 12/15 [00:03<00:01,  2.62it/s]Downloading artifacts:  87%|████████▋ | 13/15 [00:03<00:00,  2.62it/s]Downloading artifacts:  93%|█████████▎| 14/15 [00:03<00:00,  2.62it/s]Downloading artifacts: 100%|██████████| 15/15 [00:03<00:00,  2.62it/s]Downloading artifacts: 100%|██████████| 15/15 [00:03<00:00,  3.91it/s]
+LOAD baseline baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 17422.11it/s]
+baseline 1 / 53 tokens 6 error None
+baseline 2 / 53 tokens 6 error None
+baseline 3 / 53 tokens 6 error None
+baseline 4 / 53 tokens 6 error None
+baseline 5 / 53 tokens 6 error None
+baseline 6 / 53 tokens 6 error None
+baseline 7 / 53 tokens 6 error None
+baseline 8 / 53 tokens 6 error None
+baseline 9 / 53 tokens 6 error None
+baseline 10 / 53 tokens 6 error None
+baseline 11 / 53 tokens 6 error None
+baseline 12 / 53 tokens 6 error None
+baseline 13 / 53 tokens 6 error None
+baseline 14 / 53 tokens 6 error None
+baseline 15 / 53 tokens 6 error None
+baseline 16 / 53 tokens 6 error None
+baseline 17 / 53 tokens 6 error None
+baseline 18 / 53 tokens 6 error None
+baseline 19 / 53 tokens 6 error None
+baseline 20 / 53 tokens 6 error None
+baseline 21 / 53 tokens 6 error None
+baseline 22 / 53 tokens 6 error None
+baseline 23 / 53 tokens 6 error None
+baseline 24 / 53 tokens 6 error None
+baseline 25 / 53 tokens 6 error None
+baseline 26 / 53 tokens 6 error None
+baseline 27 / 53 tokens 6 error None
+baseline 28 / 53 tokens 6 error None
+baseline 29 / 53 tokens 6 error None
+baseline 30 / 53 tokens 6 error None
+baseline 31 / 53 tokens 6 error None
+baseline 32 / 53 tokens 6 error None
+baseline 33 / 53 tokens 6 error None
+baseline 34 / 53 tokens 6 error None
+baseline 35 / 53 tokens 6 error None
+baseline 36 / 53 tokens 6 error None
+baseline 37 / 53 tokens 6 error None
+baseline 38 / 53 tokens 6 error None
+baseline 39 / 53 tokens 6 error None
+baseline 40 / 53 tokens 6 error None
+baseline 41 / 53 tokens 6 error None
+baseline 42 / 53 tokens 6 error None
+baseline 43 / 53 tokens 6 error None
+baseline 44 / 53 tokens 6 error None
+baseline 45 / 53 tokens 6 error None
+baseline 46 / 53 tokens 6 error None
+baseline 47 / 53 tokens 6 error None
+baseline 48 / 53 tokens 6 error None
+baseline 49 / 53 tokens 6 error None
+baseline 50 / 53 tokens 6 error None
+baseline 51 / 53 tokens 6 error None
+baseline 52 / 53 tokens 6 error None
+baseline 53 / 53 tokens 7 error None
+LOAD candidate 041aa4e127c04f228eb8dc15b6025ca0
+Loading weights:   0%|          | 0/311 [00:00<?, ?it/s]Loading weights: 100%|██████████| 311/311 [00:00<00:00, 19278.31it/s]
+candidate 1 / 53 tokens 6 error None
+candidate 2 / 53 tokens 6 error None
+candidate 3 / 53 tokens 6 error None
+candidate 4 / 53 tokens 6 error None
+candidate 5 / 53 tokens 6 error None
+candidate 6 / 53 tokens 6 error None
+candidate 7 / 53 tokens 6 error None
+candidate 8 / 53 tokens 6 error None
+candidate 9 / 53 tokens 6 error None
+candidate 10 / 53 tokens 6 error None
+candidate 11 / 53 tokens 6 error None
+candidate 12 / 53 tokens 6 error None
+candidate 13 / 53 tokens 6 error None
+candidate 14 / 53 tokens 6 error None
+candidate 15 / 53 tokens 6 error None
+candidate 16 / 53 tokens 6 error None
+candidate 17 / 53 tokens 6 error None
+candidate 18 / 53 tokens 6 error None
+candidate 19 / 53 tokens 6 error None
+candidate 20 / 53 tokens 6 error None
+candidate 21 / 53 tokens 6 error None
+candidate 22 / 53 tokens 6 error None
+candidate 23 / 53 tokens 6 error None
+candidate 24 / 53 tokens 6 error None
+candidate 25 / 53 tokens 6 error None
+candidate 26 / 53 tokens 6 error None
+candidate 27 / 53 tokens 6 error None
+candidate 28 / 53 tokens 6 error None
+candidate 29 / 53 tokens 6 error None
+candidate 30 / 53 tokens 6 error None
+candidate 31 / 53 tokens 6 error None
+candidate 32 / 53 tokens 6 error None
+candidate 33 / 53 tokens 6 error None
+candidate 34 / 53 tokens 6 error None
+candidate 35 / 53 tokens 6 error None
+candidate 36 / 53 tokens 6 error None
+candidate 37 / 53 tokens 6 error None
+candidate 38 / 53 tokens 6 error None
+candidate 39 / 53 tokens 6 error None
+candidate 40 / 53 tokens 6 error None
+candidate 41 / 53 tokens 6 error None
+candidate 42 / 53 tokens 6 error None
+candidate 43 / 53 tokens 6 error None
+candidate 44 / 53 tokens 6 error None
+candidate 45 / 53 tokens 6 error None
+candidate 46 / 53 tokens 6 error None
+candidate 47 / 53 tokens 6 error None
+candidate 48 / 53 tokens 6 error None
+candidate 49 / 53 tokens 6 error None
+candidate 50 / 53 tokens 6 error None
+candidate 51 / 53 tokens 6 error None
+candidate 52 / 53 tokens 6 error None
+candidate 53 / 53 tokens 7 error None
+EVALUATION_RUN ac836d755ec349109010c6b3d629fadc DECISION {'passed': False, 'reason': 'Не пройдены обязательные behavioral-кейсы'}
+🏃 View run identical-eval-and-http-runtime at: http://127.0.0.1:5006/#/experiments/3/runs/ac836d755ec349109010c6b3d629fadc
+🧪 View experiment at: http://127.0.0.1:5006/#/experiments/3

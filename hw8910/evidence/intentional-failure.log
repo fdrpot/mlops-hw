@@ -1,0 +1,59 @@
+Compiled 13 project Python files.
+INTENTIONAL BUG: validate_release is bypassed in memory for this process.
+test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) ... 
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_id') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='protocol_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='golden_sha256') ... FAIL
+  test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='runtime_sha256') ... FAIL
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_id')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/tests/test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='model_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/tests/test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='protocol_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/tests/test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='golden_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/tests/test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+======================================================================
+FAIL: test_report_binding_mismatch_rejected (test_release.ReleaseContractTests.test_report_binding_mismatch_rejected) (key='runtime_sha256')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/tests/test_release.py", line 71, in test_report_binding_mismatch_rejected
+    with self.assertRaises(ValueError):release.validate_release(self.manifest,bad)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: ValueError not raised
+
+----------------------------------------------------------------------
+Ran 1 test in 0.002s
+
+FAILED (failures=5)
+EXIT_CODE=1

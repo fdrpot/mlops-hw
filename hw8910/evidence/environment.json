@@ -1,0 +1,15 @@
+{
+  "platform": "macOS-26.2-arm64-arm-64bit",
+  "python": "3.12.14",
+  "processor": "Apple M4 Pro",
+  "memory_bytes": 51539607552,
+  "packages": {
+    "prefect": "3.9.1",
+    "fastapi": "0.142.2",
+    "uvicorn": "0.54.0",
+    "torch": "2.14.0",
+    "transformers": "5.17.0",
+    "peft": "0.21.0",
+    "mlflow": "2.22.2"
+  }
+}

@@ -1,0 +1,168 @@
+{
+  "disclosure": "Rendered saved-evidence walkthrough with synthetic Milena narration; not live terminal recording or human voice",
+  "duration_seconds": 360,
+  "narration_sha256": "a7204097c9d0b70c219b191bd1e6d689344bc4f3f9f9be8daa9dd976c41cb445",
+  "source_sha256": {
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/pyproject.toml": "82f8a99c50b278055bc4f59b48491fa872837b58558368a4889281cfb44b0f78",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/integration-before.log": "58c23dff6d971e24dc0a5069a36dccd3255e34e9da48a07ce1a3f314f068219d",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/check-all.log": "735c78293dfc7e7d91029726a74a9888a68e6cf3e595243c149cef23bf476bfe",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/process/evidence.json": "7823c0e86892f2a61a57430b1c1621f56308ea6dc52a877b73358372ffe7f112",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/prefect/03-recovery.log": "73eba922f481094e865c852fd08ef1d67e2578982020864570f88a0a868cb6c7",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real/accepted.json": "130633642a1599d5b69f56cca9d1c5432462973dca991ea96f9a003ae0d88c4b",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real/release-report.json": "cf996efa984e45ef2188681a844cd9aedc978aa26ee36be8161d349dac6c6003",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real-smoke.json": "a3af3dcb7dc9d52e6b7487e75755291c8de64fbe754a20250cede53df2247cec",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/benchmark/summary.json": "42e0d0cad3fc49ef4ed7aecbedcfe2377d1c203ddd303d65e26454cfad5fba3a",
+    "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/docs/report.md": "e85c8537b2d64027bb0043091ef3126ca07bf24ded45d3be182aff0dcf246d34"
+  },
+  "voice": "Milena",
+  "words_per_minute": 165,
+  "slides": [
+    {
+      "number": 1,
+      "title": "Что именно показано",
+      "speech": "Это шестиминутный обзор проекта по домашнему заданию восемь, девять и десять. Кадры автоматически собраны из кода и реально сохранённых журналов. Озвучка синтетическая, голос Милена; это не живая запись терминала и не голос автора работы. Справа на каждом слайде указан источник доказательства. Для управления процессом используются явно помеченные стабы. Ответ настоящей модели и её измерения показаны отдельно. Исходные файлы и команды позволяют повторить каждый опыт.",
+      "bullets": [
+        "Обзор сохранённых доказательств",
+        "Синтетическая озвучка: Milena",
+        "Это не живая запись терминала",
+        "STUB и реальная модель показаны отдельно"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/pyproject.toml"
+      ],
+      "panel": "ИСТОЧНИК: pyproject.toml\n[project]\nname = \"mlops-hw8910\"\nversion = \"0.1.0\"\nrequires-python = \">=3.12,<3.14\"\ndependencies = [\n  \"fastapi==0.142.2\",\n  \"uvicorn==0.54.0\",\n  \"prefect==3.9.1\",\n  \"httpx==0.28.1\",\n]\n\n[project.optional-dependencies]\nmodel = [\n  \"torch==2.14.0\",\n  \"transformers==5.17.0\",\n  \"peft==0.21.0\",",
+      "missing": false
+    },
+    {
+      "number": 2,
+      "title": "Исходные дефекты и регрессии",
+      "speech": "В исходном прототипе было семь независимых причин ошибок: ключ кеша по имени файла, недостаточная проверка отчёта, неатомарная запись, повторные публикации, преждевременная готовность, неверная версия в ответе и отсутствие проверки запроса до вычисления. Собственные интеграционные проверки запускаются одинаково на исходной и исправленной версиях. Красный журнал показывает содержательные нарушения контрактов, зелёный подтверждает исправления. Проверки используют настоящие процессы, временные каталоги и локальные HTTP соединения. Приложенные тесты сохранены отдельно.",
+      "bullets": [
+        "7 независимых причин",
+        "Одинаковые контракты до и после",
+        "Настоящие HTTP / subprocess / файлы",
+        "Исходные тесты сохранены"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/integration-before.log",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/check-all.log"
+      ],
+      "panel": "ИСТОЧНИК: evidence/integration-before.log\nFAIL: test_process_every_preparation_config_invalidates (test_integration.ReleaseIntegrationTests.test_process_every_preparation_config_invalidates) (setting='code_revision')\nFAIL: test_process_incomplete_foreign_and_rejected_reports_preserve_pointer (test_integration.ReleaseIntegrationTests.test_process_incomplete_foreign_and_rejected_reports_preserve_pointer) (report='report-incomplete.json')\nFAIL: test_process_incomplete_foreign_and_rejected_reports_preserve_pointer (test_integration.ReleaseIntegrationTests.test_process_incomplete_foreign_and_rejected_reports_preserve_pointer) (report='report-A.json')\nFAIL: test_process_incomplete_foreign_and_rejected_reports_preserve_pointer (test_integration.ReleaseIntegrationTests.test_process_incomplete_foreign_and_rejected_reports_preserve_pointer) (report='report-reject.json')\nFAIL: test_process_recovery_and_changed_bytes (test_integration.ReleaseIntegrationTests.test_process_recovery_and_changed_bytes)\nFAIL: test_process_repeat_publication_has_one_event (test_integration.ReleaseIntegrationTests.test_process_repeat_publication_has_one_event)\nRan 8 tests in 1.050s\nFAILED (failures=21)\n\nИСТОЧНИК: evidence/check-all.log\nRan 31 tests in 5.012s\nOK",
+      "missing": false
+    },
+    {
+      "number": 3,
+      "title": "Подготовка, сбой и восстановление",
+      "speech": "Процесс разделён на задачи подготовки, получения готового артефакта, допуска и публикации. Повторное обучение здесь не выполняется. Ключ подготовки учитывает содержимое входа, версию токенизатора, шаблон, длину и версию кода. После управляемого сбоя новый процесс использует сохранённый результат подготовки. Изменение байтов по тому же пути приводит к новой подготовке. В правой панели видны фактические журналы выполнения и кеша. Prefect управляет задачами, а результаты подготовки сохраняются на диске.",
+      "bullets": [
+        "Подготовка → артефакт → gate → публикация",
+        "Сбой после подготовки",
+        "Новый процесс: CACHE_HIT",
+        "Изменённый вход: PREPARED"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/process/evidence.json",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/prefect/03-recovery.log"
+      ],
+      "panel": "ИСТОЧНИК: evidence/process/evidence.json\nprepare-injected-failure exit=1\nPREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n\nprepare-new-process-recovery exit=0\nCACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nPUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n\ninput-changed-same-path exit=0\nPREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=fa720fd39c14e06a27401ad6fdd3104a3317d8aea8a68467126bc2e52ae3fe6e\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n\nИСТОЧНИК: evidence/prefect/03-recovery.log\n18:08:26.845 | INFO    | Task run 'prepare-and-validate-input-744' - Finished in state Cached(type=COMPLETED)\n18:08:27.846 | INFO    | Flow run 'refreshing-cobra' - Finished in state Completed()",
+      "missing": false
+    },
+    {
+      "number": 4,
+      "title": "Связанный допуск модели",
+      "speech": "Допуск использует правило качества из предыдущей работы, исходные отчёты и их контрольные суммы. Проверяются полнота оценки, настоящий логический результат, конечные метрики и совпадение идентификаторов. Манифест закрепляет модель, базовую ревизию, токенизатор, шаблон, генерацию и тип чисел. Настройки сервиса должны совпадать с оценкой. Прежняя baseline также не выполняет все behavioral проверки. Её bootstrap происхождение указывается отдельно; новый PASS для неё не заявляется. Синтетический отчёт проверяет управление выпуском и не подтверждает качество модели.",
+      "bullets": [
+        "Правило качества HW67 сохранено",
+        "Отчёты связаны SHA-256",
+        "Runtime оценки совпадает с API",
+        "Отказ кандидата допустим"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real/accepted.json",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real/release-report.json"
+      ],
+      "panel": "ИСТОЧНИК: evidence/real/accepted.json\n{\n  \"model_id\": \"baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e\",\n  \"model_sha256\": \"e7516dd60bc35e54761854c4468e060bfbefd0d051efbf02511d316745b7bc13\",\n  \"runtime_sha256\": \"f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf\"\n}\n\nИСТОЧНИК: evidence/real/release-report.json\n{\n  \"model_id\": \"041aa4e127c04f228eb8dc15b6025ca0\",\n  \"model_sha256\": \"41e54c455546361e16ba0037b2a1cd0de6633807fc4543b57f78dc51f7376cfa\",\n  \"runtime_sha256\": \"26973719309caaad330bb631634734d2a1c658bc5f5469a69be0d04cd1268ca7\",\n  \"status\": \"complete\",\n  \"passed\": false,\n  \"evaluation_run_id\": \"ac836d755ec349109010c6b3d629fadc\",\n  \"metrics\": {\n    \"accuracy\": 0.8,\n    \"format_rate\": 1.0\n  }\n}",
+      "missing": false
+    },
+    {
+      "number": 5,
+      "title": "Безопасная публикация",
+      "speech": "Принятый указатель записывается через временный файл, синхронизацию и атомарную замену. При отказе по качеству старые байты указателя сохраняются. Отдельно проверяются неполный и чужой отчёт, нечисловые метрики и ошибка записи. Попытки запуска отличаются от событий фактического выпуска. Повтор успешного выпуска не создаёт дубликат. Управляемый сбой между заменой указателя и журналом восстанавливается следующим процессом. В этой работе предполагается один писатель; атомарная замена сама по себе не решает конкуренцию нескольких писателей.",
+      "bullets": [
+        "tempfile → fsync → os.replace",
+        "Отказ сохраняет старые байты",
+        "Попытки отдельно от публикаций",
+        "Повтор восстанавливает журнал"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/process/evidence.json"
+      ],
+      "panel": "ИСТОЧНИК: evidence/process/evidence.json\nprepare-failure-preserves-pointer: True\nquality-rejection-pointer-byte-identical: True\nincomplete-report-pointer-byte-identical: True\nforeign-report-pointer-byte-identical: True\nnonfinite-report-preserves-pointer: True\nrepeat-pointer-byte-identical: True\nrepeat-one-publication-event: True\npublication-crash-nonzero: True\npublication-crash-updated-pointer: True\npublication-crash-recovery-success: True\npublication-crash-recovery-same-pointer: True\npublication-crash-exactly-one-event: True",
+      "missing": false
+    },
+    {
+      "number": 6,
+      "title": "API и настоящая модель",
+      "speech": "Сервис FastAPI читает принятый манифест, проверяет файлы и загружает закреплённую модель. Health означает жизнь процесса, ready становится успешным после загрузки и прогрева. До готовности вычисление не запускается. Неверный запрос получает ошибку до вызова backend. В ответе передаются текст, идентификатор запроса, фактически загруженная модель, хеш runtime, количество выходных токенов и длительности. Лимит ответа соответствует протоколу оценки. На правой панели приведён сохранённый ответ, который нужно отличать от помеченных результатов стаба.",
+      "bullets": [
+        "Health: процесс жив",
+        "Ready: загрузка + прогрев завершены",
+        "4xx до вычисления",
+        "Фактическая модель и число токенов"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/real-smoke.json"
+      ],
+      "panel": "ИСТОЧНИК: evidence/real-smoke.json\n{\n  \"answer\": \"{\\\"answer\\\":\\\"B\\\"}\",\n  \"request_id\": \"064c3be3-431c-419b-8a92-93ab8aa8cce9\",\n  \"model_id\": \"baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e\",\n  \"runtime_sha256\": \"f73e558a2384de53005f9d1e892cb8a1fc2046c159dab63433536f4b631eeadf\",\n  \"output_tokens\": 6,\n  \"generation_seconds\": 0.3194504999992205,\n  \"queue_seconds\": 0.005748791998485103,\n  \"total_seconds\": 0.3251992919977056\n}\n\n/health [live] HTTP 200\n/ready [loading] HTTP 503\n/generate [loading] HTTP 503\ninvalid HTTP statuses: 422, 422, 422, 422, 422, 422\nbackend calls unchanged: True",
+      "missing": false
+    },
+    {
+      "number": 7,
+      "title": "Загруженная версия и откат",
+      "speech": "В инженерном опыте используются две лёгкие версии с явной меткой стаб. Сервис запускается на версии А. Затем другой процесс публикует Б, но загруженные веса и метаданные ответа остаются А. Только после перезапуска сервис отвечает Б. Управляемый возврат к ранее принятой А и новый запуск подтверждают откат. Этот опыт проверяет жизненный цикл загрузки и честность метаданных. Он не является оценкой качества второй настоящей модели. Реальное подключение проверяется отдельным запросом.",
+      "bullets": [
+        "STUB ONLY: A → B → A",
+        "Новый указатель не меняет память",
+        "Перезапуск загружает принятую версию",
+        "Отдельный реальный smoke"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/check-all.log"
+      ],
+      "panel": "ИСТОЧНИК: evidence/check-all.log\ntest_http_loaded_version_changes_only_after_restart_and_rolls_back (test_integration.ReleaseIntegrationTests.test_http_loaded_version_changes_only_after_restart_and_rolls_back) ... {\"kind\": \"subprocess\", \"test\": \"test_http_loaded_version_changes_only_after_restart_and_rolls_back\", \"args\": [\"init\"], \"exit_code\": 0, \"output\": \"Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-integration-an6slkdi/workspace\"}\n{\"kind\": \"subprocess\", \"test\": \"test_http_loaded_version_changes_only_after_restart_and_rolls_back\", \"args\": [\"run\"], \"exit_code\": 0, \"output\": \"PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\\nPUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\"}\n{\"kind\": \"subprocess\", \"test\": \"test_http_loaded_version_changes_only_after_restart_and_rolls_back\", \"args\": [\"run\"], \"exit_code\": 0, \"output\": \"CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\\nPUBLISHED fixture-A bd2c6a0bb9de5e98e5e9b435ade5f4adc8465f2296d9f31793c4f3da8b76554b\"}\n{\"kind\": \"rollback-proof\", \"loaded_versions\": [\"fixture-A\", \"fixture-B\", \"fixture-A\"]}",
+      "missing": false
+    },
+    {
+      "number": 8,
+      "title": "Небольшой замер",
+      "speech": "После прогрева один и тот же набор запросов выполняется сначала с параллельностью один, затем два. Лимит ответа одинаковый: тридцать два новых токена. Сохраняется каждая попытка, включая ошибки и таймауты. Таблица справа построена из фактического журнала: количество успехов, время пакета, запросы в секунду и задержки. Вычисление ограничено одним backend, поэтому при двух клиентах появляется ожидание. Измеряется полная задержка JSON ответа. На такой небольшой выборке нельзя делать вывод об устойчивом девяносто пятом перцентиле.",
+      "bullets": [
+        "Одинаковые запросы при concurrency 1 и 2",
+        "max_new_tokens = 32",
+        "Каждая попытка сохранена",
+        "Очередь отделена от генерации"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/evidence/benchmark/summary.json"
+      ],
+      "panel": "ИСТОЧНИК: evidence/benchmark/summary.json\nconcurrency=1  n=8  success=8  errors=0\nbatch_seconds=1.9567\nsuccessful_req/s=4.0884\nmean_client_s=0.2445\nmax_client_s=0.2633\nmean_generation_s=0.2415\nmean_queue_s=0.0014\noutput_tokens=48\nmodel_ids=baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e\n\nconcurrency=2  n=8  success=8  errors=0\nbatch_seconds=2.7801\nsuccessful_req/s=2.8776\nmean_client_s=0.6582\nmax_client_s=0.7878\nmean_generation_s=0.3465\nmean_queue_s=0.3075\noutput_tokens=48\nmodel_ids=baseline-Qwen3-1.7B-70d244cc86ccca08cf5af4e1e306ecf908b1ad5e",
+      "missing": false
+    },
+    {
+      "number": 9,
+      "title": "Ограничения и повторение",
+      "speech": "На этапе prefill модель обрабатывает вход, на decode последовательно создаёт новые токены. Кеш ключей и значений занимает память пропорционально длине контекста и количеству одновременных последовательностей. Наш последовательный Transformers backend не доказывает производительность специализированных серверов. Время первого токена и интервалы токенов здесь не измерялись. Для повторения нужны команды проекта, закреплённые зависимости и доступ к локальным артефактам предыдущей работы. Исходные журналы остаются главным доказательством; видео только помогает их просмотреть и связать с исправлениями.",
+      "bullets": [
+        "Prefill: обработка входа",
+        "Decode: последовательные новые токены",
+        "KV-cache растёт с контекстом",
+        "TTFT / ITL / устойчивый p95 не измерялись"
+      ],
+      "sources": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/docs/report.md"
+      ],
+      "panel": "ИСТОЧНИК: docs/report.md\nДата: 3 ноября 2026. Репозиторий: https://github.com/fdrpot/mlops-hw,\n| код | `make check-light`; при изменении `real_backend.py` — `make real-evaluate` до нового выпуска; документация не требует обучения |\n| данные | `make check`, `scripts/evidence.py` проверяет cache invalidation; новая golden-версия — полная оценка; изменение train требует обоснованного нового training run |\n| адаптер | получить законченный run, проверить точную базу и файлы; `make real-evaluate`; `flow.py --manifest manifest-candidate.json --report release-report.json`; перезапуск только после PASS |\n## 6. API, версия и ограничения запроса\nОчередь ожидания не ограничена числом ожидающих клиентов; это ограничение стенда.\nТест `test_http_loaded_version_changes_only_after_restart_and_rolls_back`\nне удаляются; в этом прогоне их не было. [Все 16 строк](../evidence/benchmark/requests.jsonl),\n[metadata](../evidence/benchmark/metadata.json), [CSV](../evidence/benchmark/summary.csv).\nнагрузки и видео. Реальный eval лог: [real-evaluation.log](../evidence/real-evaluation.log).\n[Одно видео, 6 минут](../.submission/demo.mp4) — воспроизводимый обзор реальных\nсохранённых доказательств с синтетической озвучкой Milena. На видео явно указано,\nозвучки приложены в scripts. Видео доступно локально и в архиве сдачи,",
+      "missing": false
+    }
+  ]
+}

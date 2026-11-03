@@ -1,0 +1,13 @@
+{
+  "golden": "data/eval/golden.jsonl",
+  "training_index": "data/eval/training-index.jsonl",
+  "behavioral": "data/eval/behavioral.jsonl",
+  "critical_slices": [
+    "storage",
+    "network"
+  ],
+  "seed": 42,
+  "system": "You answer questions about command-line tools, Linux administration, and DevOps. Select the single correct option from the question. Return only a JSON object with exactly one key, \"answer\", and a string label from the listed choices. For requests outside this domain, return {\"answer\":\"REFUSE\"}. Do not add explanations or markdown.",
+  "max_new_tokens": 32,
+  "enable_thinking": false
+}

@@ -1,0 +1,9 @@
+command: ["/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python", "/Users/potapov-fd/Downloads/mlops26-hw8-9-10/hw8910-broken/lab.py", "--workspace", "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-en110scy/repeat", "init"]
+cwd: /Users/potapov-fd/Downloads/mlops26-hw8-9-10/hw8910-broken
+exit_code: 0
+accepted_before_sha256: None
+accepted_after_sha256: aca0bc1332936349f868b84d800dec94e1a042f4aec3196fe4c4c031c3b5c6d1
+stdout:
+Создан синтетический стенд: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-en110scy/repeat
+
+stderr:
