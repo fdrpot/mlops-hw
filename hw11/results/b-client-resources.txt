@@ -1,0 +1,5 @@
+NAME            CPU(cores)   MEMORY(bytes)   
+hw11-client-0   2m           25Mi            
+hw11-client-1   2m           25Mi            
+hw11-client-2   2m           25Mi            
+hw11-client-3   2m           25Mi            

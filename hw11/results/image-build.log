@@ -1,0 +1,48 @@
+#0 building with "colima-hw11" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 726B done
+#1 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#2 DONE 0.0s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 108B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 134.39kB done
+#4 DONE 0.0s
+
+#5 [1/7] FROM docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c
+#5 resolve docker.io/library/python:3.12.12-slim-bookworm@sha256:593bd06efe90efa80dc4eee3948be7c0fde4134606dd40d8dd8dbcade98e669c done
+#5 DONE 0.0s
+
+#6 [3/7] COPY requirements.txt ./
+#6 CACHED
+
+#7 [2/7] WORKDIR /app
+#7 CACHED
+
+#8 [4/7] RUN pip install --no-cache-dir -r requirements.txt && useradd --uid 10001 --create-home app
+#8 CACHED
+
+#9 [5/7] COPY app.py ./
+#9 DONE 0.0s
+
+#10 [6/7] COPY artifacts/ ./artifacts/
+#10 DONE 0.0s
+
+#11 [7/7] COPY scripts/ ./scripts/
+#11 DONE 0.0s
+
+#12 exporting to image
+#12 exporting layers 0.0s done
+#12 exporting manifest sha256:358f1e347e196fe88d71c8c113fd51e13c061d04659b0363e5af5a13e01972c4 done
+#12 exporting config sha256:157c0e686a343261f34643d80bbf43322260ee2d2c4fb1e105250aded27479bd done
+#12 exporting attestation manifest sha256:b26951edd0355905cf927e60222576fe43cf0636010ecc87de75cb0fabc4238c done
+#12 exporting manifest list sha256:366ea1a0373946e40fd88d303203eb9e07142918870504f76f66e420943de918 done
+#12 naming to docker.io/library/hw11-api:local done
+#12 unpacking to docker.io/library/hw11-api:local 0.0s done
+#12 DONE 0.1s

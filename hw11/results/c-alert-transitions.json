@@ -1,0 +1,115 @@
+{
+  "method": "State from Prometheus /api/v1/alerts; inactive means alert absent from successful API response. Poll interval 5s.",
+  "transitions": {
+    "HW11HighTTFC": [
+      {
+        "observed_unix": 1794925221.4695373,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925242.66575,
+        "state": "pending",
+        "active_at": "2026-11-17T14:20:36.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925253.2170446,
+        "state": "firing",
+        "active_at": "2026-11-17T14:20:36.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925438.4657323,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925491.2868476,
+        "state": "pending",
+        "active_at": "2026-11-17T14:24:46.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925501.8642206,
+        "state": "firing",
+        "active_at": "2026-11-17T14:24:46.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925688.7781177,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-alerts-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925715.2696285,
+        "state": "pending",
+        "active_at": "2026-11-17T14:28:31.412217406Z",
+        "source": "c-alerts-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925725.8154163,
+        "state": "firing",
+        "active_at": "2026-11-17T14:28:31.412217406Z",
+        "source": "c-alerts-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925820.9646146,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-alerts-prometheus.jsonl"
+      }
+    ],
+    "HW11HighRejectionRatio": [
+      {
+        "observed_unix": 1794925221.4695373,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925517.6602328,
+        "state": "pending",
+        "active_at": "2026-11-17T14:25:11.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925528.2202847,
+        "state": "firing",
+        "active_at": "2026-11-17T14:25:11.412217406Z",
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925628.5164766,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-scaling-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925704.6708646,
+        "state": "pending",
+        "active_at": "2026-11-17T14:28:21.412217406Z",
+        "source": "c-alerts-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925715.2696285,
+        "state": "firing",
+        "active_at": "2026-11-17T14:28:21.412217406Z",
+        "source": "c-alerts-prometheus.jsonl"
+      },
+      {
+        "observed_unix": 1794925820.9646146,
+        "state": "inactive",
+        "active_at": null,
+        "source": "c-alerts-prometheus.jsonl"
+      }
+    ]
+  },
+  "checks": {
+    "HW11HighTTFC": true,
+    "HW11HighRejectionRatio": true
+  }
+}

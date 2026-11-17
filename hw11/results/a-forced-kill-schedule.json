@@ -1,0 +1,17 @@
+[
+  {
+    "index": 0,
+    "offset_seconds": 0.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00000",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 80,
+    "chunk_seconds": 0.5
+  }
+]

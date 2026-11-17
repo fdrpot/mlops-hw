@@ -1,0 +1,58 @@
+{
+  "before": [
+    {
+      "request_id": "test-alpha-1794926527138634000",
+      "session_id": "alpha",
+      "pod": "hw11-api-6dfbff9db6-lxggb",
+      "model_version": "B",
+      "artifact_sha256": "8efab4e985d6ff843ff34545a37edf189ad0732d8e8afcc8c20427e84f73e6b0",
+      "backend_mode": "simulated",
+      "chunk": 1,
+      "text": "SIMULATED B: CONTROL_ALPHA continue",
+      "done": false,
+      "cache_hit": false,
+      "queue_seconds": 6.687499990221113e-05,
+      "warm_at_admission": true
+    },
+    {
+      "request_id": "test-alpha-1794926527138634000",
+      "session_id": "alpha",
+      "pod": "hw11-api-6dfbff9db6-lxggb",
+      "model_version": "B",
+      "artifact_sha256": "8efab4e985d6ff843ff34545a37edf189ad0732d8e8afcc8c20427e84f73e6b0",
+      "backend_mode": "simulated",
+      "done": true,
+      "chunks": 1,
+      "cache_hit": false,
+      "queue_seconds": 6.687499990221113e-05
+    }
+  ],
+  "after": [
+    {
+      "request_id": "test-alpha-1794926579075221000",
+      "session_id": "alpha",
+      "pod": "hw11-api-75b685b76-nqfz6",
+      "model_version": "A",
+      "artifact_sha256": "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886",
+      "backend_mode": "simulated",
+      "chunk": 1,
+      "text": "SIMULATED A: CONTROL_ALPHA continue",
+      "done": false,
+      "cache_hit": false,
+      "queue_seconds": 5.733299985877238e-05,
+      "warm_at_admission": true
+    },
+    {
+      "request_id": "test-alpha-1794926579075221000",
+      "session_id": "alpha",
+      "pod": "hw11-api-75b685b76-nqfz6",
+      "model_version": "A",
+      "artifact_sha256": "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886",
+      "backend_mode": "simulated",
+      "done": true,
+      "chunks": 1,
+      "cache_hit": false,
+      "queue_seconds": 5.733299985877238e-05
+    }
+  ]
+}

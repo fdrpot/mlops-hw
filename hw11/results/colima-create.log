@@ -1,0 +1,53 @@
+time="2026-11-17T16:28:27+03:00" level=info msg="starting colima [profile=hw11]"
+time="2026-11-17T16:28:27+03:00" level=info msg="runtime: docker"
+time="2026-11-17T16:28:28+03:00" level=info msg="creating and starting ..." context=vm
+time="2026-11-17T16:28:28+03:00" level=info msg="Terminal is not available, proceeding without opening an editor"
+time="2026-11-17T16:28:28+03:00" level=info msg="Starting the instance \"colima-hw11\" with internal VM driver \"vz\""
+time="2026-11-17T16:28:28+03:00" level=info msg="Attempting to download the image" arch=aarch64 digest= location=/Users/potapov-fd/Library/Caches/colima/caches/11855796d01d1b76fbeb13f9bfabc0488c9cb66d8887d3e4ee7df48f05303ef0
+time="2026-11-17T16:28:28+03:00" level=info msg="Downloaded the image from \"/Users/potapov-fd/Library/Caches/colima/caches/11855796d01d1b76fbeb13f9bfabc0488c9cb66d8887d3e4ee7df48f05303ef0\""
+time="2026-11-17T16:28:28+03:00" level=info msg="Converting \"/Users/potapov-fd/.colima/_lima/colima-hw11/image\" (qcow2) to a raw disk \"/Users/potapov-fd/.colima/_lima/colima-hw11/disk\""
+time="2026-11-17T16:28:29+03:00" level=info msg="Expanding to 20GiB"
+time="2026-11-17T16:28:30+03:00" level=info msg="[hostagent] hostagent socket created at /Users/potapov-fd/.colima/_lima/colima-hw11/ha.sock"
+time="2026-11-17T16:28:30+03:00" level=info msg="[hostagent] Starting VZ (hint: to watch the boot progress, see \"/Users/potapov-fd/.colima/_lima/colima-hw11/serial*.log\")"
+time="2026-11-17T16:28:30+03:00" level=info msg="[hostagent] Mounting disk \"colima-hw11\" on \"/mnt/lima-colima-hw11\""
+time="2026-11-17T16:28:30+03:00" level=info msg="[hostagent] Converting \"/Users/potapov-fd/.colima/_lima/_disks/colima-hw11/datadisk\" (raw) to a raw disk \"/Users/potapov-fd/.colima/_lima/_disks/colima-hw11/datadisk\""
+time="2026-11-17T16:28:30+03:00" level=info msg="[hostagent] [VZ] - vm state change: running"
+time="2026-11-17T16:28:35+03:00" level=info msg="[hostagent] SSH server does not seem to be running on vsock port, using usernet forwarder"
+time="2026-11-17T16:28:36+03:00" level=info msg="SSH Local Port: 64037"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Waiting for the essential requirement 1 of 3: \"ssh\""
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] The essential requirement 1 of 3 is satisfied"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Waiting for the essential requirement 2 of 3: \"user session is ready for ssh\""
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] The essential requirement 2 of 3 is satisfied"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Waiting for the essential requirement 3 of 3: \"Explicitly start ssh ControlMaster\""
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] The essential requirement 3 of 3 is satisfied"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Forwarding \"/var/run/docker.sock\" (guest) to \"/Users/potapov-fd/.colima/hw11/docker.sock\" (host)"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Waiting for the guest agent to be running"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Forwarding \"/var/run/containerd/containerd.sock\" (guest) to \"/Users/potapov-fd/.colima/hw11/containerd.sock\" (host)"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Guest agent is running"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Time sync: guest agent is alive, starting time synchronization"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Not forwarding TCP 0.0.0.0:22"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Waiting for the final requirement 1 of 1: \"boot scripts must have finished\""
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] Not forwarding TCP [::]:22"
+time="2026-11-17T16:28:36+03:00" level=info msg="[hostagent] The final requirement 1 of 1 is satisfied"
+time="2026-11-17T16:28:36+03:00" level=info msg="READY. Run `limactl shell colima-hw11` to open the shell."
+installing: 386 OK
+installing: amd64 OK
+{
+  "supported": [
+    "linux/arm64",
+    "linux/amd64",
+    "linux/386"
+  ],
+  "emulators": [
+    "python3.12",
+    "qemu-i386",
+    "qemu-x86_64"
+  ]
+}
+time="2026-11-17T16:28:37+03:00" level=info msg="provisioning ..." context=docker
+colima-hw11
+Successfully created context "colima-hw11"
+colima-hw11
+Current context is now "colima-hw11"
+time="2026-11-17T16:28:38+03:00" level=info msg="starting ..." context=docker
+time="2026-11-17T16:28:39+03:00" level=info msg=done

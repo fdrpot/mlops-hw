@@ -1,0 +1,6 @@
+{
+  "all_20_completed": true,
+  "zero_http_5xx": true,
+  "zero_aborted": true,
+  "long_stream_crossed_rollout": true
+}

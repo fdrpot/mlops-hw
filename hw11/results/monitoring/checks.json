@@ -1,0 +1,10 @@
+{
+  "api_scrape_2_pods": true,
+  "cadvisor_scrape": true,
+  "kube_state_metrics_scrape": true,
+  "grafana_health": true,
+  "dashboard_12_panels": true,
+  "calibration_20_completed": true,
+  "calibration_20_server_logs": true,
+  "calibration_20_histogram_observations": true
+}

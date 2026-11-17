@@ -1,0 +1,90 @@
+{
+  "planned": 1800,
+  "sent": 1800,
+  "completed": 130,
+  "rejected": 1670,
+  "aborted": 0,
+  "timeouts": 0,
+  "transport_errors": 0,
+  "http_5xx": 1187,
+  "error_fraction": 0.9277777777777778,
+  "timeout_fraction": 0.0,
+  "by_pod": {
+    "hw11-api-5668f5c9bf-2rnd9": 730,
+    "hw11-api-5668f5c9bf-6zbjl": 720,
+    "hw11-api-5668f5c9bf-csmrd": 350
+  },
+  "successful_n": 130,
+  "ttfc_seconds": {
+    "n": 130,
+    "p50": 0.7402291510002215,
+    "p95": 0.9604579154500015
+  },
+  "total_seconds": {
+    "n": 130,
+    "p50": 2.224864838500025,
+    "p95": 2.450922913199929
+  },
+  "queue_seconds": {
+    "n": 130,
+    "p50": 0.41872428599981504,
+    "p95": 0.4990491320502315
+  },
+  "send_lag_seconds": {
+    "n": 1800,
+    "p50": 0.0010601258074984798,
+    "p95": 0.0024873718578874104
+  },
+  "by_pod_latency": {
+    "hw11-api-5668f5c9bf-2rnd9": {
+      "n": 50,
+      "ttfc_seconds": {
+        "n": 50,
+        "p50": 0.7232327464998889,
+        "p95": 0.9446478688000979
+      },
+      "queue_seconds": {
+        "n": 50,
+        "p50": 0.41506628750016716,
+        "p95": 0.49859683319989473
+      }
+    },
+    "hw11-api-5668f5c9bf-6zbjl": {
+      "n": 50,
+      "ttfc_seconds": {
+        "n": 50,
+        "p50": 0.7304011749999972,
+        "p95": 0.9628443297001694
+      },
+      "queue_seconds": {
+        "n": 50,
+        "p50": 0.42178607400001056,
+        "p95": 0.49876539435028916
+      }
+    },
+    "hw11-api-5668f5c9bf-csmrd": {
+      "n": 30,
+      "ttfc_seconds": {
+        "n": 30,
+        "p50": 0.7650451194997459,
+        "p95": 0.9253495709501521
+      },
+      "queue_seconds": {
+        "n": 30,
+        "p50": 0.4016169369999716,
+        "p95": 0.49961266954981054
+      }
+    }
+  },
+  "run": "c-alert-overload",
+  "service": "normal",
+  "traffic": "uniform",
+  "measurement_seconds": 90,
+  "rps": 20,
+  "schedule_sha256": "0db48d8201a03c8236b163451b169f48897270500b9f184cd61f59a269d02707",
+  "start_unix": 1794925693.988692,
+  "end_unix": 1794925785.278964,
+  "keep_alive": false,
+  "retries": 0,
+  "backend_mode": "simulated"
+}

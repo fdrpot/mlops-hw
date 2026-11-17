@@ -1,0 +1,9 @@
+test_01_warmup_is_excluded_from_endpoints (test_kubernetes.KubernetesChecks.test_01_warmup_is_excluded_from_endpoints) ... ok
+test_02_rollback_returns_actual_artifact_a (test_kubernetes.KubernetesChecks.test_02_rollback_returns_actual_artifact_a) ... ok
+test_03_replaced_replica_restores_version_and_dialogue (test_kubernetes.KubernetesChecks.test_03_replaced_replica_restores_version_and_dialogue) ... ok
+test_04_two_dialogues_are_isolated_over_real_http (test_kubernetes.KubernetesChecks.test_04_two_dialogues_are_isolated_over_real_http) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 181.761s
+
+OK

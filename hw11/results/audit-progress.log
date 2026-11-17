@@ -1,0 +1,37 @@
+{
+  "checks": {
+    "twelve_b_runs": true,
+    "b_measurement_at_least_120s": true,
+    "b_all_planned_sent_and_accounted": true,
+    "identical_schedules_within_each_policy_pair": true,
+    "a_all_checks": true,
+    "four_distinct_client_ips": true,
+    "monitoring_checks": true,
+    "hpa_ready_2_then_3_then_2": true,
+    "HW11HighTTFC_pending_firing_recovered": true,
+    "HW11HighRejectionRatio_pending_firing_recovered": true,
+    "k8s_checks_retained": false,
+    "observed_sticky_without_skew": true,
+    "hot_queue_and_other_idle_from_prometheus": true
+  },
+  "passed": false,
+  "ready_sequence": [
+    2,
+    3,
+    2,
+    3
+  ],
+  "alert_states": {
+    "HW11HighTTFC": [
+      "firing",
+      "inactive",
+      "pending"
+    ],
+    "HW11HighRejectionRatio": [
+      "firing",
+      "inactive",
+      "pending"
+    ]
+  },
+  "b_run_count": 12
+}

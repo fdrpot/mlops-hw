@@ -1,0 +1,10 @@
+{
+  "broken_received_backend_503": true,
+  "fixed_no_backend_503": true,
+  "graceful_rollout_zero_5xx_and_incomplete": true,
+  "long_stream_crossed_rollout": true,
+  "unready_b_not_serving": true,
+  "rollback_loaded_a": true,
+  "forced_stream_aborted": false,
+  "forced_recovery": true
+}

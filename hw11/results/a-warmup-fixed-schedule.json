@@ -1,0 +1,1052 @@
+[
+  {
+    "index": 0,
+    "offset_seconds": 0.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00000",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 1,
+    "offset_seconds": 0.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00001",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 2,
+    "offset_seconds": 1.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00002",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 3,
+    "offset_seconds": 1.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00003",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 4,
+    "offset_seconds": 2.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00004",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 5,
+    "offset_seconds": 2.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00005",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 6,
+    "offset_seconds": 3.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00006",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 7,
+    "offset_seconds": 3.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00007",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 8,
+    "offset_seconds": 4.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00008",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 9,
+    "offset_seconds": 4.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00009",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 10,
+    "offset_seconds": 5.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00010",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 11,
+    "offset_seconds": 5.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00011",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 12,
+    "offset_seconds": 6.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00012",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 13,
+    "offset_seconds": 6.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00013",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 14,
+    "offset_seconds": 7.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00014",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 15,
+    "offset_seconds": 7.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00015",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 16,
+    "offset_seconds": 8.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00016",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 17,
+    "offset_seconds": 8.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00017",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 18,
+    "offset_seconds": 9.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00018",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 19,
+    "offset_seconds": 9.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00019",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 20,
+    "offset_seconds": 10.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00020",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 21,
+    "offset_seconds": 10.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00021",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 22,
+    "offset_seconds": 11.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00022",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 23,
+    "offset_seconds": 11.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00023",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 24,
+    "offset_seconds": 12.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00024",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 25,
+    "offset_seconds": 12.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00025",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 26,
+    "offset_seconds": 13.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00026",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 27,
+    "offset_seconds": 13.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00027",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 28,
+    "offset_seconds": 14.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00028",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 29,
+    "offset_seconds": 14.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00029",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 30,
+    "offset_seconds": 15.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00030",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 31,
+    "offset_seconds": 15.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00031",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 32,
+    "offset_seconds": 16.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00032",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 33,
+    "offset_seconds": 16.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00033",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 34,
+    "offset_seconds": 17.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00034",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 35,
+    "offset_seconds": 17.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00035",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 36,
+    "offset_seconds": 18.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00036",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 37,
+    "offset_seconds": 18.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00037",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 38,
+    "offset_seconds": 19.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00038",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 39,
+    "offset_seconds": 19.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00039",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 40,
+    "offset_seconds": 20.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00040",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 41,
+    "offset_seconds": 20.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00041",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 42,
+    "offset_seconds": 21.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00042",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 43,
+    "offset_seconds": 21.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00043",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 44,
+    "offset_seconds": 22.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00044",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 45,
+    "offset_seconds": 22.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00045",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 46,
+    "offset_seconds": 23.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00046",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 47,
+    "offset_seconds": 23.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00047",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 48,
+    "offset_seconds": 24.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00048",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 49,
+    "offset_seconds": 24.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00049",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 50,
+    "offset_seconds": 25.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00050",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 51,
+    "offset_seconds": 25.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00051",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 52,
+    "offset_seconds": 26.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00052",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 53,
+    "offset_seconds": 26.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00053",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 54,
+    "offset_seconds": 27.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00054",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 55,
+    "offset_seconds": 27.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00055",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 56,
+    "offset_seconds": 28.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00056",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 57,
+    "offset_seconds": 28.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00057",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 58,
+    "offset_seconds": 29.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00058",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 59,
+    "offset_seconds": 29.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00059",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 60,
+    "offset_seconds": 30.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00060",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 61,
+    "offset_seconds": 30.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00061",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 62,
+    "offset_seconds": 31.0,
+    "client": 2,
+    "session_id": "client-2-dialog-6",
+    "prompt": "prefix-6: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00062",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 63,
+    "offset_seconds": 31.5,
+    "client": 3,
+    "session_id": "client-3-dialog-7",
+    "prompt": "prefix-7: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00063",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 64,
+    "offset_seconds": 32.0,
+    "client": 0,
+    "session_id": "client-0-dialog-0",
+    "prompt": "prefix-0: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00064",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 65,
+    "offset_seconds": 32.5,
+    "client": 1,
+    "session_id": "client-1-dialog-1",
+    "prompt": "prefix-1: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00065",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 66,
+    "offset_seconds": 33.0,
+    "client": 2,
+    "session_id": "client-2-dialog-2",
+    "prompt": "prefix-2: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00066",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_2"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 67,
+    "offset_seconds": 33.5,
+    "client": 3,
+    "session_id": "client-3-dialog-3",
+    "prompt": "prefix-3: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00067",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_3"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 68,
+    "offset_seconds": 34.0,
+    "client": 0,
+    "session_id": "client-0-dialog-4",
+    "prompt": "prefix-4: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00068",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_0"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  },
+  {
+    "index": 69,
+    "offset_seconds": 34.5,
+    "client": 1,
+    "session_id": "client-1-dialog-5",
+    "prompt": "prefix-5: shared immutable context; shared immutable context; shared immutable context; shared immutable context; input 00069",
+    "history": [
+      {
+        "role": "user",
+        "content": "CONTROL_CLIENT_1"
+      }
+    ],
+    "max_chunks": 3,
+    "chunk_seconds": 0.15
+  }
+]

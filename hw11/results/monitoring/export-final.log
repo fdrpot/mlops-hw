@@ -1,0 +1,24 @@
+{
+  "path": "/Users/potapov-fd/Desktop/MLOps/hw/hw11/results/monitoring/timeseries.json",
+  "start": 1794922455.632004,
+  "end": 1794925963.008904,
+  "series_counts": {
+    "running": 52,
+    "waiting": 52,
+    "backend_ready": 52,
+    "kubernetes_ready": 52,
+    "deployment_ready": 1,
+    "cpu_cores": 48,
+    "ram_bytes": 52,
+    "completed_per_second": 49,
+    "terminal_per_second": 147,
+    "ttfc_p50_seconds": 49,
+    "ttfc_p95_seconds": 49,
+    "queue_p95_seconds": 49,
+    "total_p95_seconds": 49,
+    "cache_per_second": 73,
+    "hpa_current": 1,
+    "hpa_desired": 1,
+    "alerts": 4
+  }
+}

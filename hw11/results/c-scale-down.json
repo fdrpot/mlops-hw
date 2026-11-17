@@ -1,0 +1,8 @@
+{
+  "load_stopped_unix": 1794925408.0327418,
+  "wait_seconds": 60.655538084043656,
+  "observed_unix": 1794925468.688355,
+  "arrival_phase_ended_unix": 1794925406.598699,
+  "last_actual_send_unix": 1794925406.3496327,
+  "last_completion_unix": 1794925407.9860687
+}

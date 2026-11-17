@@ -1,0 +1,13 @@
+{
+  "file": "lecture11-extended.mp4",
+  "sha256": "81f4b06b3ddc2f1858e1019d9e749077765c590125a5636b3c5a9c99ed335031",
+  "title": "Лекция 11 · Kubernetes, GPU и инженерные кейсы",
+  "chosen_case": {
+    "company": "Google Cloud / Vertex AI",
+    "slide": 70,
+    "video_start_seconds": 494.47,
+    "video_end_seconds": 516.73,
+    "topic": "prefix-cache awareness, queue depth, admission control",
+    "primary_source": "https://cloud.google.com/blog/products/containers-kubernetes/how-gke-inference-gateway-improved-latency-for-vertex-ai"
+  }
+}

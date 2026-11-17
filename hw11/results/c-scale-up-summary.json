@@ -1,0 +1,90 @@
+{
+  "planned": 720,
+  "sent": 720,
+  "completed": 720,
+  "rejected": 0,
+  "aborted": 0,
+  "timeouts": 0,
+  "transport_errors": 0,
+  "http_5xx": 0,
+  "error_fraction": 0.0,
+  "timeout_fraction": 0.0,
+  "by_pod": {
+    "hw11-api-f9fc64b4-r6vvz": 285,
+    "hw11-api-f9fc64b4-z74m7": 268,
+    "hw11-api-f9fc64b4-dqsvr": 167
+  },
+  "successful_n": 720,
+  "ttfc_seconds": {
+    "n": 720,
+    "p50": 3.005876117000298,
+    "p95": 18.589438481800084
+  },
+  "total_seconds": {
+    "n": 720,
+    "p50": 3.307636479500161,
+    "p95": 18.89268384809977
+  },
+  "queue_seconds": {
+    "n": 720,
+    "p50": 2.6371188829998573,
+    "p95": 18.218183431250253
+  },
+  "send_lag_seconds": {
+    "n": 720,
+    "p50": 0.0013884731547477713,
+    "p95": 0.0034859650047110334
+  },
+  "by_pod_latency": {
+    "hw11-api-f9fc64b4-dqsvr": {
+      "n": 167,
+      "ttfc_seconds": {
+        "n": 167,
+        "p50": 0.7962341779998496,
+        "p95": 2.2064328001999893
+      },
+      "queue_seconds": {
+        "n": 167,
+        "p50": 0.48112496599969745,
+        "p95": 1.8697959294999225
+      }
+    },
+    "hw11-api-f9fc64b4-r6vvz": {
+      "n": 285,
+      "ttfc_seconds": {
+        "n": 285,
+        "p50": 10.68750941999997,
+        "p95": 19.869735972400306
+      },
+      "queue_seconds": {
+        "n": 285,
+        "p50": 10.384919595000156,
+        "p95": 19.555657402199724
+      }
+    },
+    "hw11-api-f9fc64b4-z74m7": {
+      "n": 268,
+      "ttfc_seconds": {
+        "n": 268,
+        "p50": 2.5523714424998616,
+        "p95": 8.115053042150201
+      },
+      "queue_seconds": {
+        "n": 268,
+        "p50": 2.2303303085000152,
+        "p95": 7.803947402899847
+      }
+    }
+  },
+  "run": "c-scale-up",
+  "service": "normal",
+  "traffic": "uniform",
+  "measurement_seconds": 180,
+  "rps": 4,
+  "schedule_sha256": "997d5d205191d9e9394a54a4929eaa528900691753be187141f407c6c1fbb642",
+  "start_unix": 1794925226.598699,
+  "end_unix": 1794925407.999138,
+  "keep_alive": false,
+  "retries": 0,
+  "backend_mode": "simulated"
+}

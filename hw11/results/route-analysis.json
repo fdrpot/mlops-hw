@@ -1,0 +1,1467 @@
+{
+  "generated_utc": "2026-11-17T14:47:43.345420+00:00",
+  "completed_required_runs": 12,
+  "required_runs": 12,
+  "pending_runs": [],
+  "runs": {
+    "b-hot80-normal-1": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-sqrcb": 245,
+        "hw11-api-678d4fb4cb-gzv8g": 235
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-gzv8g",
+        "hw11-api-678d4fb4cb-sqrcb"
+      ],
+      "busiest_pod_share": 0.5104166666666666,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-sqrcb": 198,
+          "hw11-api-678d4fb4cb-gzv8g": 186
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-gzv8g": 13,
+          "hw11-api-678d4fb4cb-sqrcb": 19
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-gzv8g": 19,
+          "hw11-api-678d4fb4cb-sqrcb": 13
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-gzv8g": 17,
+          "hw11-api-678d4fb4cb-sqrcb": 15
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.28415866700015613,
+        "p95_seconds": 1.0831440764498665
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.21853407300000072,
+        "p95_seconds": 0.9946514877502056
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.6270725490001041,
+        "p95_seconds": 1.4305420814498797
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0014401259322767146,
+        "p95_seconds": 0.00526067486116517
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-hot80-normal-2": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-jcgcj": 232,
+        "hw11-api-678d4fb4cb-7tfsf": 248
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-7tfsf",
+        "hw11-api-678d4fb4cb-jcgcj"
+      ],
+      "busiest_pod_share": 0.5166666666666667,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-jcgcj": 184,
+          "hw11-api-678d4fb4cb-7tfsf": 200
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-jcgcj": 13,
+          "hw11-api-678d4fb4cb-7tfsf": 19
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-jcgcj": 18,
+          "hw11-api-678d4fb4cb-7tfsf": 14
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-jcgcj": 17,
+          "hw11-api-678d4fb4cb-7tfsf": 15
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.3786405539999578,
+        "p95_seconds": 1.2252097130501622
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.31490396799995324,
+        "p95_seconds": 1.156051537150142
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.7239885389999472,
+        "p95_seconds": 1.5706499695498677
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0018433066970828804,
+        "p95_seconds": 0.005761595317949285
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-hot80-normal-3": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-s99f5": 250,
+        "hw11-api-678d4fb4cb-crstv": 230
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-crstv",
+        "hw11-api-678d4fb4cb-s99f5"
+      ],
+      "busiest_pod_share": 0.5208333333333334,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-s99f5": 206,
+          "hw11-api-678d4fb4cb-crstv": 178
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-crstv": 19,
+          "hw11-api-678d4fb4cb-s99f5": 13
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-s99f5": 15,
+          "hw11-api-678d4fb4cb-crstv": 17
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-s99f5": 16,
+          "hw11-api-678d4fb4cb-crstv": 16
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.348147798500122,
+        "p95_seconds": 1.365410494900038
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.2836202809999122,
+        "p95_seconds": 1.3010818995001951
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.6915365629999997,
+        "p95_seconds": 1.7095533592003673
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0013808639737362682,
+        "p95_seconds": 0.005201193721222806
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-hot80-sticky-1": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 451,
+        "rejected": 29
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.06041666666666667,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-wlts8": 384,
+        "hw11-api-678d4fb4cb-5q6xx": 96
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-5q6xx",
+        "hw11-api-678d4fb4cb-wlts8"
+      ],
+      "busiest_pod_share": 0.8,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-wlts8": 384
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-5q6xx": 32
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-5q6xx": 32
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-5q6xx": 32
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 451,
+        "p50_seconds": 13.628508237999995,
+        "p95_seconds": 25.931223388499916
+      },
+      "queue": {
+        "n": 451,
+        "p50_seconds": 13.565174742999943,
+        "p95_seconds": 25.868179892000057
+      },
+      "total": {
+        "n": 451,
+        "p50_seconds": 13.972483884999974,
+        "p95_seconds": 26.273823390499956
+      },
+      "send_lag": {
+        "n": 451,
+        "p50_seconds": 0.0015383915254005842,
+        "p95_seconds": 0.004653904816109389
+      },
+      "cache_hit_fraction": 0.9645232815964523,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-hot80-sticky-2": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 419,
+        "rejected": 61
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.12708333333333333,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-ql74l": 416,
+        "hw11-api-678d4fb4cb-wbdmm": 64
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-ql74l",
+        "hw11-api-678d4fb4cb-wbdmm"
+      ],
+      "busiest_pod_share": 0.8666666666666667,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-ql74l": 384
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-wbdmm": 32
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-ql74l": 32
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-wbdmm": 32
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 419,
+        "p50_seconds": 18.816969299999982,
+        "p95_seconds": 26.08044902010006
+      },
+      "queue": {
+        "n": 419,
+        "p50_seconds": 18.753824343999895,
+        "p95_seconds": 26.012741005300086
+      },
+      "total": {
+        "n": 419,
+        "p50_seconds": 19.164917537000292,
+        "p95_seconds": 26.424075198899935
+      },
+      "send_lag": {
+        "n": 419,
+        "p50_seconds": 0.0022686275360683794,
+        "p95_seconds": 0.006701296077699223
+      },
+      "cache_hit_fraction": 0.9618138424821002,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-hot80-sticky-3": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 356,
+        "rejected": 124
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.25833333333333336,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-7rqch": 480,
+        "hw11-api-678d4fb4cb-zrzv7": 0
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-7rqch",
+        "hw11-api-678d4fb4cb-zrzv7"
+      ],
+      "busiest_pod_share": 1.0,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-7rqch": 384
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-7rqch": 32
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-7rqch": 32
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-7rqch": 32
+        }
+      },
+      "sent_by_client": {
+        "0": 384,
+        "1": 32,
+        "2": 32,
+        "3": 32
+      },
+      "ttfc": {
+        "n": 356,
+        "p50_seconds": 25.864190766000092,
+        "p95_seconds": 26.065574774500192
+      },
+      "queue": {
+        "n": 356,
+        "p50_seconds": 25.795811472499963,
+        "p95_seconds": 26.00116718474999
+      },
+      "total": {
+        "n": 356,
+        "p50_seconds": 26.20892349299993,
+        "p95_seconds": 26.409418835500333
+      },
+      "send_lag": {
+        "n": 356,
+        "p50_seconds": 0.0017613811487535713,
+        "p95_seconds": 0.005191547898675708
+      },
+      "cache_hit_fraction": 0.9775280898876404,
+      "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d"
+    },
+    "b-uniform-normal-1": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-sr7pm": 212,
+        "hw11-api-678d4fb4cb-76vss": 268
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-76vss",
+        "hw11-api-678d4fb4cb-sr7pm"
+      ],
+      "busiest_pod_share": 0.5583333333333333,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-sr7pm": 52,
+          "hw11-api-678d4fb4cb-76vss": 68
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-sr7pm": 58,
+          "hw11-api-678d4fb4cb-76vss": 62
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-76vss": 72,
+          "hw11-api-678d4fb4cb-sr7pm": 48
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-76vss": 66,
+          "hw11-api-678d4fb4cb-sr7pm": 54
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.2674735394999743,
+        "p95_seconds": 1.359735547249852
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.1782015205000107,
+        "p95_seconds": 1.2953991658999824
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.6112358574999917,
+        "p95_seconds": 1.703139721149955
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0016031810835102078,
+        "p95_seconds": 0.00350786768358375
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    },
+    "b-uniform-normal-2": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-7z6rr": 248,
+        "hw11-api-678d4fb4cb-2x5xx": 232
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-2x5xx",
+        "hw11-api-678d4fb4cb-7z6rr"
+      ],
+      "busiest_pod_share": 0.5166666666666667,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-7z6rr": 68,
+          "hw11-api-678d4fb4cb-2x5xx": 52
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-2x5xx": 61,
+          "hw11-api-678d4fb4cb-7z6rr": 59
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-7z6rr": 61,
+          "hw11-api-678d4fb4cb-2x5xx": 59
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-7z6rr": 60,
+          "hw11-api-678d4fb4cb-2x5xx": 60
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.2750534984999149,
+        "p95_seconds": 1.0793493724499625
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.17828490199997304,
+        "p95_seconds": 1.015771927849994
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.6187256639999532,
+        "p95_seconds": 1.4253273886498845
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0017139909119805452,
+        "p95_seconds": 0.003923509723608727
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    },
+    "b-uniform-normal-3": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-hrcgt": 247,
+        "hw11-api-678d4fb4cb-5nlc2": 233
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-5nlc2",
+        "hw11-api-678d4fb4cb-hrcgt"
+      ],
+      "busiest_pod_share": 0.5145833333333333,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-hrcgt": 61,
+          "hw11-api-678d4fb4cb-5nlc2": 59
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-5nlc2": 56,
+          "hw11-api-678d4fb4cb-hrcgt": 64
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-5nlc2": 66,
+          "hw11-api-678d4fb4cb-hrcgt": 54
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-5nlc2": 52,
+          "hw11-api-678d4fb4cb-hrcgt": 68
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.30879042349999963,
+        "p95_seconds": 1.2265207031998662
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 0.2320276020000165,
+        "p95_seconds": 1.1402346970497992
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.6524500650000391,
+        "p95_seconds": 1.5703907881000523
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0015992599235232774,
+        "p95_seconds": 0.0038973496759126644
+      },
+      "cache_hit_fraction": 0.9666666666666667,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    },
+    "b-uniform-sticky-1": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 356,
+        "rejected": 124
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.25833333333333336,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-dbxtt": 480,
+        "hw11-api-678d4fb4cb-nqmhf": 0
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-dbxtt",
+        "hw11-api-678d4fb4cb-nqmhf"
+      ],
+      "busiest_pod_share": 1.0,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-dbxtt": 120
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-dbxtt": 120
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-dbxtt": 120
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-dbxtt": 120
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 356,
+        "p50_seconds": 25.874515316999975,
+        "p95_seconds": 26.082182622750054
+      },
+      "queue": {
+        "n": 356,
+        "p50_seconds": 25.80730943049997,
+        "p95_seconds": 26.017288996249988
+      },
+      "total": {
+        "n": 356,
+        "p50_seconds": 26.22008999899998,
+        "p95_seconds": 26.426416280250066
+      },
+      "send_lag": {
+        "n": 356,
+        "p50_seconds": 0.0015612463140541877,
+        "p95_seconds": 0.0031326699825058313
+      },
+      "cache_hit_fraction": 0.9775280898876404,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    },
+    "b-uniform-sticky-2": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-vgm2v": 240,
+        "hw11-api-678d4fb4cb-h7br7": 240
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-h7br7",
+        "hw11-api-678d4fb4cb-vgm2v"
+      ],
+      "busiest_pod_share": 0.5,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-vgm2v": 120
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-h7br7": 120
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-vgm2v": 120
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-h7br7": 120
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.06263346250000268,
+        "p95_seconds": 0.06492516140004909
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 5.4020499987927906e-05,
+        "p95_seconds": 9.22746498531523e-05
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.4065988790000574,
+        "p95_seconds": 0.4102962914499358
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0013858376294137997,
+        "p95_seconds": 0.0035347059386708676
+      },
+      "cache_hit_fraction": 0.9833333333333333,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    },
+    "b-uniform-sticky-3": {
+      "summary_available": true,
+      "measurement_seconds": 120,
+      "raw_rows": 480,
+      "summary_planned": 480,
+      "raw_matches_summary": true,
+      "scheduled_fields_match_raw": true,
+      "duplicate_attempt_keys": [],
+      "outcomes": {
+        "completed": 480
+      },
+      "http_5xx": 0,
+      "error_fraction": 0.0,
+      "by_pod": {
+        "hw11-api-678d4fb4cb-47rtj": 240,
+        "hw11-api-678d4fb4cb-xrcf5": 240
+      },
+      "actual_api_pods": [
+        "hw11-api-678d4fb4cb-47rtj",
+        "hw11-api-678d4fb4cb-xrcf5"
+      ],
+      "busiest_pod_share": 0.5,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-47rtj": 120
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-xrcf5": 120
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-47rtj": 120
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-xrcf5": 120
+        }
+      },
+      "sent_by_client": {
+        "0": 120,
+        "1": 120,
+        "2": 120,
+        "3": 120
+      },
+      "ttfc": {
+        "n": 480,
+        "p50_seconds": 0.06289396400006808,
+        "p95_seconds": 0.06526517445003037
+      },
+      "queue": {
+        "n": 480,
+        "p50_seconds": 5.397950008045882e-05,
+        "p95_seconds": 8.111424994012847e-05
+      },
+      "total": {
+        "n": 480,
+        "p50_seconds": 0.406664620000015,
+        "p95_seconds": 0.4105267613500018
+      },
+      "send_lag": {
+        "n": 480,
+        "p50_seconds": 0.0017501633026313357,
+        "p95_seconds": 0.004195698552575776
+      },
+      "cache_hit_fraction": 0.9833333333333333,
+      "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11"
+    }
+  },
+  "paired_comparisons": [
+    {
+      "traffic": "uniform",
+      "repeat": 1,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 26.082182622750054,
+      "normal_p95_ttfc_seconds": 1.359735547249852,
+      "p95_reduction_fraction": 0.9478672637594436,
+      "sticky_error_fraction": 0.25833333333333336,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 1.0,
+      "normal_busiest_pod_share": 0.5583333333333333
+    },
+    {
+      "traffic": "uniform",
+      "repeat": 2,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 0.06492516140004909,
+      "normal_p95_ttfc_seconds": 1.0793493724499625,
+      "p95_reduction_fraction": -15.624515814436567,
+      "sticky_error_fraction": 0.0,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 0.5,
+      "normal_busiest_pod_share": 0.5166666666666667
+    },
+    {
+      "traffic": "uniform",
+      "repeat": 3,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 0.06526517445003037,
+      "normal_p95_ttfc_seconds": 1.2265207031998662,
+      "p95_reduction_fraction": -17.79288170966186,
+      "sticky_error_fraction": 0.0,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 0.5,
+      "normal_busiest_pod_share": 0.5145833333333333
+    },
+    {
+      "traffic": "hot80",
+      "repeat": 1,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 25.931223388499916,
+      "normal_p95_ttfc_seconds": 1.0831440764498665,
+      "p95_reduction_fraction": 0.9582301204913369,
+      "sticky_error_fraction": 0.06041666666666667,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 0.8,
+      "normal_busiest_pod_share": 0.5104166666666666
+    },
+    {
+      "traffic": "hot80",
+      "repeat": 2,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 26.08044902010006,
+      "normal_p95_ttfc_seconds": 1.2252097130501622,
+      "p95_reduction_fraction": 0.9530219087828626,
+      "sticky_error_fraction": 0.12708333333333333,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 0.8666666666666667,
+      "normal_busiest_pod_share": 0.5166666666666667
+    },
+    {
+      "traffic": "hot80",
+      "repeat": 3,
+      "identical_schedules": true,
+      "sticky_p95_ttfc_seconds": 26.065574774500192,
+      "normal_p95_ttfc_seconds": 1.365410494900038,
+      "p95_reduction_fraction": 0.9476163289429622,
+      "sticky_error_fraction": 0.25833333333333336,
+      "normal_error_fraction": 0.0,
+      "sticky_busiest_pod_share": 1.0,
+      "normal_busiest_pod_share": 0.5208333333333334
+    }
+  ],
+  "aggregates": [
+    {
+      "traffic": "uniform",
+      "policy": "sticky",
+      "complete_repeats": 3,
+      "runs": [
+        "b-uniform-sticky-1",
+        "b-uniform-sticky-2",
+        "b-uniform-sticky-3"
+      ],
+      "individual_run_p95_ttfc_seconds": [
+        26.082182622750054,
+        0.06492516140004909,
+        0.06526517445003037
+      ],
+      "median_of_run_p95_seconds": 0.06526517445003037,
+      "pooled_request_ttfc": {
+        "n": 1316,
+        "p50_seconds": 0.06325630649996583,
+        "p95_seconds": 26.02063463275013
+      },
+      "pooled_request_queue": {
+        "n": 1316,
+        "p50_seconds": 5.71455000226706e-05,
+        "p95_seconds": 25.95435308125002
+      },
+      "outcomes": {
+        "completed": 1316,
+        "rejected": 124
+      }
+    },
+    {
+      "traffic": "uniform",
+      "policy": "normal",
+      "complete_repeats": 3,
+      "runs": [
+        "b-uniform-normal-1",
+        "b-uniform-normal-2",
+        "b-uniform-normal-3"
+      ],
+      "individual_run_p95_ttfc_seconds": [
+        1.359735547249852,
+        1.0793493724499625,
+        1.2265207031998662
+      ],
+      "median_of_run_p95_seconds": 1.2265207031998662,
+      "pooled_request_ttfc": {
+        "n": 1440,
+        "p50_seconds": 0.27926405600010185,
+        "p95_seconds": 1.2259761784998655
+      },
+      "pooled_request_queue": {
+        "n": 1440,
+        "p50_seconds": 0.21455890899994756,
+        "p95_seconds": 1.1436897947000717
+      },
+      "outcomes": {
+        "completed": 1440
+      }
+    },
+    {
+      "traffic": "hot80",
+      "policy": "sticky",
+      "complete_repeats": 3,
+      "runs": [
+        "b-hot80-sticky-1",
+        "b-hot80-sticky-2",
+        "b-hot80-sticky-3"
+      ],
+      "individual_run_p95_ttfc_seconds": [
+        25.931223388499916,
+        26.08044902010006,
+        26.065574774500192
+      ],
+      "median_of_run_p95_seconds": 26.065574774500192,
+      "pooled_request_ttfc": {
+        "n": 1226,
+        "p50_seconds": 19.203169159000026,
+        "p95_seconds": 26.053719903000115
+      },
+      "pooled_request_queue": {
+        "n": 1226,
+        "p50_seconds": 19.139588904999982,
+        "p95_seconds": 25.987086785500196
+      },
+      "outcomes": {
+        "completed": 1226,
+        "rejected": 214
+      }
+    },
+    {
+      "traffic": "hot80",
+      "policy": "normal",
+      "complete_repeats": 3,
+      "runs": [
+        "b-hot80-normal-1",
+        "b-hot80-normal-2",
+        "b-hot80-normal-3"
+      ],
+      "individual_run_p95_ttfc_seconds": [
+        1.0831440764498665,
+        1.2252097130501622,
+        1.365410494900038
+      ],
+      "median_of_run_p95_seconds": 1.2252097130501622,
+      "pooled_request_ttfc": {
+        "n": 1440,
+        "p50_seconds": 0.34566873600010695,
+        "p95_seconds": 1.22227487250002
+      },
+      "pooled_request_queue": {
+        "n": 1440,
+        "p50_seconds": 0.28034292250004,
+        "p95_seconds": 1.1553243614003121
+      },
+      "outcomes": {
+        "completed": 1440
+      }
+    }
+  ],
+  "no_skew_uniform_sticky_cases": [
+    {
+      "run": "b-uniform-sticky-2",
+      "busiest_pod_share": 0.5,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-vgm2v": 120
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-h7br7": 120
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-vgm2v": 120
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-h7br7": 120
+        }
+      }
+    },
+    {
+      "run": "b-uniform-sticky-3",
+      "busiest_pod_share": 0.5,
+      "by_client_pod": {
+        "0": {
+          "hw11-api-678d4fb4cb-47rtj": 120
+        },
+        "1": {
+          "hw11-api-678d4fb4cb-xrcf5": 120
+        },
+        "2": {
+          "hw11-api-678d4fb4cb-47rtj": 120
+        },
+        "3": {
+          "hw11-api-678d4fb4cb-xrcf5": 120
+        }
+      }
+    }
+  ],
+  "no_skew_explanation": "ClientIP fixes each source IP to one endpoint; four equal-rate clients can hash to two Pods in a 2:2 split. The raw client→Pod mapping, rather than the policy name, explains this observed no-skew case. It does not establish that hot80 is balanced.",
+  "reconstructed_idle": {
+    "method": "Approximation from client wall-clock intervals [sent_unix+server_queue_seconds,completed_unix]. All attempts must be complete or explicitly rejected HTTP429 (no backend work). Network/clock boundary uncertainty remains; Prometheus samples are the authoritative simultaneous-gauge check.",
+    "examples": [
+      {
+        "run": "b-hot80-sticky-1",
+        "request_id": "b-hot80-sticky-1-2",
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "queue_seconds": 0.6791163909999796,
+        "other_pod": "hw11-api-678d4fb4cb-5q6xx",
+        "estimated_idle_at_unix": 1794924021.2639658
+      },
+      {
+        "run": "b-hot80-sticky-1",
+        "request_id": "b-hot80-sticky-1-3",
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "queue_seconds": 0.9971807320000607,
+        "other_pod": "hw11-api-678d4fb4cb-5q6xx",
+        "estimated_idle_at_unix": 1794924021.672517
+      },
+      {
+        "run": "b-hot80-sticky-1",
+        "request_id": "b-hot80-sticky-1-4",
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "queue_seconds": 1.306082669999796,
+        "other_pod": "hw11-api-678d4fb4cb-5q6xx",
+        "estimated_idle_at_unix": 1794924022.0777624
+      },
+      {
+        "run": "b-hot80-sticky-2",
+        "request_id": "b-hot80-sticky-2-2",
+        "waiting_pod": "hw11-api-678d4fb4cb-ql74l",
+        "queue_seconds": 0.6588730660000692,
+        "other_pod": "hw11-api-678d4fb4cb-wbdmm",
+        "estimated_idle_at_unix": 1794924352.2442863
+      },
+      {
+        "run": "b-hot80-sticky-2",
+        "request_id": "b-hot80-sticky-2-3",
+        "waiting_pod": "hw11-api-678d4fb4cb-ql74l",
+        "queue_seconds": 0.9723831119999886,
+        "other_pod": "hw11-api-678d4fb4cb-wbdmm",
+        "estimated_idle_at_unix": 1794924352.6502674
+      },
+      {
+        "run": "b-hot80-sticky-2",
+        "request_id": "b-hot80-sticky-2-4",
+        "waiting_pod": "hw11-api-678d4fb4cb-ql74l",
+        "queue_seconds": 1.2888827209999363,
+        "other_pod": "hw11-api-678d4fb4cb-wbdmm",
+        "estimated_idle_at_unix": 1794924353.061342
+      },
+      {
+        "run": "b-hot80-sticky-3",
+        "request_id": "b-hot80-sticky-3-2",
+        "waiting_pod": "hw11-api-678d4fb4cb-7rqch",
+        "queue_seconds": 0.6696467990000201,
+        "other_pod": "hw11-api-678d4fb4cb-zrzv7",
+        "estimated_idle_at_unix": 1794924801.234791
+      },
+      {
+        "run": "b-hot80-sticky-3",
+        "request_id": "b-hot80-sticky-3-3",
+        "waiting_pod": "hw11-api-678d4fb4cb-7rqch",
+        "queue_seconds": 0.9834998189999169,
+        "other_pod": "hw11-api-678d4fb4cb-zrzv7",
+        "estimated_idle_at_unix": 1794924801.6438515
+      },
+      {
+        "run": "b-hot80-sticky-3",
+        "request_id": "b-hot80-sticky-3-4",
+        "waiting_pod": "hw11-api-678d4fb4cb-7rqch",
+        "queue_seconds": 1.3047876670002552,
+        "other_pod": "hw11-api-678d4fb4cb-zrzv7",
+        "estimated_idle_at_unix": 1794924802.0519545
+      },
+      {
+        "run": "b-uniform-sticky-1",
+        "request_id": "b-uniform-sticky-1-2",
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "queue_seconds": 0.6225431179999532,
+        "other_pod": "hw11-api-678d4fb4cb-nqmhf",
+        "estimated_idle_at_unix": 1794923077.288233
+      },
+      {
+        "run": "b-uniform-sticky-1",
+        "request_id": "b-uniform-sticky-1-3",
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "queue_seconds": 0.9445136069999762,
+        "other_pod": "hw11-api-678d4fb4cb-nqmhf",
+        "estimated_idle_at_unix": 1794923077.697483
+      },
+      {
+        "run": "b-uniform-sticky-1",
+        "request_id": "b-uniform-sticky-1-4",
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "queue_seconds": 1.285471475999998,
+        "other_pod": "hw11-api-678d4fb4cb-nqmhf",
+        "estimated_idle_at_unix": 1794923078.11375
+      }
+    ]
+  },
+  "prometheus_simultaneous_idle": {
+    "source": "results/monitoring/timeseries.json",
+    "export_available": true,
+    "step_seconds": 5.0,
+    "simultaneous_samples": 116,
+    "samples_by_run": {
+      "b-uniform-sticky-1": 29,
+      "b-hot80-sticky-1": 29,
+      "b-hot80-sticky-2": 29,
+      "b-hot80-sticky-3": 29
+    },
+    "hot80_samples": [
+      {
+        "unix": 1794924025.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 2.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924030.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 8.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924035.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 12.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924040.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 15.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924045.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 19.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924050.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 23.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924055.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 26.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924060.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 30.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924065.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 34.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      },
+      {
+        "unix": 1794924070.632,
+        "runs": [
+          "b-hot80-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-wlts8",
+        "waiting": 37.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-5q6xx"
+      }
+    ],
+    "first_samples": [
+      {
+        "unix": 1794923080.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 4.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923085.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 14.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923090.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 21.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923095.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 29.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923100.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 37.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923105.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 44.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923110.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 52.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923115.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 60.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923120.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 63.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923125.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923130.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923135.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923140.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923145.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923150.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923155.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 63.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923160.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923165.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923170.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      },
+      {
+        "unix": 1794923175.632,
+        "runs": [
+          "b-uniform-sticky-1"
+        ],
+        "waiting_pod": "hw11-api-678d4fb4cb-dbxtt",
+        "waiting": 64.0,
+        "running": 1.0,
+        "idle_pod": "hw11-api-678d4fb4cb-nqmhf"
+      }
+    ]
+  },
+  "method": "Per-run latency quantiles over successful request cohorts. Pooled request quantiles and median of run p95 are explicitly separate. No averaging of Pod quantiles. No network or control-plane calls."
+}

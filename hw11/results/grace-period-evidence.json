@@ -1,0 +1,26 @@
+{
+  "request_id": "a-rollout-0",
+  "pod": "hw11-api-7887894b44-snpcn",
+  "drain_epoch": 1794922628.2099302,
+  "running_at_drain": 1,
+  "waiting_at_drain": 3,
+  "completed_epoch": 1794922639.2459826,
+  "seconds_after_drain": 11.036052465438843,
+  "chunks": 80,
+  "grace_period_seconds": 60,
+  "uvicorn_graceful_timeout_seconds": 55,
+  "source_log": "a-rollout-live-server.log",
+  "source_client_log": "a-rollout-client-0.jsonl",
+  "ordering": {
+    "drain_line_1based": 111,
+    "shutting_down_lines": [
+      {
+        "line_1based": 119,
+        "text": "[pod/hw11-api-7887894b44-snpcn/api] INFO:     Shutting down"
+      }
+    ],
+    "completion_line_1based": 126,
+    "same_pod_shutting_down_before_request_complete": true
+  },
+  "limits": "Shutting down has no timestamp in the Uvicorn log. Log ordering establishes shutdown before completion; no exact SIGTERM timestamp is inferred."
+}

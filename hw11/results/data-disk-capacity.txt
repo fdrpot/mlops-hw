@@ -1,0 +1,1 @@
+-rw-r--r--  1 potapov-fd  staff    16G Nov 17 17:46 /Users/potapov-fd/.colima/_lima/_disks/colima-hw11/datadisk

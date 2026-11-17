@@ -1,0 +1,1 @@
+time="2026-11-17T17:48:19+03:00" level=fatal msg="colima [profile=hw11] is not running"

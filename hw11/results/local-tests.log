@@ -1,0 +1,33 @@
+.venv/bin/python -m unittest discover -s tests -v
+/Users/potapov-fd/Desktop/MLOps/hw/hw11/.venv/lib/python3.12/site-packages/fastapi/testclient.py:1: StarletteDeprecationWarning: Using `httpx` with `starlette.testclient` is deprecated; install `httpx2` instead.
+  from starlette.testclient import TestClient as TestClient  # noqa
+test_deterministic_open_loop_schedule_and_hot_client_share (test_accounting.AccountingTests.test_deterministic_open_loop_schedule_and_hot_client_share) ... ok
+test_real_http_completed_rejected_and_truncated_attempts (test_accounting.AccountingTests.test_real_http_completed_rejected_and_truncated_attempts) ... ok
+test_original_probe_bug_then_fix (test_backend.ArtifactAndProbeTests.test_original_probe_bug_then_fix) ... {"event": "warmup_started", "time_epoch": 1794922916.457389, "monotonic": 488626.298505166, "pod": "local", "model_version": "A", "backend_mode": "simulated", "warmup_seconds": 10, "artifact_sha256": "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886"}
+{"event": "request_admitted", "time_epoch": 1794922916.46134, "monotonic": 488626.302455458, "pod": "local", "model_version": "A", "backend_mode": "simulated", "request_id": "445a83ad-64c7-4199-90e9-320558d4dd3f", "session_id": "anonymous", "warm": false, "ready": false, "client_ip": "testclient", "prompt_chars": 9, "max_chunks": 4}
+{"event": "request_rejected", "time_epoch": 1794922916.461376, "monotonic": 488626.302491333, "pod": "local", "model_version": "A", "backend_mode": "simulated", "request_id": "445a83ad-64c7-4199-90e9-320558d4dd3f", "session_id": "anonymous", "status": 503, "reason": "backend_not_ready", "warm": false}
+{"event": "warmup_started", "time_epoch": 1794922916.4636621, "monotonic": 488626.3047775, "pod": "local", "model_version": "A", "backend_mode": "simulated", "warmup_seconds": 10, "artifact_sha256": "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886"}
+{"event": "request_admitted", "time_epoch": 1794922916.4662452, "monotonic": 488626.307361041, "pod": "local", "model_version": "A", "backend_mode": "simulated", "request_id": "0a768e58-e7ff-4f78-bf5a-38a34365e9c9", "session_id": "anonymous", "warm": false, "ready": false, "client_ip": "testclient", "prompt_chars": 9, "max_chunks": 4}
+{"event": "request_rejected", "time_epoch": 1794922916.466281, "monotonic": 488626.307396833, "pod": "local", "model_version": "A", "backend_mode": "simulated", "request_id": "0a768e58-e7ff-4f78-bf5a-38a34365e9c9", "session_id": "anonymous", "status": 503, "reason": "backend_not_ready", "warm": false}
+ok
+test_wrong_artifact_hash_fails_closed (test_backend.ArtifactAndProbeTests.test_wrong_artifact_hash_fails_closed) ... {"event": "load_failed", "time_epoch": 1794922916.4688692, "monotonic": 488626.309985041, "pod": "local", "model_version": null, "backend_mode": "simulated", "error": "ValueError: Artifact SHA256 mismatch"}
+{"event": "request_admitted", "time_epoch": 1794922916.505065, "monotonic": 488626.346180916, "pod": "local", "model_version": null, "backend_mode": "simulated", "request_id": "b1eb7b3b-7b45-4628-8647-5a83a34de5c5", "session_id": "anonymous", "warm": false, "ready": false, "client_ip": "testclient", "prompt_chars": 1, "max_chunks": 4}
+{"event": "request_rejected", "time_epoch": 1794922916.5051148, "monotonic": 488626.346230875, "pod": "local", "model_version": null, "backend_mode": "simulated", "request_id": "b1eb7b3b-7b45-4628-8647-5a83a34de5c5", "session_id": "anonymous", "status": 503, "reason": "backend_not_ready", "warm": false}
+ok
+test_dialogs_are_isolated_and_identifiable (test_backend.LiveHTTPTests.test_dialogs_are_isolated_and_identifiable) ... ok
+test_rejections_and_aborted_stream_have_distinct_counters (test_backend.LiveHTTPTests.test_rejections_and_aborted_stream_have_distinct_counters) ... ok
+test_validation_and_lru_cache (test_backend.LiveHTTPTests.test_validation_and_lru_cache) ... ok
+test_01_warmup_is_excluded_from_endpoints (test_kubernetes.KubernetesChecks.test_01_warmup_is_excluded_from_endpoints) ... skipped 'set HW11_K8S_TESTS=1 with the HW11 cluster running'
+test_02_rollback_returns_actual_artifact_a (test_kubernetes.KubernetesChecks.test_02_rollback_returns_actual_artifact_a) ... skipped 'set HW11_K8S_TESTS=1 with the HW11 cluster running'
+test_03_replaced_replica_restores_version_and_dialogue (test_kubernetes.KubernetesChecks.test_03_replaced_replica_restores_version_and_dialogue) ... skipped 'set HW11_K8S_TESTS=1 with the HW11 cluster running'
+test_04_two_dialogues_are_isolated_over_real_http (test_kubernetes.KubernetesChecks.test_04_two_dialogues_are_isolated_over_real_http) ... skipped 'set HW11_K8S_TESTS=1 with the HW11 cluster running'
+
+----------------------------------------------------------------------
+Ran 11 tests in 1.160s
+
+OK (skipped=4)
+.tools/bin/helm lint chart
+==> Linting chart
+[INFO] Chart.yaml: icon is recommended
+
+1 chart(s) linted, 0 chart(s) failed

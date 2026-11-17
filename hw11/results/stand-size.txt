@@ -1,0 +1,3 @@
+Filesystem      Size  Used Avail Use% Mounted on
+/dev/root        19G  885M   18G   5% /
+/dev/vdb1        16G  4.3G   11G  29% /var/lib/docker

@@ -1,0 +1,76 @@
+{
+  "planned": 480,
+  "sent": 480,
+  "completed": 480,
+  "rejected": 0,
+  "aborted": 0,
+  "timeouts": 0,
+  "transport_errors": 0,
+  "http_5xx": 0,
+  "error_fraction": 0.0,
+  "timeout_fraction": 0.0,
+  "by_pod": {
+    "hw11-api-678d4fb4cb-hrcgt": 247,
+    "hw11-api-678d4fb4cb-5nlc2": 233
+  },
+  "successful_n": 480,
+  "ttfc_seconds": {
+    "n": 480,
+    "p50": 0.30879042349999963,
+    "p95": 1.2265207031998662
+  },
+  "total_seconds": {
+    "n": 480,
+    "p50": 0.6524500650000391,
+    "p95": 1.5703907881000523
+  },
+  "queue_seconds": {
+    "n": 480,
+    "p50": 0.2320276020000165,
+    "p95": 1.1402346970497992
+  },
+  "send_lag_seconds": {
+    "n": 480,
+    "p50": 0.0015992599235232774,
+    "p95": 0.0038973496759126644
+  },
+  "by_pod_latency": {
+    "hw11-api-678d4fb4cb-5nlc2": {
+      "n": 233,
+      "ttfc_seconds": {
+        "n": 233,
+        "p50": 0.2541565569999875,
+        "p95": 1.2130543127999767
+      },
+      "queue_seconds": {
+        "n": 233,
+        "p50": 0.17673166999998102,
+        "p95": 1.1302114001998684
+      }
+    },
+    "hw11-api-678d4fb4cb-hrcgt": {
+      "n": 247,
+      "ttfc_seconds": {
+        "n": 247,
+        "p50": 0.37324646800016126,
+        "p95": 1.28780940130009
+      },
+      "queue_seconds": {
+        "n": 247,
+        "p50": 0.3051450289999593,
+        "p95": 1.2253837976000095
+      }
+    }
+  },
+  "run": "b-uniform-normal-3",
+  "service": "normal",
+  "traffic": "uniform",
+  "measurement_seconds": 120,
+  "rps": 4,
+  "schedule_sha256": "bbfee2e98269b29999429ea66a0978cb7f9a79a77a95ec14e492d57725617b11",
+  "start_unix": 1794923866.4345238,
+  "end_unix": 1794923987.7081568,
+  "keep_alive": false,
+  "retries": 0,
+  "backend_mode": "simulated"
+}

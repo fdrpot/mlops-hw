@@ -1,0 +1,51 @@
+{
+  "victim_pod": "hw11-api-7887894b44-6z8rf",
+  "victim_ip": "10.244.0.25",
+  "victim_uid": "45140a53-da90-44f0-847b-75ffaf874570",
+  "container_id": "containerd://2b3f9848e9fad020b44d8b68d2869cca58773351a4884ba1188eea6e48cc919c",
+  "killed_at_unix": 1794922946.798958,
+  "kill_command_finished_unix": 1794922946.8556511,
+  "failure_detected_unix": 1794922949.931617,
+  "replacement_observed_ready_unix": 1794922968.234043,
+  "replacement_pod": "hw11-api-7887894b44-g8lbv",
+  "replacement_ip": "10.244.0.28",
+  "replacement_created": "2026-11-17T13:42:26Z",
+  "replacement_conditions": [
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-11-17T13:42:27Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodReadyToStartContainers"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-11-17T13:42:26Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "Initialized"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-11-17T13:42:48Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "Ready"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-11-17T13:42:48Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "ContainersReady"
+    },
+    {
+      "lastProbeTime": null,
+      "lastTransitionTime": "2026-11-17T13:42:26Z",
+      "observedGeneration": 1,
+      "status": "True",
+      "type": "PodScheduled"
+    }
+  ],
+  "first_postkill_completed_unix": 1794922975.9121008
+}

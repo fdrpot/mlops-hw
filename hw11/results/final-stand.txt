@@ -1,0 +1,23 @@
+NAME                                          READY   STATUS    RESTARTS   AGE    IP            NODE                 NOMINATED NODE   READINESS GATES
+pod/hw11-api-6dfbff9db6-cctkt                 1/1     Running   0          101s   10.244.0.86   hw11-control-plane   <none>           <none>
+pod/hw11-api-6dfbff9db6-sbcvp                 1/1     Running   0          2m4s   10.244.0.85   hw11-control-plane   <none>           <none>
+pod/hw11-client-0                             1/1     Running   0          73m    10.244.0.11   hw11-control-plane   <none>           <none>
+pod/hw11-client-1                             1/1     Running   0          73m    10.244.0.12   hw11-control-plane   <none>           <none>
+pod/hw11-client-2                             1/1     Running   0          73m    10.244.0.13   hw11-control-plane   <none>           <none>
+pod/hw11-client-3                             1/1     Running   0          73m    10.244.0.14   hw11-control-plane   <none>           <none>
+pod/hw11-grafana-775bc597f4-7jncm             1/1     Running   0          75m    10.244.0.6    hw11-control-plane   <none>           <none>
+pod/hw11-kube-state-metrics-8fcc74866-77xtm   1/1     Running   0          75m    10.244.0.7    hw11-control-plane   <none>           <none>
+pod/hw11-prometheus-7d4b8c88b-lp56r           1/1     Running   0          75m    10.244.0.10   hw11-control-plane   <none>           <none>
+
+NAME                                      READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS           IMAGES                                                          SELECTOR
+deployment.apps/hw11-api                  2/2     2            2           75m   api                  hw11-api:local                                                  app=hw11-api
+deployment.apps/hw11-grafana              1/1     1            1           75m   grafana              grafana/grafana:12.1.0                                          app=hw11-grafana
+deployment.apps/hw11-kube-state-metrics   1/1     1            1           75m   kube-state-metrics   registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0   app=hw11-kube-state-metrics
+deployment.apps/hw11-prometheus           1/1     1            1           75m   prometheus           prom/prometheus:v3.5.0                                          app=hw11-prometheus
+
+NAME                              TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)    AGE   SELECTOR
+service/hw11-grafana              ClusterIP   10.96.207.4    <none>        3000/TCP   75m   app=hw11-grafana
+service/hw11-kube-state-metrics   ClusterIP   10.96.164.73   <none>        8080/TCP   75m   app=hw11-kube-state-metrics
+service/hw11-normal               ClusterIP   10.96.58.21    <none>        8000/TCP   75m   app=hw11-api
+service/hw11-prometheus           ClusterIP   10.96.66.26    <none>        9090/TCP   75m   app=hw11-prometheus
+service/hw11-sticky               ClusterIP   10.96.64.105   <none>        8000/TCP   75m   app=hw11-api

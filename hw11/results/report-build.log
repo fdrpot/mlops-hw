@@ -1,0 +1,2 @@
+{"completed_runs": 12, "pending_runs": 0, "no_skew_uniform_sticky": ["b-uniform-sticky-2", "b-uniform-sticky-3"], "prometheus_idle_samples": 116}
+{"requests": 9049, "summaries": 26, "timelines": 21, "missing_evidence": [], "report": "/Users/potapov-fd/Desktop/MLOps/hw/hw11/report.html"}

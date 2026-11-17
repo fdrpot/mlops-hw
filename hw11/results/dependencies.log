@@ -1,0 +1,21 @@
+Resolved 35 packages in 13ms
+Downloading numpy (5.3MiB)
+Downloading pillow (4.6MiB)
+Downloading matplotlib (8.9MiB)
+Downloading fonttools (3.0MiB)
+ Downloaded fonttools
+ Downloaded pillow
+ Downloaded numpy
+ Downloaded matplotlib
+Prepared 10 packages in 2.74s
+Installed 10 packages in 22ms
+ + contourpy==1.4.0
+ + cycler==0.12.1
+ + fonttools==4.68.0
+ + kiwisolver==1.5.1
+ + matplotlib==3.11.2
+ + numpy==2.5.5
+ + pillow==13.0.0
+ + pyparsing==3.3.3
+ + python-dateutil==4.0.0
+ + tzdata==2026.6

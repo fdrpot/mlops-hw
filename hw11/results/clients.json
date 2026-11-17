@@ -1,0 +1,22 @@
+[
+  {
+    "name": "hw11-client-0",
+    "ip": "10.244.0.11",
+    "node": "hw11-control-plane"
+  },
+  {
+    "name": "hw11-client-1",
+    "ip": "10.244.0.12",
+    "node": "hw11-control-plane"
+  },
+  {
+    "name": "hw11-client-2",
+    "ip": "10.244.0.13",
+    "node": "hw11-control-plane"
+  },
+  {
+    "name": "hw11-client-3",
+    "ip": "10.244.0.14",
+    "node": "hw11-control-plane"
+  }
+]

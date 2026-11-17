@@ -1,0 +1,112 @@
+{
+  "apiVersion": "v1",
+  "items": [
+    {
+      "apiVersion": "autoscaling/v2",
+      "kind": "HorizontalPodAutoscaler",
+      "metadata": {
+        "annotations": {
+          "meta.helm.sh/release-name": "hw11",
+          "meta.helm.sh/release-namespace": "hw11"
+        },
+        "creationTimestamp": "2026-11-17T14:19:52Z",
+        "labels": {
+          "app.kubernetes.io/managed-by": "Helm"
+        },
+        "name": "hw11-api",
+        "namespace": "hw11",
+        "resourceVersion": "8885",
+        "uid": "8c6f81d2-43dc-4a63-a5e6-7fc8bf43898c"
+      },
+      "spec": {
+        "behavior": {
+          "scaleDown": {
+            "policies": [
+              {
+                "periodSeconds": 15,
+                "type": "Pods",
+                "value": 1
+              }
+            ],
+            "selectPolicy": "Max",
+            "stabilizationWindowSeconds": 30
+          },
+          "scaleUp": {
+            "policies": [
+              {
+                "periodSeconds": 15,
+                "type": "Pods",
+                "value": 1
+              }
+            ],
+            "selectPolicy": "Max",
+            "stabilizationWindowSeconds": 0
+          }
+        },
+        "maxReplicas": 3,
+        "metrics": [
+          {
+            "resource": {
+              "name": "cpu",
+              "target": {
+                "averageUtilization": 60,
+                "type": "Utilization"
+              }
+            },
+            "type": "Resource"
+          }
+        ],
+        "minReplicas": 2,
+        "scaleTargetRef": {
+          "apiVersion": "apps/v1",
+          "kind": "Deployment",
+          "name": "hw11-api"
+        }
+      },
+      "status": {
+        "conditions": [
+          {
+            "lastTransitionTime": "2026-11-17T14:19:57Z",
+            "message": "recommended size matches current size",
+            "reason": "ReadyForNewScale",
+            "status": "True",
+            "type": "AbleToScale"
+          },
+          {
+            "lastTransitionTime": "2026-11-17T14:20:57Z",
+            "message": "the HPA was able to successfully calculate a replica count from cpu resource utilization (percentage of request)",
+            "reason": "ValidMetricFound",
+            "status": "True",
+            "type": "ScalingActive"
+          },
+          {
+            "lastTransitionTime": "2026-11-17T14:30:28Z",
+            "message": "the desired count is within the acceptable range",
+            "reason": "DesiredWithinRange",
+            "status": "False",
+            "type": "ScalingLimited"
+          }
+        ],
+        "currentMetrics": [
+          {
+            "resource": {
+              "current": {
+                "averageUtilization": 45,
+                "averageValue": "45m"
+              },
+              "name": "cpu"
+            },
+            "type": "Resource"
+          }
+        ],
+        "currentReplicas": 2,
+        "desiredReplicas": 2,
+        "lastScaleTime": "2026-11-17T14:30:53Z"
+      }
+    }
+  ],
+  "kind": "List",
+  "metadata": {
+    "resourceVersion": ""
+  }
+}

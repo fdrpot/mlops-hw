@@ -1,0 +1,62 @@
+{
+  "planned": 480,
+  "sent": 480,
+  "completed": 356,
+  "rejected": 124,
+  "aborted": 0,
+  "timeouts": 0,
+  "transport_errors": 0,
+  "http_5xx": 0,
+  "error_fraction": 0.25833333333333336,
+  "timeout_fraction": 0.0,
+  "by_pod": {
+    "hw11-api-678d4fb4cb-7rqch": 480
+  },
+  "successful_n": 356,
+  "ttfc_seconds": {
+    "n": 356,
+    "p50": 25.864190766000092,
+    "p95": 26.065574774500192
+  },
+  "total_seconds": {
+    "n": 356,
+    "p50": 26.20892349299993,
+    "p95": 26.409418835500333
+  },
+  "queue_seconds": {
+    "n": 356,
+    "p50": 25.795811472499963,
+    "p95": 26.00116718474999
+  },
+  "send_lag_seconds": {
+    "n": 480,
+    "p50": 0.0018480656488009117,
+    "p95": 0.005301505648844794
+  },
+  "by_pod_latency": {
+    "hw11-api-678d4fb4cb-7rqch": {
+      "n": 356,
+      "ttfc_seconds": {
+        "n": 356,
+        "p50": 25.864190766000092,
+        "p95": 26.065574774500192
+      },
+      "queue_seconds": {
+        "n": 356,
+        "p50": 25.795811472499963,
+        "p95": 26.00116718474999
+      }
+    }
+  },
+  "run": "b-hot80-sticky-3",
+  "service": "sticky",
+  "traffic": "hot80",
+  "measurement_seconds": 120,
+  "rps": 4,
+  "schedule_sha256": "4c9c13baa03735694fa102e0623f740becc889fbcf4391bf75beeef96530b33d",
+  "start_unix": 1794924800.3989928,
+  "end_unix": 1794924946.5097759,
+  "keep_alive": false,
+  "retries": 0,
+  "backend_mode": "simulated"
+}

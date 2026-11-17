@@ -1,0 +1,701 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from '/Users/potapov-fd/Downloads/lecture11-extended.mp4':
+  Metadata:
+    major_brand     : isom
+    minor_version   : 512
+    compatible_brands: isomiso2avc1mp41
+    title           : Лекция 11 · Kubernetes, GPU и инженерные кейсы
+    encoder         : Lavf63.1.102
+  Duration: 00:45:34.50, start: 0.000000, bitrate: 257 kb/s
+  Chapters:
+    Chapter #0:0: start 0.000000, end 4.180000
+      Metadata:
+        title           : 001 · Модель уже отвечает
+    Chapter #0:1: start 4.180000, end 11.620000
+      Metadata:
+        title           : 002 · Обновление. Отказ. Очередь
+    Chapter #0:2: start 11.620000, end 18.680000
+      Metadata:
+        title           : 003 · Где проходит запрос
+    Chapter #0:3: start 18.680000, end 28.250000
+      Metadata:
+        title           : 004 · Что видно? Где причина? Что изменилось?
+    Chapter #0:4: start 28.250000, end 34.250000
+      Metadata:
+        title           : 005 · Описание приложения приходит в кластер
+    Chapter #0:5: start 34.250000, end 37.250000
+      Metadata:
+        title           : 006 · Scheduler выбирает узел
+    Chapter #0:6: start 37.250000, end 41.250000
+      Metadata:
+        title           : 007 · kubelet. Runtime. Контейнер
+    Chapter #0:7: start 41.250000, end 53.870000
+      Metadata:
+        title           : 008 · Разместили? Запустили? Готов?
+    Chapter #0:8: start 53.870000, end 61.750000
+      Metadata:
+        title           : 009 · Контейнеры внутри Pod
+    Chapter #0:9: start 61.750000, end 68.350000
+      Metadata:
+        title           : 010 · requests для размещения. limits для потребления
+    Chapter #0:10: start 68.350000, end 72.990000
+      Metadata:
+        title           : 011 · RAM контейнера. Память GPU
+    Chapter #0:11: start 72.990000, end 82.140000
+      Metadata:
+        title           : 012 · Новый Pod восстанавливает состояние
+    Chapter #0:12: start 82.140000, end 86.840000
+      Metadata:
+        title           : 013 · ReplicaSet и принадлежащие ему Pod
+    Chapter #0:13: start 86.840000, end 92.640000
+      Metadata:
+        title           : 014 · Шаблон и число реплик
+    Chapter #0:14: start 92.640000, end 101.140000
+      Metadata:
+        title           : 015 · Новый экземпляр ещё прогревается
+    Chapter #0:15: start 101.140000, end 109.900000
+      Metadata:
+        title           : 016 · Количество восстановилось раньше готовности
+    Chapter #0:16: start 109.900000, end 113.360000
+      Metadata:
+        title           : 017 · Адрес Pod меняется
+    Chapter #0:17: start 113.360000, end 119.440000
+      Metadata:
+        title           : 018 · Стабильный вход. Готовые endpoints
+    Chapter #0:18: start 119.440000, end 125.040000
+      Metadata:
+        title           : 019 · Pod 1 Ready. Pod 2 прогревается
+    Chapter #0:19: start 125.040000, end 134.540000
+      Metadata:
+        title           : 020 · Момент выбора backend
+    Chapter #0:20: start 134.540000, end 141.540000
+      Metadata:
+        title           : 021 · Загрузка до первого запроса
+    Chapter #0:21: start 141.540000, end 145.540000
+      Metadata:
+        title           : 022 · startupProbe
+    Chapter #0:22: start 145.540000, end 153.540000
+      Metadata:
+        title           : 023 · Принимать запрос? Перезапускать процесс?
+    Chapter #0:23: start 153.540000, end 164.140000
+      Metadata:
+        title           : 024 · Перегрузка и повторная загрузка
+    Chapter #0:24: start 164.140000, end 169.140000
+      Metadata:
+        title           : 025 · Файлы переживают замену Pod
+    Chapter #0:25: start 169.140000, end 173.140000
+      Metadata:
+        title           : 026 · URI артефакта. sha256
+    Chapter #0:26: start 173.140000, end 179.140000
+      Metadata:
+        title           : 027 · Постоянный том или загрузка артефакта
+    Chapter #0:27: start 179.140000, end 189.670000
+      Metadata:
+        title           : 028 · Доступ. Доставка. Целостность
+    Chapter #0:28: start 189.670000, end 192.650000
+      Metadata:
+        title           : 029 · Память на параллельные запросы
+    Chapter #0:29: start 192.650000, end 200.070000
+      Metadata:
+        title           : 030 · Веса. Буферы. KV-cache
+    Chapter #0:30: start 200.070000, end 204.870000
+      Metadata:
+        title           : 031 · Учебная схема превышения предела
+    Chapter #0:31: start 204.870000, end 215.710000
+      Metadata:
+        title           : 032 · Сопоставляем память и событие завершения
+    Chapter #0:32: start 215.710000, end 219.390000
+      Metadata:
+        title           : 033 · Дополнительная ёмкость при обновлении
+    Chapter #0:33: start 219.390000, end 225.270000
+      Metadata:
+        title           : 034 · Ready новой версии. Завершение старого ответа
+    Chapter #0:34: start 225.270000, end 230.830000
+      Metadata:
+        title           : 035 · Образ. Веса. Настройки выпуска A
+    Chapter #0:35: start 230.830000, end 245.710000
+      Metadata:
+        title           : 036 · Какая версия отвечает сейчас
+    Chapter #0:36: start 245.710000, end 249.403000
+      Metadata:
+        title           : 037 · Ожидание первого токена
+    Chapter #0:37: start 249.403000, end 254.100000
+      Metadata:
+        title           : 038 · TPOT после первого токена
+    Chapter #0:38: start 254.100000, end 261.020000
+      Metadata:
+        title           : 039 · 50 мс/токен ≈ 20 токенов/с
+    Chapter #0:39: start 261.020000, end 272.700000
+      Metadata:
+        title           : 040 · Ожидание начала и чтение потока
+    Chapter #0:40: start 272.700000, end 279.160000
+      Metadata:
+        title           : 041 · Повторяющееся начало диалога
+    Chapter #0:41: start 279.160000, end 286.500000
+      Metadata:
+        title           : 042 · Переиспользование KV
+    Chapter #0:42: start 286.500000, end 289.340000
+      Metadata:
+        title           : 043 · Совпадают фактические токены
+    Chapter #0:43: start 289.340000, end 302.400000
+      Metadata:
+        title           : 044 · Диалог переживает потерю локального кэша
+    Chapter #0:44: start 302.400000, end 305.320000
+      Metadata:
+        title           : 045 · Одинаковое число запросов
+    Chapter #0:45: start 305.320000, end 315.440000
+      Metadata:
+        title           : 046 · Разная стоимость работы
+    Chapter #0:46: start 315.440000, end 321.360000
+      Metadata:
+        title           : 047 · Тёплый кэш и горячая реплика
+    Chapter #0:47: start 321.360000, end 330.310000
+      Metadata:
+        title           : 048 · Один внешний IP у многих пользователей
+    Chapter #0:48: start 330.310000, end 336.390000
+      Metadata:
+        title           : 049 · Метрики на пути запроса
+    Chapter #0:49: start 336.390000, end 341.630000
+      Metadata:
+        title           : 050 · Go runtime и HTTP
+    Chapter #0:50: start 341.630000, end 351.750000
+      Metadata:
+        title           : 051 · Engine. Очередь. Токены. GPU
+    Chapter #0:51: start 351.750000, end 360.310000
+      Metadata:
+        title           : 052 · Метрики каждой реплики
+    Chapter #0:52: start 360.310000, end 366.410000
+      Metadata:
+        title           : 053 · Кэш есть, очередь длинная
+    Chapter #0:53: start 366.410000, end 372.090000
+      Metadata:
+        title           : 054 · B. Очередь 0 с. Prefill 0,8 с
+    Chapter #0:54: start 372.090000, end 376.590000
+      Metadata:
+        title           : 055 · Раньше первый токен у B
+    Chapter #0:55: start 376.590000, end 385.900000
+      Metadata:
+        title           : 056 · Выбор зависит от текущего состояния
+    Chapter #0:56: start 385.900000, end 393.080000
+      Metadata:
+        title           : 057 · SGLang выбирает получателя
+    Chapter #0:57: start 393.080000, end 399.680000
+      Metadata:
+        title           : 058 · Gateway. Endpoint Picker. InferencePool
+    Chapter #0:58: start 399.680000, end 403.010000
+      Metadata:
+        title           : 059 · Параметры проверяют на своей нагрузке
+    Chapter #0:59: start 403.010000, end 415.900000
+      Metadata:
+        title           : 060 · Активный поток A. Новый запрос B
+    Chapter #0:60: start 415.900000, end 422.860000
+      Metadata:
+        title           : 061 · Один трафик для трёх политик
+    Chapter #0:61: start 422.860000, end 428.000000
+      Metadata:
+        title           : 062 · Длины. Нагрузка. Реплики
+    Chapter #0:62: start 428.000000, end 431.620000
+      Metadata:
+        title           : 063 · Холодный и прогретый кэш
+    Chapter #0:63: start 431.620000, end 444.460000
+      Metadata:
+        title           : 064 · Задержка. Очередь. Ошибки
+    Chapter #0:64: start 444.460000, end 450.180000
+      Metadata:
+        title           : 065 · Предложение на ревью
+    Chapter #0:65: start 450.180000, end 455.700000
+      Metadata:
+        title           : 066 · Повторное использование префикса
+    Chapter #0:66: start 455.700000, end 463.980000
+      Metadata:
+        title           : 067 · Популярный префикс собирает очередь
+    Chapter #0:67: start 463.980000, end 472.250000
+      Metadata:
+        title           : 068 · Очередь и время первого токена
+    Chapter #0:68: start 472.250000, end 494.470000
+      Metadata:
+        title           : 069 · Горячий префикс и влияние очереди
+    Chapter #0:69: start 494.470000, end 516.730000
+      Metadata:
+        title           : 070 · Результаты нагрузки Google
+    Chapter #0:70: start 516.730000, end 531.910000
+      Metadata:
+        title           : 071 · Проверочный опыт для своей политики
+    Chapter #0:71: start 531.910000, end 556.070000
+      Metadata:
+        title           : 072 · Потеря worker и продолжение диалога
+    Chapter #0:72: start 556.070000, end 562.070000
+      Metadata:
+        title           : 073 · Скорость в норме, жалобы растут
+    Chapter #0:73: start 562.070000, end 568.070000
+      Metadata:
+        title           : 074 · Ошибка повторяется в диалоге
+    Chapter #0:74: start 568.070000, end 574.070000
+      Metadata:
+        title           : 075 · Диалог. Пул. Конфигурация
+    Chapter #0:75: start 574.070000, end 584.550000
+      Metadata:
+        title           : 076 · Привязка сохраняет выбранное назначение
+    Chapter #0:76: start 584.550000, end 601.150000
+      Metadata:
+        title           : 077 · Ошибка выбора контекстного пула
+    Chapter #0:77: start 601.150000, end 620.810000
+      Metadata:
+        title           : 078 · Повторные сообщения идут тем же путём
+    Chapter #0:78: start 620.810000, end 638.810000
+      Metadata:
+        title           : 079 · Исправление маршрутизации и контроль качества
+    Chapter #0:79: start 638.810000, end 663.100000
+      Metadata:
+        title           : 080 · Проверка многоходового диалога
+    Chapter #0:80: start 663.100000, end 667.740000
+      Metadata:
+        title           : 081 · Чужое содержимое в ответе
+    Chapter #0:81: start 667.740000, end 677.180000
+      Metadata:
+        title           : 082 · Prefill. Передача KV. Decode
+    Chapter #0:82: start 677.180000, end 684.820000
+      Metadata:
+        title           : 083 · Отказ перед передачей состояния
+    Chapter #0:83: start 684.820000, end 692.040000
+      Metadata:
+        title           : 084 · Владелец страницы и разрешение генерации
+    Chapter #0:84: start 692.040000, end 711.205000
+      Metadata:
+        title           : 085 · Отказ и незавершённая перезапись
+    Chapter #0:85: start 711.205000, end 729.400000
+      Metadata:
+        title           : 086 · Граница владения памятью
+    Chapter #0:86: start 729.400000, end 753.400000
+      Metadata:
+        title           : 087 · Проверка допуска и целостности
+    Chapter #0:87: start 753.400000, end 771.399000
+      Metadata:
+        title           : 088 · Корректный отказ и независимые владельцы
+    Chapter #0:88: start 771.399000, end 780.360000
+      Metadata:
+        title           : 089 · Обучение теряет сеть
+    Chapter #0:89: start 780.360000, end 785.360000
+      Metadata:
+        title           : 090 · Перезагрузка помогает временно
+    Chapter #0:90: start 785.360000, end 793.360000
+      Metadata:
+        title           : 091 · Среднее скрывает короткий пик
+    Chapter #0:91: start 793.360000, end 800.929000
+      Metadata:
+        title           : 092 · CPU по ядрам и по времени
+    Chapter #0:92: start 800.929000, end 818.929000
+      Metadata:
+        title           : 093 · Сетевой сброс имеет CPU-причину
+    Chapter #0:93: start 818.929000, end 838.759000
+      Metadata:
+        title           : 094 · Накопление memcg и короткие CPU-пики
+    Chapter #0:94: start 838.759000, end 858.159000
+      Metadata:
+        title           : 095 · От дорогого обхода к остановке обучения
+    Chapter #0:95: start 858.159000, end 884.259000
+      Metadata:
+        title           : 096 · Проверка устранённого источника накопления
+    Chapter #0:96: start 884.259000, end 889.469000
+      Metadata:
+        title           : 097 · Обучение замедлилось после обновления
+    Chapter #0:97: start 889.469000, end 899.059000
+      Metadata:
+        title           : 098 · В разные моменты отстают разные ranks
+    Chapter #0:98: start 899.059000, end 902.259000
+      Metadata:
+        title           : 099 · Профилировщик меняет условия наблюдения
+    Chapter #0:99: start 902.259000, end 911.779000
+      Metadata:
+        title           : 100 · Стоимость сбора телеметрии
+    Chapter #0:100: start 911.779000, end 927.779000
+      Metadata:
+        title           : 101 · Агент читает структуры памяти
+    Chapter #0:101: start 927.779000, end 952.029000
+      Metadata:
+        title           : 102 · Один участник задерживает шаг группы
+    Chapter #0:102: start 952.029000, end 964.849000
+      Metadata:
+        title           : 103 · Два исправления исследовали отдельно
+    Chapter #0:103: start 964.849000, end 992.889000
+      Metadata:
+        title           : 104 · Повторить нагрузку с телеметрией
+    Chapter #0:104: start 992.889000, end 998.796000
+      Metadata:
+        title           : 105 · Перенос на GPU ещё требует оптимизации
+    Chapter #0:105: start 998.796000, end 1006.889000
+      Metadata:
+        title           : 106 · Копирование и запуск маленьких операций
+    Chapter #0:106: start 1006.889000, end 1012.889000
+      Metadata:
+        title           : 107 · Задержка всего запроса
+    Chapter #0:107: start 1012.889000, end 1021.449000
+      Metadata:
+        title           : 108 · Передача. Ожидание. Вычисление
+    Chapter #0:108: start 1021.449000, end 1043.189000
+      Metadata:
+        title           : 109 · Много мелких операций
+    Chapter #0:109: start 1043.189000, end 1061.739000
+      Metadata:
+        title           : 110 · Укрупнение операций и CUDA Graphs
+    Chapter #0:110: start 1061.739000, end 1085.829000
+      Metadata:
+        title           : 111 · Throughput и ожидание пользователя
+    Chapter #0:111: start 1085.829000, end 1105.319000
+      Metadata:
+        title           : 112 · Проверяется нужный сценарий
+    Chapter #0:112: start 1105.319000, end 1115.349000
+      Metadata:
+        title           : 113 · Устройство обнаружено
+    Chapter #0:113: start 1115.349000, end 1118.459000
+      Metadata:
+        title           : 114 · Сверка вычислительного результата
+    Chapter #0:114: start 1118.459000, end 1124.779000
+      Metadata:
+        title           : 115 · Правдоподобный результат может содержать ошибку
+    Chapter #0:115: start 1124.779000, end 1134.309000
+      Metadata:
+        title           : 116 · Расчёт и ожидаемый результат
+    Chapter #0:116: start 1134.309000, end 1152.309000
+      Metadata:
+        title           : 117 · Тихое повреждение данных
+    Chapter #0:117: start 1152.309000, end 1174.509000
+      Metadata:
+        title           : 118 · Диагностика и восстановление
+    Chapter #0:118: start 1174.509000, end 1200.229000
+      Metadata:
+        title           : 119 · Ошибка следует за устройством?
+    Chapter #0:119: start 1200.229000, end 1220.029000
+      Metadata:
+        title           : 120 · Проверенный расчёт и артефакт
+    Chapter #0:120: start 1220.029000, end 1227.829000
+      Metadata:
+        title           : 121 · Быстрая сеть, долгий обмен
+    Chapter #0:121: start 1227.829000, end 1237.029000
+      Metadata:
+        title           : 122 · Incast у одного получателя
+    Chapter #0:122: start 1237.029000, end 1245.429000
+      Metadata:
+        title           : 123 · Получатель. Интерфейс. Время остановки
+    Chapter #0:123: start 1245.429000, end 1250.099000
+      Metadata:
+        title           : 124 · Сетевое событие и ожидание шага
+    Chapter #0:124: start 1250.099000, end 1264.832000
+      Metadata:
+        title           : 125 · Всплески коммуникаций
+    Chapter #0:125: start 1264.832000, end 1293.429000
+      Metadata:
+        title           : 126 · Back pressure распространяет ожидание
+    Chapter #0:126: start 1293.429000, end 1318.009000
+      Metadata:
+        title           : 127 · Локализация медленного получателя
+    Chapter #0:127: start 1318.009000, end 1337.239000
+      Metadata:
+        title           : 128 · Проверка метода на своей топологии
+    Chapter #0:128: start 1337.239000, end 1343.239000
+      Metadata:
+        title           : 129 · Добавили GPU, шаг почти прежний
+    Chapter #0:129: start 1343.239000, end 1349.239000
+      Metadata:
+        title           : 130 · Группа ждёт последнего
+    Chapter #0:130: start 1349.239000, end 1355.239000
+      Metadata:
+        title           : 131 · Повторяющийся барьер синхронизации
+    Chapter #0:131: start 1355.239000, end 1366.249000
+      Metadata:
+        title           : 132 · Compute и communication по rank
+    Chapter #0:132: start 1366.249000, end 1389.749000
+      Metadata:
+        title           : 133 · Большая группа связана общим шагом
+    Chapter #0:133: start 1389.749000, end 1404.699000
+      Metadata:
+        title           : 134 · Где возникает задержка
+    Chapter #0:134: start 1404.699000, end 1417.979000
+      Metadata:
+        title           : 135 · Медленный compute или communication
+    Chapter #0:135: start 1417.979000, end 1446.659000
+      Metadata:
+        title           : 136 · Обнаружение и восстановление тоже стоят времени
+    Chapter #0:136: start 1446.659000, end 1454.339000
+      Metadata:
+        title           : 137 · Заявка ждёт четыре GPU
+    Chapter #0:137: start 1454.339000, end 1458.019000
+      Metadata:
+        title           : 138 · Свободные места разбросаны
+    Chapter #0:138: start 1458.019000, end 1463.019000
+      Metadata:
+        title           : 139 · Требуется подходящая топология
+    Chapter #0:139: start 1463.019000, end 1474.149000
+      Metadata:
+        title           : 140 · Где свободно? Какая топология нужна?
+    Chapter #0:140: start 1474.149000, end 1495.389000
+      Metadata:
+        title           : 141 · Locality и ожидание задачи
+    Chapter #0:141: start 1495.389000, end 1515.149000
+      Metadata:
+        title           : 142 · Размещение и производительность
+    Chapter #0:142: start 1515.149000, end 1529.789000
+      Metadata:
+        title           : 143 · Locality и дефрагментация
+    Chapter #0:143: start 1529.789000, end 1557.359000
+      Metadata:
+        title           : 144 · Очередь. Размещение. Полезная работа
+    Chapter #0:144: start 1557.359000, end 1565.519000
+      Metadata:
+        title           : 145 · Свободная часть GPU
+    Chapter #0:145: start 1565.519000, end 1568.019000
+      Metadata:
+        title           : 146 · Две job на одном устройстве
+    Chapter #0:146: start 1568.019000, end 1579.219000
+      Metadata:
+        title           : 147 · Совпавший пик потребления
+    Chapter #0:147: start 1579.219000, end 1585.109000
+      Metadata:
+        title           : 148 · Кто сохраняет приоритет основной job
+    Chapter #0:148: start 1585.109000, end 1606.629000
+      Metadata:
+        title           : 149 · Эксклюзивное выделение оставляет простой
+    Chapter #0:149: start 1606.629000, end 1629.119000
+      Metadata:
+        title           : 150 · Динамическое распределение и гарантии
+    Chapter #0:150: start 1629.119000, end 1648.869000
+      Metadata:
+        title           : 151 · Измеряем основную задачу
+    Chapter #0:151: start 1648.869000, end 1675.939000
+      Metadata:
+        title           : 152 · Кто управляет ресурсами обоих процессов
+    Chapter #0:152: start 1675.939000, end 1685.099000
+      Metadata:
+        title           : 153 · Host видит GPU, контейнер теряет доступ
+    Chapter #0:153: start 1685.099000, end 1687.499000
+      Metadata:
+        title           : 154 · Изменилось окружение исполнения
+    Chapter #0:154: start 1687.499000, end 1692.459000
+      Metadata:
+        title           : 155 · Runtime. Devices. cgroups
+    Chapter #0:155: start 1692.459000, end 1703.199000
+      Metadata:
+        title           : 156 · Сравнить доступ до и после обслуживания
+    Chapter #0:156: start 1703.199000, end 1720.579000
+      Metadata:
+        title           : 157 · Дополнительная настройка доступа
+    Chapter #0:157: start 1720.579000, end 1744.249000
+      Metadata:
+        title           : 158 · Сравнить host и контейнер
+    Chapter #0:158: start 1744.249000, end 1765.169000
+      Metadata:
+        title           : 159 · Версии и режим передачи GPU
+    Chapter #0:159: start 1765.169000, end 1789.479000
+      Metadata:
+        title           : 160 · Воспроизводимая граница исправления
+    Chapter #0:160: start 1789.479000, end 1794.879000
+      Metadata:
+        title           : 161 · Логических ресурсов стало больше
+    Chapter #0:161: start 1794.879000, end 1802.519000
+      Metadata:
+        title           : 162 · Что реально выделено каждому Pod
+    Chapter #0:162: start 1802.519000, end 1808.579000
+      Metadata:
+        title           : 163 · Общие память и failure domain
+    Chapter #0:163: start 1808.579000, end 1818.539000
+      Metadata:
+        title           : 164 · Другой Pod на том же ускорителе
+    Chapter #0:164: start 1818.539000, end 1838.459000
+      Metadata:
+        title           : 165 · Разделение времени
+    Chapter #0:165: start 1838.459000, end 1859.559000
+      Metadata:
+        title           : 166 · Аппаратные границы MIG
+    Chapter #0:166: start 1859.559000, end 1879.369000
+      Metadata:
+        title           : 167 · Запрос. Engine. Физический GPU
+    Chapter #0:167: start 1879.369000, end 1903.389000
+      Metadata:
+        title           : 168 · Проверять при одновременной работе соседей
+    Chapter #0:168: start 1903.389000, end 1906.749000
+      Metadata:
+        title           : 169 · Агент на каждом узле
+    Chapter #0:169: start 1906.749000, end 1916.989000
+      Metadata:
+        title           : 170 · Тот же агент, другой масштаб
+    Chapter #0:170: start 1916.989000, end 1922.669000
+      Metadata:
+        title           : 171 · Частота и стоимость каждого обращения
+    Chapter #0:171: start 1922.669000, end 1930.079000
+      Metadata:
+        title           : 172 · Общая зависимость под нагрузкой
+    Chapter #0:172: start 1930.079000, end 1947.339000
+      Metadata:
+        title           : 173 · Массовая телеметрия нагружает управление
+    Chapter #0:173: start 1947.339000, end 1968.949000
+      Metadata:
+        title           : 174 · Управление. DNS. Доступность сервиса
+    Chapter #0:174: start 1968.949000, end 1994.629000
+      Metadata:
+        title           : 175 · Снижение нагрузки и поэтапный rollout
+    Chapter #0:175: start 1994.629000, end 2014.699000
+      Metadata:
+        title           : 176 · Повторы усиливают давление
+    Chapter #0:176: start 2014.699000, end 2019.699000
+      Metadata:
+        title           : 177 · Три облака для резервирования
+    Chapter #0:177: start 2019.699000, end 2024.699000
+      Metadata:
+        title           : 178 · Сбои в похожее время
+    Chapter #0:178: start 2024.699000, end 2029.699000
+      Metadata:
+        title           : 179 · Общий источник изменений
+    Chapter #0:179: start 2029.699000, end 2043.659000
+      Metadata:
+        title           : 180 · Общий путь изменения
+    Chapter #0:180: start 2043.659000, end 2060.239000
+      Metadata:
+        title           : 181 · Системное обновление меняет связность
+    Chapter #0:181: start 2060.239000, end 2082.399000
+      Metadata:
+        title           : 182 · Общая причина в разных окружениях
+    Chapter #0:182: start 2082.399000, end 2105.339000
+      Metadata:
+        title           : 183 · Как обновление попадает во все регионы
+    Chapter #0:183: start 2105.339000, end 2124.639000
+      Metadata:
+        title           : 184 · Ограниченная группа перед расширением
+    Chapter #0:184: start 2124.639000, end 2133.439000
+      Metadata:
+        title           : 185 · Приложения живы, связность потеряна
+    Chapter #0:185: start 2133.439000, end 2139.439000
+      Metadata:
+        title           : 186 · Сравнить объекты до и после
+    Chapter #0:186: start 2139.439000, end 2145.839000
+      Metadata:
+        title           : 187 · Label влияет на выбор объектов
+    Chapter #0:187: start 2145.839000, end 2151.238000
+      Metadata:
+        title           : 188 · Проверить фактический состав участников
+    Chapter #0:188: start 2151.238000, end 2165.039000
+      Metadata:
+        title           : 189 · Изменилось имя метки control plane
+    Chapter #0:189: start 2165.039000, end 2190.119000
+      Metadata:
+        title           : 190 · Selector исключил нужные узлы
+    Chapter #0:190: start 2190.119000, end 2208.119000
+      Metadata:
+        title           : 191 · Восстановление и сверка конфигурации
+    Chapter #0:191: start 2208.119000, end 2235.438000
+      Metadata:
+        title           : 192 · Работает реальный сетевой путь
+    Chapter #0:192: start 2235.438000, end 2241.138000
+      Metadata:
+        title           : 193 · Перенос трафика в резерв
+    Chapter #0:193: start 2241.138000, end 2246.238000
+      Metadata:
+        title           : 194 · Ошибки остаются после переключения
+    Chapter #0:194: start 2246.238000, end 2251.738000
+      Metadata:
+        title           : 195 · Обычный режим и полный failover
+    Chapter #0:195: start 2251.738000, end 2261.078000
+      Metadata:
+        title           : 196 · Ёмкость входа и устойчивость маршрутов
+    Chapter #0:196: start 2261.078000, end 2276.858000
+      Metadata:
+        title           : 197 · Rollout запускает каскад
+    Chapter #0:197: start 2276.858000, end 2300.328000
+      Metadata:
+        title           : 198 · Ограничение резервного ingress
+    Chapter #0:198: start 2300.328000, end 2325.748000
+      Metadata:
+        title           : 199 · Тренировка полного переноса нагрузки
+    Chapter #0:199: start 2325.748000, end 2349.208000
+      Metadata:
+        title           : 200 · Весь путь запроса при failover
+    Chapter #0:200: start 2349.208000, end 2358.708000
+      Metadata:
+        title           : 201 · Новый Pod снова падает
+    Chapter #0:201: start 2358.708000, end 2364.208000
+      Metadata:
+        title           : 202 · Повторы увеличивают поток
+    Chapter #0:202: start 2364.208000, end 2369.208000
+      Metadata:
+        title           : 203 · Цикл восстановления
+    Chapter #0:203: start 2369.208000, end 2377.588000
+      Metadata:
+        title           : 204 · Нагрузка и память при старте
+    Chapter #0:204: start 2377.588000, end 2398.508000
+      Metadata:
+        title           : 205 · Фильтры Envoy и усиление запросов
+    Chapter #0:205: start 2398.508000, end 2420.948000
+      Metadata:
+        title           : 206 · Crash. Retries. OOM. Новый Pod
+    Chapter #0:206: start 2420.948000, end 2442.948000
+      Metadata:
+        title           : 207 · Ёмкость периметра и исправление конфигурации
+    Chapter #0:207: start 2442.948000, end 2471.248000
+      Metadata:
+        title           : 208 · Проверка устойчивого выхода из аварии
+    Chapter #0:208: start 2471.248000, end 2480.568000
+      Metadata:
+        title           : 209 · Узлы добавились, контейнеры ждут
+    Chapter #0:209: start 2480.568000, end 2484.248000
+      Metadata:
+        title           : 210 · Очередь загрузки образов
+    Chapter #0:210: start 2484.248000, end 2489.248000
+      Metadata:
+        title           : 211 · Размещение и доставка имеют свои очереди
+    Chapter #0:211: start 2489.248000, end 2498.598000
+      Metadata:
+        title           : 212 · Pull. Extract. Ready
+    Chapter #0:212: start 2498.598000, end 2510.038000
+      Metadata:
+        title           : 213 · Большой образ задерживает остальные
+    Chapter #0:213: start 2510.038000, end 2535.848000
+      Metadata:
+        title           : 214 · Масштабирование повторяет очередь доставки
+    Chapter #0:214: start 2535.848000, end 2552.698000
+      Metadata:
+        title           : 215 · Доставка файлов и подготовка модели
+    Chapter #0:215: start 2552.698000, end 2577.668000
+      Metadata:
+        title           : 216 · Завершение проверки — ответ новой реплики
+    Chapter #0:216: start 2577.668000, end 2586.468000
+      Metadata:
+        title           : 217 · Телеметрия без ошибок
+    Chapter #0:217: start 2586.468000, end 2591.668000
+      Metadata:
+        title           : 218 · Проверить результат вычисления
+    Chapter #0:218: start 2591.668000, end 2600.708000
+      Metadata:
+        title           : 219 · Допуск после preflight
+    Chapter #0:219: start 2600.708000, end 2606.798000
+      Metadata:
+        title           : 220 · Успешный тест разрешает рабочую нагрузку
+    Chapter #0:220: start 2606.798000, end 2621.798000
+      Metadata:
+        title           : 221 · Активный preflight перед размещением
+    Chapter #0:221: start 2621.798000, end 2644.188000
+      Metadata:
+        title           : 222 · Эксклюзивный GPU на время теста
+    Chapter #0:222: start 2644.188000, end 2663.068000
+      Metadata:
+        title           : 223 · Проверяемый протокол испытания
+    Chapter #0:223: start 2663.068000, end 2689.500000
+      Metadata:
+        title           : 224 · Ответ связан с проверенной конфигурацией
+    Chapter #0:224: start 2689.500000, end 2704.500000
+      Metadata:
+        title           : 225 · ДЗ 11. Сервис под нагрузкой
+    Chapter #0:225: start 2704.500000, end 2719.500000
+      Metadata:
+        title           : 226 · Три опыта с измерениями
+    Chapter #0:226: start 2719.500000, end 2734.500000
+      Metadata:
+        title           : 227 · Что сдавать и защищать
+  Stream #0:0[0x1](und): Video: h264 (High) (avc1 / 0x31637661), yuv420p(tv, unknown/bt709/iec61966-2-1, progressive), 1280x720 [SAR 1:1 DAR 16:9], 153 kb/s, 24 fps, 24 tbr, 12k tbn (default)
+    Metadata:
+      handler_name    : VideoHandler
+      encoder         : Lavc63.1.102 libx264
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 24000 Hz, mono, fltp, 100 kb/s (default)
+    Metadata:
+      handler_name    : SoundHandler
+  Stream #0:2[0x3](eng): Data: bin_data (text / 0x74786574), 0 kb/s
+    Metadata:
+      handler_name    : SubtitleHandler
+At least one output file must be specified

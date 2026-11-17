@@ -1,0 +1,53 @@
+test_01_warmup_is_excluded_from_endpoints (test_kubernetes.KubernetesChecks.test_01_warmup_is_excluded_from_endpoints) ... ok
+test_02_rollback_returns_actual_artifact_a (test_kubernetes.KubernetesChecks.test_02_rollback_returns_actual_artifact_a) ... ERROR
+test_03_replaced_replica_restores_version_and_dialogue (test_kubernetes.KubernetesChecks.test_03_replaced_replica_restores_version_and_dialogue) ... ok
+test_04_two_dialogues_are_isolated_over_real_http (test_kubernetes.KubernetesChecks.test_04_two_dialogues_are_isolated_over_real_http) ... ok
+
+======================================================================
+ERROR: test_02_rollback_returns_actual_artifact_a (test_kubernetes.KubernetesChecks.test_02_rollback_returns_actual_artifact_a)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/tests/test_kubernetes.py", line 70, in test_02_rollback_returns_actual_artifact_a
+    after=self.generate(self.payload())
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/tests/test_kubernetes.py", line 31, in generate
+    return [json.loads(line) for line in e.http(e.PODS[0],url+'/generate',payload).splitlines() if line.strip()]
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/scripts/experiments.py", line 79, in http
+    return remote(client, script, timeout=100)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/scripts/experiments.py", line 70, in remote
+    return k('exec', '-i', client, '--', 'python', '-c', script, timeout=timeout).stdout
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/scripts/experiments.py", line 46, in k
+    return command(['kubectl', '-n', NS, *args], **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/potapov-fd/Desktop/MLOps/hw/hw11/scripts/experiments.py", line 41, in command
+    raise RuntimeError(f'{args}: {result.stderr or result.stdout}')
+RuntimeError: ['kubectl', '-n', 'hw11', 'exec', '-i', 'hw11-client-0', '--', 'python', '-c', 'import urllib.request,json; url=\'http://hw11-normal:8000/generate\'; payload={\'request_id\': \'test-alpha-1794926109035539000\', \'session_id\': \'alpha\', \'prompt\': \'continue\', \'history\': [{\'role\': \'user\', \'content\': \'CONTROL_ALPHA\'}], \'max_chunks\': 1, \'chunk_seconds\': 0}; req=urllib.request.Request(url, data=json.dumps(payload).encode() if payload is not None else None, headers={"Content-Type":"application/json","Connection":"close"}); print(urllib.request.urlopen(req,timeout=90).read().decode())']: Traceback (most recent call last):
+  File "<string>", line 1, in <module>
+  File "/usr/local/lib/python3.12/urllib/request.py", line 215, in urlopen
+    return opener.open(url, data, timeout)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/urllib/request.py", line 521, in open
+    response = meth(req, response)
+               ^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/urllib/request.py", line 630, in http_response
+    response = self.parent.error(
+               ^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/urllib/request.py", line 559, in error
+    return self._call_chain(*args)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/urllib/request.py", line 492, in _call_chain
+    result = func(*args)
+             ^^^^^^^^^^^
+  File "/usr/local/lib/python3.12/urllib/request.py", line 639, in http_error_default
+    raise HTTPError(req.full_url, code, msg, hdrs, fp)
+urllib.error.HTTPError: HTTP Error 503: Service Unavailable
+command terminated with exit code 1
+
+
+----------------------------------------------------------------------
+Ran 4 tests in 166.958s
+
+FAILED (errors=1)

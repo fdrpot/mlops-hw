@@ -1,0 +1,6 @@
+test_02_rollback_returns_actual_artifact_a (test_kubernetes.KubernetesChecks.test_02_rollback_returns_actual_artifact_a) ... ok
+
+----------------------------------------------------------------------
+Ran 1 test in 157.164s
+
+OK

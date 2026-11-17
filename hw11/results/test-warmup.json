@@ -1,0 +1,35 @@
+{
+  "pod": "hw11-api-75b685b76-t6pj8",
+  "response": {
+    "status": 503,
+    "body": {
+      "ready": false,
+      "warm": false,
+      "draining": false,
+      "pod": "hw11-api-75b685b76-t6pj8",
+      "model_version": "A",
+      "artifact_sha256": "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886",
+      "backend_mode": "simulated",
+      "load_error": null
+    }
+  },
+  "endpoints": [
+    {
+      "addresses": [
+        "10.244.0.78"
+      ],
+      "conditions": {
+        "ready": false,
+        "serving": false,
+        "terminating": false
+      },
+      "nodeName": "hw11-control-plane",
+      "targetRef": {
+        "kind": "Pod",
+        "name": "hw11-api-75b685b76-t6pj8",
+        "namespace": "hw11",
+        "uid": "3cdef317-63a7-4c6a-9bbc-0d565a52a02f"
+      }
+    }
+  ]
+}

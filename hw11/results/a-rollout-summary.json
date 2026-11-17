@@ -1,0 +1,104 @@
+{
+  "planned": 20,
+  "sent": 20,
+  "completed": 20,
+  "rejected": 0,
+  "aborted": 0,
+  "timeouts": 0,
+  "transport_errors": 0,
+  "http_5xx": 0,
+  "error_fraction": 0.0,
+  "timeout_fraction": 0.0,
+  "by_pod": {
+    "hw11-api-7887894b44-5r8fq": 9,
+    "hw11-api-7d9f88679f-hnmbj": 2,
+    "hw11-api-7d9f88679f-s9q4f": 5,
+    "hw11-api-7887894b44-snpcn": 4
+  },
+  "successful_n": 20,
+  "ttfc_seconds": {
+    "n": 20,
+    "p50": 0.15307125350000206,
+    "p95": 29.02394611345008
+  },
+  "total_seconds": {
+    "n": 20,
+    "p50": 0.4663597410000193,
+    "p95": 38.47961451755003
+  },
+  "queue_seconds": {
+    "n": 20,
+    "p50": 9.260750005068985e-05,
+    "p95": 28.807328657000053
+  },
+  "send_lag_seconds": {
+    "n": 20,
+    "p50": 0.011982795019150672,
+    "p95": 0.015995827275770584
+  },
+  "by_pod_latency": {
+    "hw11-api-7887894b44-5r8fq": {
+      "n": 9,
+      "ttfc_seconds": {
+        "n": 9,
+        "p50": 0.06322494599999118,
+        "p95": 0.08185170439999183
+      },
+      "queue_seconds": {
+        "n": 9,
+        "p50": 7.012800000438801e-05,
+        "p95": 0.00012945480000325915
+      }
+    },
+    "hw11-api-7887894b44-snpcn": {
+      "n": 4,
+      "ttfc_seconds": {
+        "n": 4,
+        "p50": 23.700632619500027,
+        "p95": 36.65410272865005
+      },
+      "queue_seconds": {
+        "n": 4,
+        "p50": 23.556959597000002,
+        "p95": 36.542050097000015
+      }
+    },
+    "hw11-api-7d9f88679f-hnmbj": {
+      "n": 2,
+      "ttfc_seconds": {
+        "n": 2,
+        "p50": 0.22516616000001477,
+        "p95": 0.2253959597000005
+      },
+      "queue_seconds": {
+        "n": 2,
+        "p50": 8.679399996935899e-05,
+        "p95": 0.00011334489999512699
+      }
+    },
+    "hw11-api-7d9f88679f-s9q4f": {
+      "n": 5,
+      "ttfc_seconds": {
+        "n": 5,
+        "p50": 0.22464791300001252,
+        "p95": 0.2273996908000072
+      },
+      "queue_seconds": {
+        "n": 5,
+        "p50": 9.921100001974992e-05,
+        "p95": 0.00013356240001485275
+      }
+    }
+  },
+  "run": "a-rollout",
+  "service": "normal",
+  "traffic": "uniform",
+  "measurement_seconds": 65,
+  "rps": 0.3,
+  "schedule_sha256": "85cf0121cfe6f62d2746ce6a813e05ff248ca013810e3a0ef8c4a9254124f418",
+  "start_unix": 1794922597.8787751,
+  "end_unix": 1794922661.6900558,
+  "keep_alive": false,
+  "retries": 0,
+  "backend_mode": "simulated"
+}
