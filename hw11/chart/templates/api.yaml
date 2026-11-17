@@ -108,7 +108,7 @@ spec:
                 command:
                   - python
                   - -c
-                  - "import urllib.request,time; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/drain',method='POST')); time.sleep(3)"
+                  - "import urllib.request,time; time.sleep(3); urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/drain',method='POST'),timeout=0.5); time.sleep(1)"
           securityContext:
             allowPrivilegeEscalation: false
             readOnlyRootFilesystem: true

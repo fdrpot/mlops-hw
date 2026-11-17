@@ -36,9 +36,13 @@ def main():
  for name in ('HW11HighTTFC','HW11HighRejectionRatio'):
   findings[name+'_pending_firing_recovered']={'pending','firing'}.issubset(states[name]) and normal_seen.get(name,False)
  findings['k8s_checks_retained']=all((OUT/name).exists() for name in ('test-warmup.json','test-rollback.json','test-replacement.json','test-dialogue-isolation.json'))
+ testlog=(OUT/'kubernetes-tests.log').read_text() if (OUT/'kubernetes-tests.log').exists() else ''
+ findings['k8s_four_passed']='Ran 4 tests' in testlog and '\nOK\n' in testlog and 'FAILED' not in testlog
  routes=read(OUT/'route-analysis.json') if (OUT/'route-analysis.json').exists() else {}
  findings['observed_sticky_without_skew']=bool(routes.get('no_skew_uniform_sticky_cases'))
  findings['hot_queue_and_other_idle_from_prometheus']=bool(routes.get('prometheus_simultaneous_idle',{}).get('hot80_samples'))
+ fixed=read(OUT/'a-rollout-fixed-checks.json') if (OUT/'a-rollout-fixed-checks.json').exists() else {}
+ findings['drain_fix_rollout_checks']=bool(fixed) and all(fixed.values())
  result={'checks':findings,'passed':all(findings.values()),'ready_sequence':sequence,'alert_states':{k:sorted(v) for k,v in states.items()},'b_run_count':sum(name in runs for name in expected)}
  (OUT/'audit.json').write_text(json.dumps(result,indent=2))
  print(json.dumps(result,indent=2))

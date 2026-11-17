@@ -59,6 +59,31 @@ def upgrade(**values):
 
 def ready(timeout=180):
     k('rollout', 'status', 'deployment/'+DEPLOY, f'--timeout={timeout}s', timeout=timeout+10)
+    # Deployment availability may converge before terminating Pod objects and
+    # the Service's endpoint targets. Observe both explicit control-plane
+    # conditions before a post-rollout assertion; never retry a failed generate.
+    started=time.monotonic();deadline=started+timeout
+    last={}
+    while time.monotonic()<deadline:
+        all_pods=[p for p in get('pods')['items'] if p['metadata']['name'].startswith(DEPLOY+'-')]
+        terminating=[p['metadata']['name'] for p in all_pods if p['metadata'].get('deletionTimestamp')]
+        ready_names={p['metadata']['name'] for p in all_pods if not p['metadata'].get('deletionTimestamp')
+                     and any(c['type']=='Ready' and c['status']=='True' for c in p['status'].get('conditions',[]))}
+        desired=get('deployment',DEPLOY)['spec'].get('replicas',1)
+        targets={name:set() for name in ('hw11-normal','hw11-sticky')}
+        for item in get('endpointslices')['items']:
+            svc=item['metadata'].get('labels',{}).get('kubernetes.io/service-name')
+            if svc in targets:
+                targets[svc].update(ep.get('targetRef',{}).get('name') for ep in item.get('endpoints',[])
+                                    if ep.get('conditions',{}).get('ready',False))
+        last={'observed_unix':time.time(),'desired':desired,'ready_pods':sorted(ready_names),
+              'terminating_pods':terminating,'ready_endpoint_targets':{n:sorted(t) for n,t in targets.items()}}
+        if not terminating and len(ready_names)==desired and all(t==ready_names for t in targets.values()):
+            last['barrier_wait_seconds']=time.monotonic()-started
+            with (OUT/'readiness-barriers.jsonl').open('a') as stream:stream.write(json.dumps(last)+'\n')
+            return
+        time.sleep(.5)
+    raise TimeoutError(f'Pod/EndpointSlice readiness barrier did not converge: {last}')
 
 
 def servers():
@@ -71,11 +96,12 @@ def remote(client, script, *, timeout=240):
 
 
 def http(client, url, payload=None):
-    script = ('import urllib.request,json; '
+    script = ('import urllib.request,urllib.error,json; '
               f'url={url!r}; payload={payload!r}; '
               'req=urllib.request.Request(url, data=json.dumps(payload).encode() if payload is not None else None, '
               'headers={"Content-Type":"application/json","Connection":"close"}); '
-              'print(urllib.request.urlopen(req,timeout=90).read().decode())')
+              '\ntry:\n print(urllib.request.urlopen(req,timeout=90).read().decode())\n'
+              'except urllib.error.HTTPError as ex:\n print(ex.read().decode());raise\n')
     return remote(client, script, timeout=100)
 
 
@@ -258,6 +284,30 @@ def experiment_a():
     return checks
 
 
+def graceful_rollout(name='a-rollout-fixed'):
+    """Repeat the original arrival schedule after the endpoint-drain fix."""
+    upgrade(**{'model.version':'A','model.probeMode':'fixed','model.neverReady':False,'hpa.enabled':False,'replicaCount':2})
+    ready()
+    records=schedule(65,.3,chunks=3,chunk_seconds=.1)
+    records[0].update(max_chunks=80,chunk_seconds=.5)
+    with observe(name):
+        with concurrent.futures.ThreadPoolExecutor(max_workers=1) as pool:
+            load=pool.submit(run_load,name,duration=65,rps=.3,records=records)
+            time.sleep(12)
+            rollout_started=time.time()
+            upgrade(**{'model.version':'B'})
+            ready()
+            rows=load.result()
+    checks={'all_20_completed':len(rows)==20 and all(r['outcome']=='completed' for r in rows),
+            'zero_http_5xx':all(not 500<=(r['status'] or 0)<600 for r in rows),
+            'zero_aborted':all(r['outcome']!='aborted' for r in rows),
+            'long_stream_crossed_rollout':rows[0]['sent_unix']<rollout_started<rows[0]['completed_unix']}
+    (OUT/(name+'-boundary.json')).write_text(json.dumps({'rollout_started_unix':rollout_started},indent=2))
+    (OUT/(name+'-checks.json')).write_text(json.dumps(checks,indent=2))
+    if not all(checks.values()):raise AssertionError(checks)
+    return checks
+
+
 def forced_failure(name='a-forced-kill'):
     """Force deletion makes kubelet/runtime kill PID 1 from its ancestor PIDNS.
 
@@ -392,13 +442,14 @@ def experiment_c():
 
 def main():
     p=argparse.ArgumentParser(description=__doc__)
-    p.add_argument('experiment',choices=['clients','a','force','b','c','all'])
+    p.add_argument('experiment',choices=['clients','a','force','rollout','b','c','all'])
     p.add_argument('--duration',type=float,default=120)
     p.add_argument('--rps',type=float,default=4)
     args=p.parse_args()
     OUT.mkdir(parents=True,exist_ok=True)
     setup_clients()
     if args.experiment in ('a','all'):experiment_a()
+    if args.experiment=='rollout':graceful_rollout()
     if args.experiment=='force':
         checks=json.loads((OUT/'a-checks.json').read_text()) if (OUT/'a-checks.json').exists() else {}
         checks.update(forced_failure())
