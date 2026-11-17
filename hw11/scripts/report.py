@@ -144,7 +144,7 @@ def plots(rows, runs, traces):
                 vals=[r.get(metric) for r in rows if r['run']==name and r['outcome']=='completed' and r.get(metric) is not None]
                 if vals:
                     value=q(vals,.95);values.append(value);found=True
-                    ax.scatter(index+(repeat-2)*.10,value,s=48,label=f'Повтор {repeat}' if index==0 else None,zorder=4)
+                    ax.scatter(index+(repeat-2)*.10,value,s=48,color=('#1976ad','#f28e2b','#3b9244')[repeat-1],label=f'Повтор {repeat}' if index==0 else None,zorder=4)
             if values:ax.plot([index-.22,index+.22],[statistics.mean(values)]*2,color='#172739',linewidth=2)
         if not found:empty(ax)
         ax.set_xticks(range(4),[t+'\n'+p for t,p in labels])
@@ -255,7 +255,15 @@ def hpa_table(traces):
         stopped=down.get('load_stopped_unix');observed=down.get('observed_unix')
         if stopped:result.append(['Нагрузка завершена; начало ожидания scale-down',utc(stopped),'Окно стабилизации настроено 30 с'])
         if observed:result.append(['Возврат к минимуму после нагрузки',utc(observed),fmt(down.get('wait_seconds'))+' с фактического ожидания'])
-    return table(['Событие','UTC','Длительность / границы'],result)+'<p>Создание и Ready взяты из creationTimestamp и Ready.lastTransitionTime Kubernetes. HPA снимается с шагом около 2 с; фактическое ожидание scale-down измеряется с шагом 5 с. В него входят стабилизация, окно resource metrics, цикл контроллера и завершение Pod, поэтому оно может превышать 30 с.</p>'
+    html=table(['Событие','UTC','Длительность / границы'],result)+'<p>Создание и Ready взяты из creationTimestamp и Ready.lastTransitionTime Kubernetes. HPA снимается с шагом около 2 с; фактическое ожидание scale-down измеряется с шагом 5 с. В него входят стабилизация, окно resource metrics, цикл контроллера и завершение Pod, поэтому оно может превышать 30 с.</p>'
+    hot=read(OUT/'c-hot-sticky-summary.json',{})
+    if hot:
+        samples=[sample for sample in trace if hot['start_unix']<=sample['unix']<=hot['end_unix']]
+        pods={pod['name'] for sample in samples for pod in sample.get('pods',[]) if not pod.get('deleted')}
+        counts=hot.get('by_pod',{})
+        html+='<h3>Горячий клиент при включённом HPA</h3>'+table(['Pod в период hot80','Запросов по фактическим ответам'],[[escape(pod),fmt(counts.get(pod,0))] for pod in sorted(pods)])
+        html+='<p>Таблица включает Pod с нулём ответов: создание новой реплики не переносит существующие ClientIP-привязки. Отказы и задержки этого отдельного CPU-прогона приведены в c-hot-sticky; параметры CPU отличаются от сравнений B, поэтому их задержки напрямую не объединяются.</p>'
+    return html
 
 
 def alerts_table():
@@ -316,6 +324,52 @@ def idle_during_queue(rows):
     return '<p>Проверка одновременности: для полностью успешного прогона восстановлены интервалы занятости [sent + queue; completed]. В середине фактического ожидания указанного запроса на другом Pod не было активного интервала. Это реконструкция по клиентским часам и server queue (сетевые границы дают небольшую погрешность); raw running/waiting Prometheus служат независимой проверкой.</p>'+table(['Прогон','Запрос ждёт','Горячий Pod','Ожидание, с','Другой Pod без активного запроса','Момент UTC'],evidence)
 
 
+def route_analysis_html():
+    analysis=read(OUT/'route-analysis.json',{})
+    if not analysis:return '<p class="missing">Анализ трасс маршрутизации пока не построен.</p>'
+    paired=analysis.get('paired_comparisons',[])
+    result='<h3>Сравнение исправления по одинаковому расписанию</h3>'
+    result+=table(['Трафик / повтор','Расписание совпадает','p95 TTFC sticky / normal, с','Ошибки sticky / normal','Доля занятого Pod sticky / normal'],[
+        [escape(p['traffic'])+' / '+fmt(p['repeat']),'Да' if p['identical_schedules'] else '<strong>Нет</strong>',
+         fmt(p['sticky_p95_ttfc_seconds'])+' / '+fmt(p['normal_p95_ttfc_seconds']),
+         fmt(100*p['sticky_error_fraction'],1)+'% / '+fmt(100*p['normal_error_fraction'],1)+'%',
+         fmt(100*p['sticky_busiest_pod_share'],1)+'% / '+fmt(100*p['normal_busiest_pod_share'],1)+'%'] for p in paired])
+    hot=[p for p in paired if p['traffic']=='hot80']
+    if hot:
+        better=sum(p['normal_p95_ttfc_seconds']<p['sticky_p95_ttfc_seconds'] for p in hot if p['normal_p95_ttfc_seconds'] is not None and p['sticky_p95_ttfc_seconds'] is not None)
+        no_worse_errors=sum(p['normal_error_fraction']<=p['sticky_error_fraction'] for p in hot)
+        result+=f'<p>В сохранённых hot80 парах обычный Service уменьшил p95 TTFC в {better} из {len(hot)} сравнений; доля ошибок не выросла в {no_worse_errors} из {len(hot)}. Это p95 всех успешных запросов каждого прогона; перцентили реплик не усредняются. Полный вывод о трёх повторах допустим после появления всех трёх пар.</p>'
+    balanced=analysis.get('no_skew_uniform_sticky_cases',[])
+    if balanced:
+        result+='<h3>Сохранённый результат без перекоса ClientIP</h3>'
+        result+=table(['Прогон','Доля занятого Pod','p95 TTFC, с','Исходы','Распределение четырёх клиентов'],[
+            [escape(item['run']),fmt(100*item['busiest_pod_share'],1)+'%',
+             fmt(analysis['runs'][item['run']]['ttfc']['p95_seconds']),
+             escape(str(analysis['runs'][item['run']]['outcomes'])),
+             escape('; '.join(client+' → '+','.join(pods) for client,pods in item['by_client_pod'].items()))] for item in balanced])
+        result+='<p>Четыре равномерных источника могут распределиться по двум endpoints в отношении 2:2. При такой трассе ClientIP сохраняет кеш и не создаёт горячую реплику; это реальный сохранённый результат, а не предположение о работе Service. Следовательно, обычный Service выбран для устойчивости к наблюдённому перекосу и hot80, а его превосходство при любом распределении нагрузки не заявляется.</p>'
+    zero=[]
+    for name,run in analysis.get('runs',{}).items():
+        for pod,count in run.get('by_pod',{}).items():
+            if count==0:zero.append([escape(name),escape(pod),0,'Pod присутствует в control-plane timeline, запросов с его идентичностью нет'])
+    if zero:
+        result+='<h3>Реплики с нулём запросов</h3>'+table(['Прогон','Pod','Запросов','Источник'],zero)
+    prom=analysis.get('prometheus_simultaneous_idle',{})
+    if prom.get('simultaneous_samples'):
+        result+='<h3>Одновременное ожидание и свободная реплика — Prometheus</h3>'
+        result+=f'<p>Внутри фактических периодов B sticky найдено {prom["simultaneous_samples"]} пар синхронных samples: у одного Pod waiting &gt; 0, у другого одновременно running=0 и waiting=0. Шаг выгрузки — {fmt(prom.get("step_seconds"))} с. Ниже точки сценария hot80 (при наличии); это прямые gauges, а не оценка свободной ёмкости по среднему CPU.</p>'
+        result+=table(['UTC','Прогон','Горячий Pod','Waiting','Running','Свободный Pod'],[
+            [datetime.fromtimestamp(sample['unix'],timezone.utc).isoformat(),escape(', '.join(sample.get('runs',[]))),escape(sample['waiting_pod']),fmt(sample['waiting']),fmt(sample.get('running')),escape(sample['idle_pod'])] for sample in (prom.get('hot80_samples') or prom.get('first_samples',[]))[:8]])
+    else:
+        result+='<p class="missing">Синхронные Prometheus gauges для ожидания горячего Pod при свободной второй реплике пока не обработаны.</p>'
+    reconstructed=analysis.get('reconstructed_idle',{}).get('examples',[])
+    if reconstructed:
+        result+='<details><summary>Независимая реконструкция по журналу запросов</summary><p>Для полностью записанного прогона допускаются успехи и HTTP429, которые не выполняют backend-работу. По клиентскому wall-clock и server queue восстановлены интервалы [sent + queue; completed]. В середине ожидания указанного запроса другой Pod не обрабатывал запрос. Сетевые границы и точность wall-clock ограничивают этот способ; синхронные gauges выше дают более прямое подтверждение.</p>'
+        result+=table(['Прогон','Ждущий request ID','Ожидание, с','Другой Pod без активного интервала'],[[escape(e['run']),escape(e['request_id']),fmt(e['queue_seconds']),escape(e['other_pod'])] for e in reconstructed[:6]])+'</details>'
+    result+='<p>Машинный анализ и проверки соответствия raw ↔ summary ↔ schedule: <a href="results/route-analysis.json">route-analysis.json</a>. Нулевое число ответов одной реплики не исключает её из анализа топологии.</p>'
+    return result
+
+
 def environment():
     data=read(OUT/'environment.json',{})
     commands=data.get('commands',{})
@@ -369,6 +423,8 @@ def main():
     p.add_argument('--commit',default=None)
     args=p.parse_args()
     OUT.mkdir(parents=True,exist_ok=True)
+    from analyze_routes import main as analyze_routes
+    analyze_routes()
     rows=records(OUT/'requests.jsonl')
     runs=[read(path,{}) for path in sorted(OUT.glob('*-summary.json'))]
     runs=[run for run in runs if run.get('run')]
@@ -404,12 +460,22 @@ def main():
     html+=environment()
     html+='''<h2>2. Опыт A: прогрев, обновление и откат</h2><p><strong>Гипотеза.</strong> Готовность HTTP-процесса не подтверждает готовность backend; преждевременный endpoint отправляет запрос на непрогретую реплику. Сохранён режим <code>PROBE_MODE=broken</code>: startup/readiness отвечают 200 сразу. В режиме fixed они ждут окончания проверки артефакта и прогрева 20 с.</p><p><strong>Воспроизведение и изменение.</strong> Две реплики запускаются с нуля под одинаковыми запросами. До прогрева в исправленном варианте Service может ещё не иметь endpoints: такой клиентский сетевой отказ учитывается отдельно от ответа backend 503. Штатный rollout выполняется из полностью готовой A в B под непрерывной нагрузкой; один ответ из 80 частей с интервалом 0,5 с заранее пересекает начало rollout. Изменены probes и сохранение активных потоков в grace period.</p><p><strong>Повтор.</strong> Ниже показаны независимые клиентские результаты и Ready/EndpointSlice. Заведомо неготовая B должна оставаться вне endpoints; откат подтверждается версией A в ответах, а не только статусом Deployment. Принудительный SIGKILL выделен в отдельный прогон, в нём ожидается реальный обрыв. Время восстановления оценивается по линии endpoints и следующему успешному ответу.</p>'''
     html+=checks_html()+figure('warmup-rollout','График 1. Ready/endpoints и ошибки на исходном прогреве, после исправления и при rollout')
+    boundary=read(OUT/'a-forced-kill-boundary.json',{})
+    if boundary:
+        killed=boundary['killed_at_unix']
+        html+=table(['Принудительное завершение','Наблюдение'],[
+            ['Команда','kubectl delete pod --grace-period=0 --force'],
+            ['Прерванный Pod',escape(boundary['victim_pod'])],
+            ['Обнаружение исчезновения, с после kill',fmt(boundary['failure_detected_unix']-killed)],
+            ['Новый Pod Ready, с после kill',fmt(boundary['replacement_observed_ready_unix']-killed)],
+            ['Первый замеренный успешный ответ после kill, с',fmt(boundary['first_postkill_completed_unix']-killed)]])
+        html+='<p>Первая инъекция через os.kill(1, SIGKILL) из kubectl exec не прервала поток: процесс init пространства PID проигнорировал сигнал, что согласуется с <a href="https://man7.org/linux/man-pages/man7/pid_namespaces.7.html">Linux pid_namespaces(7)</a>. Этот неудачный опыт сохранён как a-forced, вместе с a-checks-original.json и experiment-a-original.log. Повтор a-forced-kill заставил kubelet/runtime завершить контейнер с нулевым grace period: клиент действительно получил оборванный HTTP200 без done, затем новый Pod прогрелся и восстановил обслуживание. Границы времени и идентичности сохранены в <a href="results/a-forced-kill-boundary.json">a-forced-kill-boundary.json</a>.</p>'
     html+='<h3>Все сырые исходы по прогонам</h3>'+run_table(runs)
     html+='''<p><strong>Ограничение.</strong> Нулевые ошибки в одном штатном прогоне относятся к его расписанию, длинам ответов и тайм-аутам. Grace period не гарантирует завершение ответа произвольной длины. SIGKILL не запускает корректное завершение и не обеспечивает прозрачное продолжение уже начатого потока.</p>
     <h2>3. Опыт B: локальность кеша и горячая реплика</h2><p><strong>Гипотеза.</strong> ClientIP сохраняет локальность кеша, но удерживает 80% запросов одного клиента на одном Pod. Другой Pod может простаивать, пока очередь горячего увеличивает TTFC. На обычном Service каждое новое соединение может выбрать другой endpoint.</p><p><strong>Воспроизведение.</strong> Для uniform и hot80 сравниваются sticky/normal, три повтора на комбинацию, фаза каждого не короче 120 с. IP четырёх клиентов сохранены в <a href="results/clients.json">clients.json</a>; фактическое назначение клиент → Pod ниже. Нельзя выводить распределение только из названия политики: его задают kube-proxy/CNI, исходный IP и жизненный цикл соединений. Полные настройки Service сохранены в <a href="results/b-services.json">b-services.json</a>.</p><p><strong>Изменение.</strong> В этом CPU-стенде исправление — обычный Service без ClientIP и короткие отдельные соединения. Он жертвует частью локальности, чтобы новый запрос мог попасть к другой реплике. Выбор оценивается по TTFC/очереди, отказам и распределению, а не по среднему CPU. Для настоящего inference engine потребуется отдельная проверка cache-aware политики с ценой prefill, очередью, размером KV-кеша и измеренными TTFT/TPOT.</p>'''
     html+=figure('per-pod-latency-queue','График 2. TTFC и очередь по Pod: первый повтор hot80 на тех же двух репликах')
     html+=figure('policies-three-runs','График 3. Все три повтора политик: p95 успешных ответов отдельно по каждому прогону')
-    html+='<h3>Повтор и распределение</h3>'+idle_during_queue(rows)+pod_table(rows)+'<details><summary>Трасса привязки каждого клиента</summary>'+routing_table(rows)+'</details>'
+    html+=route_analysis_html()+'<h3>Повтор и распределение</h3>'+pod_table(rows)+'<details><summary>Трасса привязки каждого клиента</summary>'+routing_table(rows)+'</details>'
     balanced=[]
     for run in runs:
         if '-sticky-' in run['run']:

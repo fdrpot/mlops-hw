@@ -18,6 +18,8 @@ def main():
            ('image',['docker','--context','colima-hw11','image','inspect','hw11-api:local','--format','{{json .}}']),
            ('kind',[str(ROOT/'.tools/bin/kind'),'version']),
            ('helm',[str(ROOT/'.tools/bin/helm'),'version','--short']),
+           ('colima',['colima','version']),
+           ('uv',['uv','--version']),
            ('kubernetes',[str(ROOT/'.tools/bin/kubectl'),'version','-o','json']),
            ('network',[str(ROOT/'.tools/bin/kubectl'),'-n','kube-system','get','cm','kube-proxy','-o','json']),
            ('nodes',[str(ROOT/'.tools/bin/kubectl'),'get','nodes','-o','json']),

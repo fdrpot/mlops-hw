@@ -52,6 +52,14 @@ kubectl -n hw11 port-forward service/hw11-prometheus 9090:9090
 # http://localhost:9090
 ```
 
+Для ручного потокового запроса откройте `kubectl -n hw11 port-forward service/hw11-normal 8000:8000`
+и выполните в другом терминале:
+
+```bash
+curl -N http://localhost:8000/generate -H 'Content-Type: application/json' \
+  -d '{"request_id":"manual-1","session_id":"dialog-1","prompt":"continue","history":[{"role":"user","content":"CONTROL_ALPHA"}],"max_chunks":3}'
+```
+
 ## Повторяемость опытов
 
 Четыре client Pod имеют разные IP; оба Service выбирают одни и те же API Pod.

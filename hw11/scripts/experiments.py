@@ -361,6 +361,8 @@ def experiment_c():
     upgrade(**{'hpa.enabled':True,'model.version':'A','model.neverReady':False,'model.warmupSeconds':20,
                'backend.cpuSeconds':.15,'backend.queueLimit':64,'backend.queueTimeout':60})
     ready()
+    wait_hpa(2,120)
+    ready()
     with observe('c-scaling'),observe_prom('c-scaling'):
         # Real CPU work in the simulated backend is the HPA stimulus.
         rows=run_load('c-scale-up',duration=180,rps=4,records=schedule(180,4,chunks=2,chunk_seconds=.05))
@@ -371,7 +373,10 @@ def experiment_c():
         load_stopped=time.time()
         down_seconds=wait_hpa(2,300)
         (OUT/'c-scale-down.json').write_text(json.dumps({'load_stopped_unix':load_stopped,
-                                                     'wait_seconds':down_seconds,'observed_unix':time.time()},indent=2))
+                                                     'wait_seconds':down_seconds,'observed_unix':time.time(),
+                                                     'arrival_phase_ended_unix':min(r['planned_unix'] for r in rows)+180,
+                                                     'last_actual_send_unix':max(r['sent_unix'] for r in rows),
+                                                     'last_completion_unix':max(r['completed_unix'] for r in rows)},indent=2))
         run_load('c-hot-sticky','sticky',duration=120,rps=4,traffic='hot80',records=schedule(120,4,'hot80',chunks=2,chunk_seconds=.05))
     # Intentionally overflow a small bounded queue. Hold a >threshold latency
     # and rejection ratio for longer than both rule windows and hold periods.
