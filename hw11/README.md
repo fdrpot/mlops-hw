@@ -33,13 +33,14 @@ python scripts/environment.py
 make report
 ```
 
-`make up` создаёт отдельный профиль Colima `hw11` с 4 CPU, 6 GiB RAM и диском
-до 16 GiB. Другие контейнеры не останавливаются. `DOCKER_CONTEXT` и `KUBECONFIG`
+`make up` создаёт отдельный профиль Colima `hw11` с 4 CPU, 6 GiB RAM и data-диском
+до 16 GiB. У Colima также есть отдельный системный диск на 20 GiB. Другие контейнеры не останавливаются. `DOCKER_CONTEXT` и `KUBECONFIG`
 ограничивают команды этим стендом. Исходный свободный диск и фактические размеры
 сохранены в `results/*disk*.txt` и `results/environment.json`.
 
 Docker system df учитывает образ приложения примерно как 239 MB (содержимое по
-image inspect — 51 MB); node image — около 1.5 GB. Верхняя граница диска VM — 16 GiB. Prometheus хранит не более 1 часа/128 MB метрик, его `emptyDir` ограничен
+image inspect — 51 MB); node image — около 1.5 GB. Data-диск ограничен 16 GiB, системный — 20 GiB. На хосте они занимают
+около 4.5 + 1.0 GiB по du; локальная папка с окружением, утилитами и результатами — 397 MiB. Prometheus хранит не более 1 часа/128 MB метрик, его `emptyDir` ограничен
 256 MiB, Grafana — 128 MiB. PVC нет. Фактически используемый размер измеряется,
 а максимальный размер VM не приравнивается к занятому месту.
 

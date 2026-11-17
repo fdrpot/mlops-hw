@@ -6,7 +6,8 @@ import time
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'results'
 def run(*args):
- p=subprocess.run(args,capture_output=True,text=True)
+ try:p=subprocess.run(args,capture_output=True,text=True)
+ except FileNotFoundError as ex:return {'returncode':127,'stdout':'','stderr':str(ex)}
  return {'returncode':p.returncode,'stdout':p.stdout,'stderr':p.stderr}
 def main():
  data={'captured_unix':time.time(),'backend_mode':'simulated','container_profile':'colima-hw11',
