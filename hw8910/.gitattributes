@@ -1,0 +1,2 @@
+# Preserve captured logs and CSV bytes, including terminal spaces and CRLF.
+evidence/** -whitespace

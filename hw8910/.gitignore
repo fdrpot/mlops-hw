@@ -1,0 +1,17 @@
+.venv/
+.venv-check/
+.prefect/
+.real*/
+.download/
+.submission/
+__pycache__/
+*.pyc
+.env
+models/
+.cache/
+*.safetensors
+*.bin
+*.pt
+.lab*/
+evidence/process/workspaces/
+evidence/process-before/workspaces/

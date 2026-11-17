@@ -1,0 +1,11 @@
+18:08:30.703 | INFO    | prefect - Starting temporary server on http://127.0.0.1:8324
+See https://www.prefect.io/docs/v3/concepts/server#how-to-guides for more information on running a dedicated Prefect server.
+18:08:33.643 | INFO    | Flow run 'hungry-ibis' - Beginning flow run 'hungry-ibis' for flow 'hw8910-release-existing-model'
+18:08:33.657 | INFO    | Task run 'prepare-and-validate-input-db7' - Finished in state Cached(type=COMPLETED)
+18:08:33.659 | INFO    | Task run 'acquire-existing-training-artifact-18d' - Reading existing artifact fixture-B; no new training
+18:08:33.660 | INFO    | Task run 'acquire-existing-training-artifact-18d' - Finished in state Completed()
+18:08:33.663 | INFO    | Task run 'check-bound-full-gate-report-e5f' - Finished in state Completed()
+18:08:33.665 | INFO    | Task run 'publish-once-and-reconcile-journal-a0a' - ALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda
+18:08:33.666 | INFO    | Task run 'publish-once-and-reconcile-journal-a0a' - Finished in state Completed()
+18:08:34.659 | INFO    | Flow run 'hungry-ibis' - Finished in state Completed()
+18:08:34.670 | INFO    | prefect - Stopping temporary server on http://127.0.0.1:8324

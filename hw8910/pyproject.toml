@@ -1,0 +1,22 @@
+[project]
+name = "mlops-hw8910"
+version = "0.1.0"
+requires-python = ">=3.12,<3.14"
+dependencies = [
+  "fastapi==0.142.2",
+  "uvicorn==0.54.0",
+  "prefect==3.9.1",
+  "httpx==0.28.1",
+]
+
+[project.optional-dependencies]
+model = [
+  "torch==2.14.0",
+  "transformers==5.17.0",
+  "peft==0.21.0",
+  "mlflow==2.22.2",
+]
+video = [
+  "imageio-ffmpeg==0.8.1",
+  "pillow==13.0.0",
+]

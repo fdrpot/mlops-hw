@@ -1,0 +1,9 @@
+command: ["/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python", "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py", "--workspace", "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat", "init"]
+cwd: /Users/potapov-fd/Desktop/MLOps/hw/hw8910
+exit_code: 0
+accepted_before_sha256: None
+accepted_after_sha256: d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52
+stdout:
+Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat
+
+stderr:

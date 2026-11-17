@@ -1,0 +1,951 @@
+{
+  "recorded_at": "2026-11-03T15:06:57.599975+00:00",
+  "project": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+  "python": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+  "synthetic": true,
+  "description": "STUB ONLY process and filesystem evidence; not model evaluation",
+  "crash_scenario_skipped": false,
+  "passed": true,
+  "checks": [
+    {
+      "name": "prepare-failure-nonzero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "prepare-failure-preserves-pointer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "recovery-success",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "recovery-uses-durable-cache",
+      "passed": true,
+      "detail": "CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nPUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "changed-input-invalidates-cache",
+      "passed": true,
+      "detail": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=fa720fd39c14e06a27401ad6fdd3104a3317d8aea8a68467126bc2e52ae3fe6e\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "tokenizer_revision-invalidates-cache",
+      "passed": true,
+      "detail": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=dd9b1dc79a569ee21b72a43f42d3b3553b7f5aa9cd88b3ba45dc097f49af2977\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "template_sha256-invalidates-cache",
+      "passed": true,
+      "detail": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=95fc76b0292a861fbf1808ce3f3c3192f39f4a466bde201cb168322aeb24f82a\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "max_length-invalidates-cache",
+      "passed": true,
+      "detail": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=fd71537592802d208a7cbe80619c43d7e158b42c10260b06d99ace5b647374ba\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "code_revision-invalidates-cache",
+      "passed": true,
+      "detail": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=df393a9f53852fb8d57ad4e7e89d9a990a51c839e99fefb8c4458dad4b1d2bc0\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n"
+    },
+    {
+      "name": "quality-rejection-nonzero-exit",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "quality-rejection-pointer-byte-identical",
+      "passed": true,
+      "detail": {
+        "before": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+        "after": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+      }
+    },
+    {
+      "name": "incomplete-report-nonzero-exit",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "incomplete-report-pointer-byte-identical",
+      "passed": true,
+      "detail": {
+        "before": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+        "after": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+      }
+    },
+    {
+      "name": "foreign-report-nonzero-exit",
+      "passed": true,
+      "detail": 1
+    },
+    {
+      "name": "foreign-report-pointer-byte-identical",
+      "passed": true,
+      "detail": {
+        "before": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+        "after": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+      }
+    },
+    {
+      "name": "nonfinite-report-refused",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "nonfinite-report-preserves-pointer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "repeat-success",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "repeat-pointer-byte-identical",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "repeat-one-publication-event",
+      "passed": true,
+      "detail": [
+        {
+          "evaluation_run_id": "fixture-eval-B",
+          "manifest_sha256": "eb68031841d56bb7ad4ba0f14021b2e2ad4fdf7ab00c1af2c5473c69c21eb10c",
+          "model_id": "fixture-B",
+          "prepared": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "report_sha256": "74aa5a4c3549d5a6d99051cdeaac3756917b63aa94b732c212539a7c71f1b0bd",
+          "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547"
+        }
+      ]
+    },
+    {
+      "name": "publication-crash-nonzero",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "publication-crash-updated-pointer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "publication-crash-recovery-success",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "publication-crash-recovery-same-pointer",
+      "passed": true,
+      "detail": null
+    },
+    {
+      "name": "publication-crash-exactly-one-event",
+      "passed": true,
+      "detail": [
+        {
+          "evaluation_run_id": "fixture-eval-B",
+          "manifest_sha256": "eb68031841d56bb7ad4ba0f14021b2e2ad4fdf7ab00c1af2c5473c69c21eb10c",
+          "model_id": "fixture-B",
+          "prepared": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "report_sha256": "74aa5a4c3549d5a6d99051cdeaac3756917b63aa94b732c212539a7c71f1b0bd",
+          "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547"
+        }
+      ]
+    }
+  ],
+  "commands": [
+    {
+      "name": "recovery-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "prepare-injected-failure",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run",
+        "--fail-after-prepare"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 218, in run\n    raise RuntimeError('Инъекция сбоя после подготовки')\nRuntimeError: Инъекция сбоя после подготовки\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "prepare-new-process-recovery",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nPUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "input-changed-same-path",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=fa720fd39c14e06a27401ad6fdd3104a3317d8aea8a68467126bc2e52ae3fe6e\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "config-changed-tokenizer_revision",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=dd9b1dc79a569ee21b72a43f42d3b3553b7f5aa9cd88b3ba45dc097f49af2977\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "config-changed-template_sha256",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=95fc76b0292a861fbf1808ce3f3c3192f39f4a466bde201cb168322aeb24f82a\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "config-changed-max_length",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=fd71537592802d208a7cbe80619c43d7e158b42c10260b06d99ace5b647374ba\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "config-changed-code_revision",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/recovery",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED a30c1ccb88b0d0ef1c08b011eca62206888fcf2c5f31b6c472f95ec5fd9d5125 key=df393a9f53852fb8d57ad4e7e89d9a990a51c839e99fefb8c4458dad4b1d2bc0\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "quality-rejection-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/quality-rejection",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/quality-rejection\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "quality-rejection",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/quality-rejection",
+        "run",
+        "--report",
+        "report-reject.json"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 221, in run\n    result = publish_once(root, manifest, report, prepared, fail_after_publish)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 155, in publish_once\n    release.validate_release(manifest, report)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/release.py\", line 60, in validate_release\n    raise ValueError('Release requires a complete report with boolean passed=True')\nValueError: Release requires a complete report with boolean passed=True\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "incomplete-report-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/incomplete-report",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/incomplete-report\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "incomplete-report",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/incomplete-report",
+        "run",
+        "--report",
+        "report-incomplete.json"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 221, in run\n    result = publish_once(root, manifest, report, prepared, fail_after_publish)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 155, in publish_once\n    release.validate_release(manifest, report)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/release.py\", line 60, in validate_release\n    raise ValueError('Release requires a complete report with boolean passed=True')\nValueError: Release requires a complete report with boolean passed=True\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "foreign-report-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/foreign-report",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/foreign-report\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "foreign-report",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/foreign-report",
+        "run",
+        "--report",
+        "report-A.json"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 221, in run\n    result = publish_once(root, manifest, report, prepared, fail_after_publish)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 155, in publish_once\n    release.validate_release(manifest, report)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/release.py\", line 65, in validate_release\n    raise ValueError(f'Report binding mismatch: {name}')\nValueError: Report binding mismatch: model_id\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "nonfinite-report-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/nonfinite-report",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/nonfinite-report\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "nonfinite-report",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/nonfinite-report",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 221, in run\n    result = publish_once(root, manifest, report, prepared, fail_after_publish)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 155, in publish_once\n    release.validate_release(manifest, report)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/release.py\", line 72, in validate_release\n    raise ValueError(f'{name} must be a finite number between 0 and 1')\nValueError: accuracy must be a finite number between 0 and 1\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "repeat-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "publication-first-process",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nPUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "publication-second-process",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/repeat",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "publication-crash-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/publication-crash",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "Создан синтетический стенд STUB ONLY: /var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/publication-crash\n",
+      "stderr": "",
+      "accepted_before_sha256": null,
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52"
+    },
+    {
+      "name": "crash-between-pointer-and-journal",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/publication-crash",
+        "run",
+        "--fail-after-publish"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 1,
+      "stdout": "PREPARED 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\n",
+      "stderr": "Traceback (most recent call last):\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 247, in <module>\n    main()\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 243, in main\n    run(args.workspace, args.report, args.fail_after_prepare, args.manifest, args.fail_after_publish)\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 221, in run\n    result = publish_once(root, manifest, report, prepared, fail_after_publish)\n             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\n  File \"/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py\", line 189, in publish_once\n    raise RuntimeError('Инъекция сбоя после указателя до журнала')\nRuntimeError: Инъекция сбоя после указателя до журнала\n",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "publication-crash-new-process-recovery",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/publication-crash",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nRECOVERED_PUBLICATION 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    },
+    {
+      "name": "publication-crash-repeat",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv-check/bin/python",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/lab.py",
+        "--workspace",
+        "/var/folders/vl/l13tr3sd7991gy5v6p4tfpxh0000gn/T/hw8910-evidence-2cag07hd/publication-crash",
+        "run"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "returncode": 0,
+      "stdout": "CACHE_HIT 88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4 key=8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9\nALREADY_PUBLISHED fixture-B 330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda\n",
+      "stderr": "",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0"
+    }
+  ],
+  "snapshots": {
+    "recovery-and-invalidation": {
+      "accepted_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted": {
+        "artifact_uri": "model-B.txt",
+        "file_hashes": {
+          "model-B.txt": "cc62a90ddc04e822b91a9c274726bb44fb8e96183f947c98b64a8a88c18900ac"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-B",
+        "model_sha256": "b465d64e69349bc093704300fae82ec29d6c6fc678e51c56b59d82e885a225fa",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [
+        {
+          "evaluation_run_id": "fixture-eval-B",
+          "manifest_sha256": "eb68031841d56bb7ad4ba0f14021b2e2ad4fdf7ab00c1af2c5473c69c21eb10c",
+          "model_id": "fixture-B",
+          "prepared": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "report_sha256": "74aa5a4c3549d5a6d99051cdeaac3756917b63aa94b732c212539a7c71f1b0bd",
+          "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547"
+        }
+      ],
+      "attempts": [
+        {
+          "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "1ac86a15-b04f-4b65-bc36-64f444478cb1",
+          "error": "RuntimeError: Инъекция сбоя после подготовки",
+          "finished_unix": 1793718416.8470669,
+          "started_unix": 1793718416.845921,
+          "status": "failed"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "71f0b059-1c76-4971-9ee7-0d3c6a71c5c4",
+          "finished_unix": 1793718416.88064,
+          "published": true,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718416.878589,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "145050ba-6f81-4ec5-8d11-238493fd5962",
+          "finished_unix": 1793718416.913802,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718416.9124238,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "8a296fa5-e5d4-481f-a6c2-ae4d3426140d",
+          "finished_unix": 1793718416.9474502,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718416.945853,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "4bdfa9f1-2375-40ce-b396-3e88cb25d30a",
+          "finished_unix": 1793718417.002529,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718416.980851,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "2ae9e217-62c6-479a-a6d8-73090a706cec",
+          "finished_unix": 1793718417.050217,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.048456,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "b60e2869-8f88-42fe-be4c-76fd54c6aed1",
+          "finished_unix": 1793718417.083337,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.081829,
+          "status": "complete"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json",
+        "95fc76b0292a861fbf1808ce3f3c3192f39f4a466bde201cb168322aeb24f82a.json",
+        "dd9b1dc79a569ee21b72a43f42d3b3553b7f5aa9cd88b3ba45dc097f49af2977.json",
+        "df393a9f53852fb8d57ad4e7e89d9a990a51c839e99fefb8c4458dad4b1d2bc0.json",
+        "fa720fd39c14e06a27401ad6fdd3104a3317d8aea8a68467126bc2e52ae3fe6e.json",
+        "fd71537592802d208a7cbe80619c43d7e158b42c10260b06d99ace5b647374ba.json"
+      ]
+    },
+    "quality-rejection": {
+      "accepted_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted": {
+        "artifact_uri": "model-A.txt",
+        "file_hashes": {
+          "model-A.txt": "e27aceef06b905cf7c6747410a9a6a78b7d6335b289d05845538e864ea4e1740"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-A",
+        "model_sha256": "c728ff4640be10c7207059c63d318a911074cc93601aff06a10ad9a2c048f950",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [],
+      "attempts": [
+        {
+          "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "b07c59c1-b725-4592-8d46-528022de47e5",
+          "error": "ValueError: Release requires a complete report with boolean passed=True",
+          "finished_unix": 1793718417.1510348,
+          "started_unix": 1793718417.149747,
+          "status": "failed"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    },
+    "incomplete-report": {
+      "accepted_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted": {
+        "artifact_uri": "model-A.txt",
+        "file_hashes": {
+          "model-A.txt": "e27aceef06b905cf7c6747410a9a6a78b7d6335b289d05845538e864ea4e1740"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-A",
+        "model_sha256": "c728ff4640be10c7207059c63d318a911074cc93601aff06a10ad9a2c048f950",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [],
+      "attempts": [
+        {
+          "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "7b9c9ef1-875d-4c66-82bc-45b5cc95ac67",
+          "error": "ValueError: Release requires a complete report with boolean passed=True",
+          "finished_unix": 1793718417.219542,
+          "started_unix": 1793718417.218219,
+          "status": "failed"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    },
+    "foreign-report": {
+      "accepted_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted": {
+        "artifact_uri": "model-A.txt",
+        "file_hashes": {
+          "model-A.txt": "e27aceef06b905cf7c6747410a9a6a78b7d6335b289d05845538e864ea4e1740"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-A",
+        "model_sha256": "c728ff4640be10c7207059c63d318a911074cc93601aff06a10ad9a2c048f950",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [],
+      "attempts": [
+        {
+          "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "a63edbb5-4370-4b18-8a01-9d49da42e660",
+          "error": "ValueError: Report binding mismatch: model_id",
+          "finished_unix": 1793718417.28671,
+          "started_unix": 1793718417.285419,
+          "status": "failed"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    },
+    "nonfinite-report": {
+      "accepted_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "accepted": {
+        "artifact_uri": "model-A.txt",
+        "file_hashes": {
+          "model-A.txt": "e27aceef06b905cf7c6747410a9a6a78b7d6335b289d05845538e864ea4e1740"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-A",
+        "model_sha256": "c728ff4640be10c7207059c63d318a911074cc93601aff06a10ad9a2c048f950",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [],
+      "attempts": [
+        {
+          "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "295b51a1-ceef-4468-9f44-6995486ec9a4",
+          "error": "ValueError: accuracy must be a finite number between 0 and 1",
+          "finished_unix": 1793718417.354188,
+          "started_unix": 1793718417.3529248,
+          "status": "failed"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    },
+    "repeat": {
+      "accepted_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted": {
+        "artifact_uri": "model-B.txt",
+        "file_hashes": {
+          "model-B.txt": "cc62a90ddc04e822b91a9c274726bb44fb8e96183f947c98b64a8a88c18900ac"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-B",
+        "model_sha256": "b465d64e69349bc093704300fae82ec29d6c6fc678e51c56b59d82e885a225fa",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [
+        {
+          "evaluation_run_id": "fixture-eval-B",
+          "manifest_sha256": "eb68031841d56bb7ad4ba0f14021b2e2ad4fdf7ab00c1af2c5473c69c21eb10c",
+          "model_id": "fixture-B",
+          "prepared": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "report_sha256": "74aa5a4c3549d5a6d99051cdeaac3756917b63aa94b732c212539a7c71f1b0bd",
+          "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547"
+        }
+      ],
+      "attempts": [
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "d42eb2fe-26dd-403a-82c9-018f16488611",
+          "finished_unix": 1793718417.4220932,
+          "published": true,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.41973,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "2e43dac7-2351-4c6e-8433-dc628c1ff2eb",
+          "finished_unix": 1793718417.4544141,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.453671,
+          "status": "complete"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    },
+    "publication-crash": {
+      "accepted_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "accepted": {
+        "artifact_uri": "model-B.txt",
+        "file_hashes": {
+          "model-B.txt": "cc62a90ddc04e822b91a9c274726bb44fb8e96183f947c98b64a8a88c18900ac"
+        },
+        "golden_sha256": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+        "model_id": "fixture-B",
+        "model_sha256": "b465d64e69349bc093704300fae82ec29d6c6fc678e51c56b59d82e885a225fa",
+        "protocol_sha256": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+        "runtime": {
+          "base_revision": "fixture-only",
+          "dtype": "float32",
+          "generation": {
+            "do_sample": false,
+            "max_new_tokens": 32
+          },
+          "template_sha256": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+          "tokenizer_sha256": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+        },
+        "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547",
+        "schema_version": 1
+      },
+      "publications": [
+        {
+          "evaluation_run_id": "fixture-eval-B",
+          "manifest_sha256": "eb68031841d56bb7ad4ba0f14021b2e2ad4fdf7ab00c1af2c5473c69c21eb10c",
+          "model_id": "fixture-B",
+          "prepared": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "report_sha256": "74aa5a4c3549d5a6d99051cdeaac3756917b63aa94b732c212539a7c71f1b0bd",
+          "runtime_sha256": "bc7bd5a4806e2e0e3b8569666b251d6c59a8d8e01e37fc37bf95b534023ca547"
+        }
+      ],
+      "attempts": [
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+          "attempt_id": "a5ff166c-ad44-4e94-96f1-af6ce6ff5e6d",
+          "error": "RuntimeError: Инъекция сбоя после указателя до журнала",
+          "finished_unix": 1793718417.522631,
+          "started_unix": 1793718417.520705,
+          "status": "failed"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "31663f18-588e-4213-85a6-8fe65589831a",
+          "finished_unix": 1793718417.555754,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.554338,
+          "status": "complete"
+        },
+        {
+          "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+          "attempt_id": "ba411d61-d01a-4c0c-807b-86a167e6fca2",
+          "finished_unix": 1793718417.588329,
+          "published": false,
+          "release_id": "330dceb4a062a6dbd7d2b1068989621f0aa10ac463e74ea41f90b97a2d318eda",
+          "started_unix": 1793718417.587593,
+          "status": "complete"
+        }
+      ],
+      "cache_entries": [
+        "8dcef6afa40c9a9f7c3be11715ebdfa56b62e5a028234a5d9744c3a41ef49ac9.json"
+      ]
+    }
+  }
+}

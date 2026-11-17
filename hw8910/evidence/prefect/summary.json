@@ -1,0 +1,305 @@
+{
+  "synthetic": true,
+  "backend": "STUB ONLY",
+  "workspace": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+  "prefect_home": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.prefect",
+  "python": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+  "started_unix": 1793718494.290337,
+  "steps": [
+    {
+      "name": "01-init",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+        "lab.py",
+        "--workspace",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+        "init"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "accepted_before_sha256": null,
+      "started_unix": 1793718494.290356,
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/prefect/01-init.log",
+      "log_sha256": "a0ae19ffe5d971767da1128508a887d2a35155ec3d0d4b561b8a91eeddd13ecf",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "finished_unix": 1793718494.3523562,
+      "publication_count": 0
+    },
+    {
+      "name": "02-fail-after-prepare",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+        "flow.py",
+        "--workspace",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+        "--fail-after-prepare"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "started_unix": 1793718494.352768,
+      "exit_code": 1,
+      "expected_exit": 1,
+      "log": "evidence/prefect/02-fail-after-prepare.log",
+      "log_sha256": "8396f499a8583281666768396bf4adcd0fb7f8c92a66b2c423ce13d7a2331030",
+      "accepted_after_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "finished_unix": 1793718501.862615,
+      "flow_run": {
+        "id": "dc161420-720b-480f-8647-ae585b4fe9d2",
+        "name": "talented-jaguar",
+        "state_type": "FAILED",
+        "state_name": "Failed",
+        "start_time": "2026-11-03 15:08:20.240004",
+        "end_time": "2026-11-03 15:08:21.281456",
+        "parameters": {
+          "workspace": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+          "manifest_name": "manifest-B.json",
+          "report_name": "report-B.json",
+          "fail_after_prepare": true,
+          "fail_after_publish": false
+        },
+        "tasks": [
+          {
+            "id": "01a1a1f4-3ba9-7abc-9ab5-ef2b73747b50",
+            "name": "prepare-and-validate-input-9e0",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:20.268101",
+            "end_time": "2026-11-03 15:08:20.271788"
+          }
+        ]
+      },
+      "publication_count": 0
+    },
+    {
+      "name": "03-recovery",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+        "flow.py",
+        "--workspace",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "accepted_before_sha256": "d549211b23f5cdbec7b5e259f44e111a20a9fa11534d9cb2273c94e8bfc0aa52",
+      "started_unix": 1793718501.865089,
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/prefect/03-recovery.log",
+      "log_sha256": "73eba922f481094e865c852fd08ef1d67e2578982020864570f88a0a868cb6c7",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "finished_unix": 1793718508.426124,
+      "flow_run": {
+        "id": "61fdfa33-c107-4dd0-a541-a0adef31296f",
+        "name": "refreshing-cobra",
+        "state_type": "COMPLETED",
+        "state_name": "Completed",
+        "start_time": "2026-11-03 15:08:26.803824",
+        "end_time": "2026-11-03 15:08:26.878540",
+        "parameters": {
+          "workspace": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+          "manifest_name": "manifest-B.json",
+          "report_name": "report-B.json",
+          "fail_after_prepare": false,
+          "fail_after_publish": false
+        },
+        "tasks": [
+          {
+            "id": "01a1a1f4-5556-7912-b4aa-2a55508908a9",
+            "name": "prepare-and-validate-input-744",
+            "state_type": "COMPLETED",
+            "state_name": "Cached",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:26.842389",
+            "end_time": "2026-11-03 15:08:26.845123"
+          },
+          {
+            "id": "01a1a1f4-555e-7db4-a407-de664a5b8377",
+            "name": "acquire-existing-training-artifact-786",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:26.847247",
+            "end_time": "2026-11-03 15:08:26.849864"
+          },
+          {
+            "id": "01a1a1f4-5562-707d-bce0-465d113d3619",
+            "name": "check-bound-full-gate-report-d14",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:26.851579",
+            "end_time": "2026-11-03 15:08:26.852695"
+          },
+          {
+            "id": "01a1a1f4-5565-7013-94a6-27fb57a58527",
+            "name": "publish-once-and-reconcile-journal-dbe",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:26.854380",
+            "end_time": "2026-11-03 15:08:26.864795"
+          }
+        ]
+      },
+      "publication_count": 1
+    },
+    {
+      "name": "04-repeat",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+        "flow.py",
+        "--workspace",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "started_unix": 1793718508.4283268,
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/prefect/04-repeat.log",
+      "log_sha256": "4595c08ffa8488fe97458416a814774efc9bb1a83a86bdde8c9aa38fb4b8fd37",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "finished_unix": 1793718515.2488708,
+      "flow_run": {
+        "id": "4c5e6df0-a41a-440a-b5c6-d105b5c53327",
+        "name": "hungry-ibis",
+        "state_type": "COMPLETED",
+        "state_name": "Completed",
+        "start_time": "2026-11-03 15:08:33.623997",
+        "end_time": "2026-11-03 15:08:33.682954",
+        "parameters": {
+          "workspace": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+          "manifest_name": "manifest-B.json",
+          "report_name": "report-B.json",
+          "fail_after_prepare": false,
+          "fail_after_publish": false
+        },
+        "tasks": [
+          {
+            "id": "01a1a1f4-6ff3-730d-8045-ce97dd96053f",
+            "name": "prepare-and-validate-input-db7",
+            "state_type": "COMPLETED",
+            "state_name": "Cached",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:33.654716",
+            "end_time": "2026-11-03 15:08:33.656717"
+          },
+          {
+            "id": "01a1a1f4-6ff9-796d-979a-f1d5faebab01",
+            "name": "acquire-existing-training-artifact-18d",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:33.658474",
+            "end_time": "2026-11-03 15:08:33.659903"
+          },
+          {
+            "id": "01a1a1f4-6ffc-7ea3-9a46-838e46aa744a",
+            "name": "check-bound-full-gate-report-e5f",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:33.661319",
+            "end_time": "2026-11-03 15:08:33.662780"
+          },
+          {
+            "id": "01a1a1f4-6fff-79fb-8398-c8636c72473d",
+            "name": "publish-once-and-reconcile-journal-a0a",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:33.664249",
+            "end_time": "2026-11-03 15:08:33.665717"
+          }
+        ]
+      },
+      "publication_count": 1
+    },
+    {
+      "name": "05-changed-input",
+      "command": [
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.venv/bin/python",
+        "flow.py",
+        "--workspace",
+        "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect"
+      ],
+      "cwd": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910",
+      "accepted_before_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "started_unix": 1793718515.2518458,
+      "exit_code": 0,
+      "expected_exit": 0,
+      "log": "evidence/prefect/05-changed-input.log",
+      "log_sha256": "27a76b07ded3894e4754329a2d0322a4b92ac3fb60b75233ea180f7979be28f6",
+      "accepted_after_sha256": "127ceb246bc351d54a6076230caf41aa78e7b4b552e2cc974353296980ed69e0",
+      "finished_unix": 1793718520.359042,
+      "flow_run": {
+        "id": "42ec688e-8238-45f9-b008-d09bdba9aac9",
+        "name": "robust-hawk",
+        "state_type": "COMPLETED",
+        "state_name": "Completed",
+        "start_time": "2026-11-03 15:08:38.766714",
+        "end_time": "2026-11-03 15:08:38.813763",
+        "parameters": {
+          "workspace": "/Users/potapov-fd/Desktop/MLOps/hw/hw8910/.lab-prefect",
+          "manifest_name": "manifest-B.json",
+          "report_name": "report-B.json",
+          "fail_after_prepare": false,
+          "fail_after_publish": false
+        },
+        "tasks": [
+          {
+            "id": "01a1a1f4-8405-76a1-83fe-afbde75906dc",
+            "name": "prepare-and-validate-input-44d",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:38.791180",
+            "end_time": "2026-11-03 15:08:38.794342"
+          },
+          {
+            "id": "01a1a1f4-840b-7781-8b12-3afc4784e396",
+            "name": "acquire-existing-training-artifact-f29",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:38.796333",
+            "end_time": "2026-11-03 15:08:38.797578"
+          },
+          {
+            "id": "01a1a1f4-840e-74c5-8667-1d6a4a14d8f7",
+            "name": "check-bound-full-gate-report-7d6",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:38.798485",
+            "end_time": "2026-11-03 15:08:38.799049"
+          },
+          {
+            "id": "01a1a1f4-840f-7af2-aec8-0551edc9f7e6",
+            "name": "publish-once-and-reconcile-journal-b42",
+            "state_type": "COMPLETED",
+            "state_name": "Completed",
+            "cache_key": null,
+            "start_time": "2026-11-03 15:08:38.799985",
+            "end_time": "2026-11-03 15:08:38.801476"
+          }
+        ]
+      },
+      "publication_count": 1
+    }
+  ],
+  "input_before_change_sha256": "88bbd559a04a7a432693a1c611ef2704bb711ac17dd5e22203ee9e5020f59fd4",
+  "input_after_change_sha256": "8063621bccbda80d2fa65d3560b8d0a1a71fc90088aa688728b64bedc54b9e74",
+  "checks": {
+    "failure_preserved_pointer": true,
+    "new_process_reused_prefect_cache": true,
+    "repeat_preserved_pointer": true,
+    "repeat_has_one_publication": true,
+    "changed_input_executed_preparation": true,
+    "changed_input_has_one_publication": true,
+    "different_flow_run_ids": true
+  },
+  "passed": true,
+  "finished_unix": 1793718520.360917
+}
