@@ -1,0 +1,44 @@
+replicaCount: 2
+image:
+  repository: hw11-api
+  tag: local
+  pullPolicy: IfNotPresent
+model:
+  version: A
+  warmupSeconds: 20
+  probeMode: fixed
+  neverReady: false
+backend:
+  maxConcurrency: 1
+  queueLimit: 64
+  queueTimeout: 60
+  cacheSize: 16
+  hitSeconds: 0.04
+  missSeconds: 0.20
+  cpuSeconds: 0.02
+  chunkSeconds: 0.05
+resources:
+  requests:
+    cpu: 100m
+    memory: 64Mi
+  limits:
+    cpu: 500m
+    memory: 192Mi
+terminationGracePeriodSeconds: 60
+hpa:
+  enabled: false
+  minReplicas: 2
+  maxReplicas: 3
+  targetCPUUtilizationPercentage: 60
+  scaleDownStabilizationSeconds: 30
+monitoring:
+  enabled: true
+  prometheusImage: prom/prometheus:v3.5.0
+  grafanaImage: grafana/grafana:12.1.0
+  kubeStateMetricsImage: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0
+  retentionTime: 1h
+  retentionSize: 128MB
+  latencyThresholdSeconds: 0.6
+  rejectionRatioThreshold: 0.1
+  minimumObservations: 10
+  alertFor: 10s

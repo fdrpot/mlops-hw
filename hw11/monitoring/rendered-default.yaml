@@ -1,0 +1,1012 @@
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hw11-prometheus
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: hw11-kube-state-metrics
+---
+# Source: hw11/templates/api.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hw11-model-a
+immutable: true
+data:
+  model.json: |
+    {"backend_mode": "simulated", "description": "Bounded CPU simulator; no neural weights or token timing", "model_version": "A", "schema_version": 1}
+---
+# Source: hw11/templates/api.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hw11-config
+data:
+  MODEL_VERSION: "A"
+  ARTIFACT_PATH: /artifacts/model.json
+  ARTIFACT_SHA256: "0144a05a7ba9306da19204796bdc3dd930d0c0d771a40353e7db3b8090281886"
+  WARMUP_SECONDS: "20"
+  PROBE_MODE: "fixed"
+  NEVER_READY: "false"
+  MAX_CONCURRENCY: "1"
+  QUEUE_LIMIT: "64"
+  QUEUE_TIMEOUT: "60"
+  CACHE_SIZE: "16"
+  HIT_SECONDS: "0.04"
+  MISS_SECONDS: "0.2"
+  CPU_SECONDS: "0.02"
+  CHUNK_SECONDS: "0.05"
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hw11-prometheus
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 5s
+      evaluation_interval: 5s
+      scrape_timeout: 4s
+    rule_files:
+      - /etc/prometheus/alerts.yml
+    scrape_configs:
+      - job_name: hw11-api
+        honor_labels: true
+        kubernetes_sd_configs:
+          - role: pod
+            namespaces:
+              names: ['hw11']
+        relabel_configs:
+          - source_labels: [__meta_kubernetes_pod_label_app]
+            regex: 'hw11-api'
+            action: keep
+          - source_labels: [__meta_kubernetes_pod_container_port_name]
+            regex: http
+            action: keep
+          - source_labels: [__meta_kubernetes_pod_name]
+            target_label: pod
+          - source_labels: [__meta_kubernetes_namespace]
+            target_label: namespace
+      - job_name: kube-state-metrics
+        static_configs:
+          - targets: ['hw11-kube-state-metrics:8080']
+      - job_name: kubelet-cadvisor
+        scheme: https
+        bearer_token_file: /var/run/secrets/kubernetes.io/serviceaccount/token
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        kubernetes_sd_configs:
+          - role: node
+        relabel_configs:
+          - target_label: __address__
+            replacement: kubernetes.default.svc:443
+          - source_labels: [__meta_kubernetes_node_name]
+            target_label: __metrics_path__
+            replacement: /api/v1/nodes/$1/proxy/metrics/cadvisor
+        metric_relabel_configs:
+          - source_labels: [namespace]
+            regex: 'hw11'
+            action: keep
+          - source_labels: [__name__]
+            regex: container_cpu_usage_seconds_total|container_memory_working_set_bytes
+            action: keep
+
+  alerts.yml: |
+    groups:
+      - name: hw11-service
+        interval: 5s
+        rules:
+          - alert: HW11HighTTFC
+            expr: >-
+              (histogram_quantile(0.95, sum by (le) (rate(hw11_ttfc_seconds_bucket[30s]))) > 0.6)
+              and (sum(increase(hw11_ttfc_seconds_count[30s])) >= 10)
+            for: 10s
+            labels:
+              severity: warning
+            annotations:
+              summary: "Simulator p95 TTFC exceeds threshold with enough observations"
+          - alert: HW11HighRejectionRatio
+            expr: >-
+              ((sum(rate(hw11_requests_total{outcome="rejected"}[30s])) / clamp_min(sum(rate(hw11_requests_total[30s])), 0.001)) > 0.1)
+              and (sum(increase(hw11_requests_total[30s])) >= 10)
+            for: 10s
+            labels:
+              severity: warning
+            annotations:
+              summary: "Rejection ratio exceeds threshold with enough observations"
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hw11-grafana
+data:
+  datasource.yml: |
+    apiVersion: 1
+    datasources:
+      - name: Prometheus
+        uid: prometheus
+        type: prometheus
+        access: proxy
+        url: http://hw11-prometheus:9090
+        isDefault: true
+        editable: false
+  dashboard-provider.yml: |
+    apiVersion: 1
+    providers:
+      - name: hw11
+        options:
+          path: /var/lib/grafana/dashboards
+  dashboard.json: |
+    {
+      "uid": "hw11-kubernetes",
+      "title": "HW11 — simulated streaming API",
+      "schemaVersion": 41,
+      "version": 1,
+      "editable": true,
+      "tags": [
+        "hw11",
+        "backend_mode=simulated"
+      ],
+      "refresh": "5s",
+      "time": {
+        "from": "now-30m",
+        "to": "now"
+      },
+      "timezone": "utc",
+      "panels": [
+        {
+          "id": 1,
+          "type": "timeseries",
+          "title": "TTFC p50/p95 by Pod, seconds",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "histogram_quantile(0.50, sum by (le,pod) (rate(hw11_ttfc_seconds_bucket[1m])))",
+              "legendFormat": "p50 {{pod}}",
+              "range": true
+            },
+            {
+              "refId": "B",
+              "expr": "histogram_quantile(0.95, sum by (le,pod) (rate(hw11_ttfc_seconds_bucket[1m])))",
+              "legendFormat": "p95 {{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 2,
+          "type": "timeseries",
+          "title": "Complete response p95 by Pod, seconds",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 0,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "histogram_quantile(0.95, sum by (le,pod) (rate(hw11_total_seconds_bucket[1m])))",
+              "legendFormat": "{{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 3,
+          "type": "timeseries",
+          "title": "Queue p95 by Pod, seconds",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 8,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "histogram_quantile(0.95, sum by (le,pod) (rate(hw11_queue_seconds_bucket[1m])))",
+              "legendFormat": "{{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "s",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 4,
+          "type": "timeseries",
+          "title": "Current running / waiting requests",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 8,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "hw11_running",
+              "legendFormat": "running {{pod}}",
+              "range": true
+            },
+            {
+              "refId": "B",
+              "expr": "hw11_waiting",
+              "legendFormat": "waiting {{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 5,
+          "type": "timeseries",
+          "title": "Completed requests per second",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 16,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (pod) (rate(hw11_requests_total{outcome=\"complete\"}[1m]))",
+              "legendFormat": "{{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "reqps",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 6,
+          "type": "timeseries",
+          "title": "Rejections / aborted requests per second",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 16,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (pod,outcome) (rate(hw11_requests_total{outcome!=\"complete\"}[1m]))",
+              "legendFormat": "{{pod}} {{outcome}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "reqps",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 7,
+          "type": "timeseries",
+          "title": "CPU per API Pod, cores",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 24,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (pod) (rate(container_cpu_usage_seconds_total{namespace=\"hw11\",container=\"api\"}[1m]))",
+              "legendFormat": "{{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "cores",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 8,
+          "type": "timeseries",
+          "title": "RAM working set per API Pod, bytes",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 24,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (pod) (container_memory_working_set_bytes{namespace=\"hw11\",container=\"api\"})",
+              "legendFormat": "{{pod}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "bytes",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 9,
+          "type": "timeseries",
+          "title": "Ready replicas (Kubernetes) and warmed backends",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 32,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum(kube_pod_status_ready{namespace=\"hw11\",condition=\"true\",pod=~\"hw11-api-.*\"})",
+              "legendFormat": "Kubernetes Ready",
+              "range": true
+            },
+            {
+              "refId": "B",
+              "expr": "sum(hw11_ready)",
+              "legendFormat": "warmed backends",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 10,
+          "type": "timeseries",
+          "title": "Cache hits / misses per second",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 32,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "sum by (result) (rate(hw11_cache_total[1m]))",
+              "legendFormat": "{{result}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "ops",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 11,
+          "type": "timeseries",
+          "title": "HPA current / desired replicas",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 0,
+            "y": 40,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "kube_horizontalpodautoscaler_status_current_replicas{namespace=\"hw11\"}",
+              "legendFormat": "current",
+              "range": true
+            },
+            {
+              "refId": "B",
+              "expr": "kube_horizontalpodautoscaler_status_desired_replicas{namespace=\"hw11\"}",
+              "legendFormat": "desired",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        },
+        {
+          "id": 12,
+          "type": "timeseries",
+          "title": "Alerts: pending / firing",
+          "datasource": {
+            "type": "prometheus",
+            "uid": "prometheus"
+          },
+          "gridPos": {
+            "x": 12,
+            "y": 40,
+            "w": 12,
+            "h": 8
+          },
+          "targets": [
+            {
+              "refId": "A",
+              "expr": "ALERTS{alertname=~\"HW11.*\"}",
+              "legendFormat": "{{alertname}} {{alertstate}}",
+              "range": true
+            }
+          ],
+          "fieldConfig": {
+            "defaults": {
+              "unit": "short",
+              "min": 0
+            },
+            "overrides": []
+          },
+          "options": {
+            "legend": {
+              "displayMode": "table",
+              "placement": "bottom"
+            },
+            "tooltip": {
+              "mode": "multi"
+            }
+          }
+        }
+      ],
+      "annotations": {
+        "list": []
+      }
+    }
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  name: hw11-hw11-prometheus
+rules:
+  - apiGroups: ['']
+    resources: [nodes, nodes/proxy, pods, services, endpoints]
+    verbs: [get, list, watch]
+  - nonResourceURLs: [/metrics, /metrics/cadvisor]
+    verbs: [get]
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRoleBinding
+metadata:
+  name: hw11-hw11-prometheus
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: ClusterRole
+  name: hw11-hw11-prometheus
+subjects:
+  - kind: ServiceAccount
+    name: hw11-prometheus
+    namespace: hw11
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: hw11-kube-state-metrics
+rules:
+  - apiGroups: ['']
+    resources: [pods]
+    verbs: [get, list, watch]
+  - apiGroups: [apps]
+    resources: [deployments]
+    verbs: [get, list, watch]
+  - apiGroups: [autoscaling]
+    resources: [horizontalpodautoscalers]
+    verbs: [get, list, watch]
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: hw11-kube-state-metrics
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: hw11-kube-state-metrics
+subjects:
+  - kind: ServiceAccount
+    name: hw11-kube-state-metrics
+    namespace: hw11
+---
+# Source: hw11/templates/api.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw11-normal
+spec:
+  type: ClusterIP
+  selector:
+    app: hw11-api
+  sessionAffinity: None
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+# Source: hw11/templates/api.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw11-sticky
+spec:
+  type: ClusterIP
+  selector:
+    app: hw11-api
+  sessionAffinity: ClientIP
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw11-prometheus
+spec:
+  selector: {app: hw11-prometheus}
+  ports:
+    - {name: http, port: 9090, targetPort: http}
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw11-kube-state-metrics
+spec:
+  selector: {app: hw11-kube-state-metrics}
+  ports:
+    - {name: http, port: 8080, targetPort: http}
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: v1
+kind: Service
+metadata:
+  name: hw11-grafana
+spec:
+  selector: {app: hw11-grafana}
+  ports:
+    - {name: http, port: 3000, targetPort: http}
+---
+# Source: hw11/templates/api.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw11-api
+spec:
+  replicas: 2
+  revisionHistoryLimit: 5
+  minReadySeconds: 2
+  progressDeadlineSeconds: 180
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: hw11-api
+  template:
+    metadata:
+      labels:
+        app: hw11-api
+        app.kubernetes.io/component: api
+        app.kubernetes.io/instance: hw11
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        checksum/config: 5262ccae028a1f56e9c0ee615ab9da2dbfc89dfae668eed4c98d1cdbcaa98f61
+    spec:
+      terminationGracePeriodSeconds: 60
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: api
+          image: "hw11-api:local"
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: hw11-config
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+            limits:
+              cpu: 500m
+              memory: 192Mi
+            requests:
+              cpu: 100m
+              memory: 64Mi
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: http
+            periodSeconds: 1
+            timeoutSeconds: 2
+            failureThreshold: 90
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            periodSeconds: 1
+            timeoutSeconds: 2
+            failureThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - python
+                  - -c
+                  - "import urllib.request,time; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/drain',method='POST')); time.sleep(3)"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: artifact
+              mountPath: /artifacts
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: artifact
+          configMap:
+            name: hw11-model-a
+        - name: tmp
+          emptyDir:
+            sizeLimit: 16Mi
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw11-prometheus
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      app: hw11-prometheus
+  template:
+    metadata:
+      labels:
+        app: hw11-prometheus
+      annotations:
+        checksum/config: 7bbcd4384e629b6f909a78204c4be9d7e0edd798d9cdcf757c16773fba844027
+    spec:
+      serviceAccountName: hw11-prometheus
+      securityContext:
+        runAsUser: 65534
+        fsGroup: 65534
+      containers:
+        - name: prometheus
+          image: prom/prometheus:v3.5.0
+          args:
+            - --config.file=/etc/prometheus/prometheus.yml
+            - --storage.tsdb.path=/prometheus
+            - --storage.tsdb.retention.time=1h
+            - --storage.tsdb.retention.size=128MB
+            - --storage.tsdb.min-block-duration=10m
+            - --storage.tsdb.max-block-duration=10m
+            - --web.enable-lifecycle
+            - --query.max-concurrency=4
+          ports:
+            - name: http
+              containerPort: 9090
+          resources:
+            requests: {cpu: 50m, memory: 96Mi}
+            limits: {cpu: 300m, memory: 256Mi}
+          readinessProbe:
+            httpGet: {path: /-/ready, port: http}
+            periodSeconds: 3
+          volumeMounts:
+            - {name: config, mountPath: /etc/prometheus, readOnly: true}
+            - {name: data, mountPath: /prometheus}
+      volumes:
+        - name: config
+          configMap: {name: hw11-prometheus}
+        - name: data
+          emptyDir: {sizeLimit: 256Mi}
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw11-kube-state-metrics
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: hw11-kube-state-metrics}
+  template:
+    metadata:
+      labels: {app: hw11-kube-state-metrics}
+    spec:
+      serviceAccountName: hw11-kube-state-metrics
+      containers:
+        - name: kube-state-metrics
+          image: registry.k8s.io/kube-state-metrics/kube-state-metrics:v2.16.0
+          args:
+            - --resources=pods,deployments,horizontalpodautoscalers
+            - --namespaces=hw11
+          ports:
+            - {name: http, containerPort: 8080}
+          resources:
+            requests: {cpu: 10m, memory: 24Mi}
+            limits: {cpu: 100m, memory: 64Mi}
+---
+# Source: hw11/templates/monitoring.yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hw11-grafana
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels: {app: hw11-grafana}
+  template:
+    metadata:
+      labels: {app: hw11-grafana}
+      annotations:
+        checksum/dashboard: 094b162ce9f32f07e6946d2acfa7ed9d34a65a4e0f9204e627151b0dbb4cbc9a
+    spec:
+      automountServiceAccountToken: false
+      securityContext:
+        runAsUser: 472
+        fsGroup: 472
+      containers:
+        - name: grafana
+          image: grafana/grafana:12.1.0
+          env:
+            - {name: GF_AUTH_ANONYMOUS_ENABLED, value: 'true'}
+            - {name: GF_AUTH_ANONYMOUS_ORG_ROLE, value: Viewer}
+            - {name: GF_AUTH_DISABLE_LOGIN_FORM, value: 'true'}
+            - {name: GF_ANALYTICS_REPORTING_ENABLED, value: 'false'}
+            - {name: GF_ANALYTICS_CHECK_FOR_UPDATES, value: 'false'}
+          ports:
+            - {name: http, containerPort: 3000}
+          resources:
+            requests: {cpu: 25m, memory: 96Mi}
+            limits: {cpu: 200m, memory: 192Mi}
+          readinessProbe:
+            httpGet: {path: /api/health, port: http}
+            periodSeconds: 5
+          volumeMounts:
+            - {name: data, mountPath: /var/lib/grafana}
+            - {name: config, mountPath: /etc/grafana/provisioning/datasources/datasource.yml, subPath: datasource.yml}
+            - {name: config, mountPath: /etc/grafana/provisioning/dashboards/provider.yml, subPath: dashboard-provider.yml}
+            - {name: config, mountPath: /var/lib/grafana/dashboards/dashboard.json, subPath: dashboard.json}
+      volumes:
+        - name: data
+          emptyDir: {sizeLimit: 128Mi}
+        - name: config
+          configMap: {name: hw11-grafana}

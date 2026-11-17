@@ -1,0 +1,1 @@
+{"backend_mode": "simulated", "description": "Bounded CPU simulator; no neural weights or token timing", "model_version": "A", "schema_version": 1}

@@ -1,0 +1,22 @@
+groups:
+  - name: hw11-service
+    interval: 5s
+    rules:
+      - alert: HW11HighTTFC
+        expr: >-
+          (histogram_quantile(0.95, sum by (le) (rate(hw11_ttfc_seconds_bucket[30s]))) > {{ .Values.monitoring.latencyThresholdSeconds }})
+          and (sum(increase(hw11_ttfc_seconds_count[30s])) >= {{ .Values.monitoring.minimumObservations }})
+        for: {{ .Values.monitoring.alertFor }}
+        labels:
+          severity: warning
+        annotations:
+          summary: "Simulator p95 TTFC exceeds threshold with enough observations"
+      - alert: HW11HighRejectionRatio
+        expr: >-
+          ((sum(rate(hw11_requests_total{outcome="rejected"}[30s])) / clamp_min(sum(rate(hw11_requests_total[30s])), 0.001)) > {{ .Values.monitoring.rejectionRatioThreshold }})
+          and (sum(increase(hw11_requests_total[30s])) >= {{ .Values.monitoring.minimumObservations }})
+        for: {{ .Values.monitoring.alertFor }}
+        labels:
+          severity: warning
+        annotations:
+          summary: "Rejection ratio exceeds threshold with enough observations"

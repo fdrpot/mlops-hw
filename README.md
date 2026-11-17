@@ -12,6 +12,7 @@
 | [hw5](hw5/README.md) | Обучение и сравнение | [compare.md](hw5/docs/compare.md) |
 | [hw67](hw67/README.md) | MLflow и полный gate | [conclusion.md](hw67/docs/conclusion.md) |
 | [hw8910](hw8910/README.md) | Prefect, безопасный выпуск и FastAPI | [report.md](hw8910/docs/report.md) |
+| [hw11](hw11/README.md) | Kubernetes, потоковые ответы, маршрутизация и HPA | [report.html](hw11/report.html) |
 
 ## ДЗ 1
 

@@ -1,0 +1,8 @@
+.tools
+.venv
+.kubeconfig
+results
+__pycache__
+tests
+chart
+monitoring

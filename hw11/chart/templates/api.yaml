@@ -1,0 +1,151 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hw11.name" . }}-model-{{ .Values.model.version | lower }}
+immutable: true
+data:
+  model.json: |
+{{ include "hw11.artifact" . | indent 4 }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hw11.name" . }}-config
+data:
+  MODEL_VERSION: {{ .Values.model.version | quote }}
+  ARTIFACT_PATH: /artifacts/model.json
+  ARTIFACT_SHA256: {{ include "hw11.artifact" . | sha256sum | quote }}
+  WARMUP_SECONDS: {{ .Values.model.warmupSeconds | quote }}
+  PROBE_MODE: {{ .Values.model.probeMode | quote }}
+  NEVER_READY: {{ .Values.model.neverReady | quote }}
+  MAX_CONCURRENCY: {{ .Values.backend.maxConcurrency | quote }}
+  QUEUE_LIMIT: {{ .Values.backend.queueLimit | quote }}
+  QUEUE_TIMEOUT: {{ .Values.backend.queueTimeout | quote }}
+  CACHE_SIZE: {{ .Values.backend.cacheSize | quote }}
+  HIT_SECONDS: {{ .Values.backend.hitSeconds | quote }}
+  MISS_SECONDS: {{ .Values.backend.missSeconds | quote }}
+  CPU_SECONDS: {{ .Values.backend.cpuSeconds | quote }}
+  CHUNK_SECONDS: {{ .Values.backend.chunkSeconds | quote }}
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "hw11.name" . }}-api
+spec:
+  {{- if not .Values.hpa.enabled }}
+  replicas: {{ .Values.replicaCount }}
+  {{- end }}
+  revisionHistoryLimit: 5
+  minReadySeconds: 2
+  progressDeadlineSeconds: 180
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 1
+      maxUnavailable: 0
+  selector:
+    matchLabels:
+      app: {{ include "hw11.name" . }}-api
+  template:
+    metadata:
+      labels:
+        app: {{ include "hw11.name" . }}-api
+        app.kubernetes.io/component: api
+        app.kubernetes.io/instance: {{ .Release.Name }}
+      annotations:
+        prometheus.io/scrape: "true"
+        prometheus.io/port: "8000"
+        checksum/config: {{ printf "%s/%s/%s/%s" (.Values.model | toJson) (.Values.backend | toJson) (.Values.resources | toJson) (include "hw11.artifact" .) | sha256sum }}
+    spec:
+      terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
+      automountServiceAccountToken: false
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 10001
+        runAsGroup: 10001
+        fsGroup: 10001
+      containers:
+        - name: api
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          ports:
+            - name: http
+              containerPort: 8000
+          envFrom:
+            - configMapRef:
+                name: {{ include "hw11.name" . }}-config
+          env:
+            - name: POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          resources:
+{{ .Values.resources | toYaml | indent 12 }}
+          startupProbe:
+            httpGet:
+              path: /startup
+              port: http
+            periodSeconds: 1
+            timeoutSeconds: 2
+            failureThreshold: 90
+          readinessProbe:
+            httpGet:
+              path: /ready
+              port: http
+            periodSeconds: 1
+            timeoutSeconds: 2
+            failureThreshold: 1
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: http
+            periodSeconds: 5
+            timeoutSeconds: 2
+            failureThreshold: 3
+          lifecycle:
+            preStop:
+              exec:
+                command:
+                  - python
+                  - -c
+                  - "import urllib.request,time; urllib.request.urlopen(urllib.request.Request('http://127.0.0.1:8000/drain',method='POST')); time.sleep(3)"
+          securityContext:
+            allowPrivilegeEscalation: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: [ALL]
+          volumeMounts:
+            - name: artifact
+              mountPath: /artifacts
+              readOnly: true
+            - name: tmp
+              mountPath: /tmp
+      volumes:
+        - name: artifact
+          configMap:
+            name: {{ include "hw11.name" . }}-model-{{ .Values.model.version | lower }}
+        - name: tmp
+          emptyDir:
+            sizeLimit: 16Mi
+---
+{{- range $policy := list "normal" "sticky" }}
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "hw11.name" $ }}-{{ $policy }}
+spec:
+  type: ClusterIP
+  selector:
+    app: {{ include "hw11.name" $ }}-api
+  sessionAffinity: {{ if eq $policy "sticky" }}ClientIP{{ else }}None{{ end }}
+  {{- if eq $policy "sticky" }}
+  sessionAffinityConfig:
+    clientIP:
+      timeoutSeconds: 10800
+  {{- end }}
+  ports:
+    - name: http
+      port: 8000
+      targetPort: http
+---
+{{- end }}
